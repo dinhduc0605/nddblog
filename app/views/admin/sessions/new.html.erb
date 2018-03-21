@@ -1,31 +1,46 @@
-<div class="card-container card text-white bg-primary mb-3" style="max-width: 20rem;">
-  <div class="header-login card-header">
-    <%= image_tag 'anonymous_user.png', class: 'circle' %>
-  </div>
-  <div class="card-body">
-    <div class="form-group">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-group">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ducnojinsei</title>
+  <%= csrf_meta_tags %>
 
-        <div class="form-group">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-        </div>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-        <% if devise_mapping.rememberable? -%>
-          <div class="form-check">
-            <%= f.check_box :remember_me, class: 'form-check-input' %>
-            <%= f.label :remember_me, class: 'form-check-label' %>
+<body>
+  <%= render 'shared/flash', flash: flash %>
+  <div class="card-container card text-white bg-primary mb-3" style="max-width: 20rem;">
+    <div class="header-login card-header">
+      <%= image_tag 'anonymous_user.png', class: 'circle' %>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password %><br/>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-check">
+              <%= f.check_box :remember_me, class: 'form-check-input' %>
+              <%= f.label :remember_me, class: 'form-check-label' %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: 'btn btn-light', style: 'float: right' %>
           </div>
         <% end %>
-
-        <div class="actions">
-          <%= f.submit "Log in", class: 'btn btn-light', style: 'float: right' %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
+  <%= debug params %>
+</body>
+</html>

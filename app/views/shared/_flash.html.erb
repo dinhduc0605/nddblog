@@ -7,7 +7,7 @@
     <% message_type = "danger" %>
     <% message_title = "Oh snap!" %>
   <% end %>
-  <div class="alert alert-dismissible alert-<%= message_type %>">
+  <div id="flash-alert" class="alert alert-dismissible alert-<%= message_type %>">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong><%= message_title %></strong> <%= message %>
   </div>

@@ -9254,17 +9254,3 @@ a.text-dark:hover, a.text-dark:focus {
 .modal .close {
     color: #000
 }
-
-.card-container {
-    max-width: 350px;
-    margin: 30px auto;
-}
-
-.header-login {
-    text-align: center;
-}
-.circle {
-    border-radius: 50%;
-    width: 150px;
-    margin: 20px auto;
-}
