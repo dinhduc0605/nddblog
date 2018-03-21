@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mysql2'
 gem 'devise'
 gem 'jquery-rails'
+gem 'http_accept_language'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

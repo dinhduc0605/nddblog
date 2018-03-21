@@ -4,10 +4,10 @@
     <div class="divider" style="margin-bottom: 20px"></div>
   </div>
   <div class="nav-menu">
-    <%= link_to 'Dashboard', admin_dashboard_url, class: 'nav-link' %>
-    <%= link_to 'Users', admin_users_url, class: 'nav-link' %>
-    <%= link_to 'Post', admin_posts_url, class: 'nav-link' %>
-    <%= link_to 'Comment', admin_comments_url, class: 'nav-link' %>
-    <%= link_to 'Log out', destroy_admin_user_session_url, method: :delete, class: 'nav-link' %>
+    <%= link_to t('.dashboard'), admin_dashboard_url, class: 'nav-link' %>
+    <%= link_to t('.user'), admin_users_url, class: 'nav-link' %>
+    <%= link_to t('.post'), admin_posts_url, class: 'nav-link' %>
+    <%= link_to t('.comment'), admin_comments_url, class: 'nav-link' %>
+    <%= link_to t('.logout'), destroy_admin_user_session_url, method: :delete, class: 'nav-link' %>
   </div>
 </nav>

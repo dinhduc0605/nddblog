@@ -1,7 +1,7 @@
 <% flash.each do |message_type, message| %>
   <% if message_type == "notice" || message_type == "success" %>
     <% message_type = "success" %>
-    <% message_title = "Well done!" %>
+    <% message_title = t('well_done') %>
   <% end %>
   <% if message_type == "alert" || message_type == "danger" %>
     <% message_type = "danger" %>
