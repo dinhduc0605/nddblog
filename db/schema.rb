@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320155748) do
+ActiveRecord::Schema.define(version: 20180321024300) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20180320155748) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "posts_id"
-    t.index ["posts_id"], name: "index_comments_on_posts_id"
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "post_tags", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20180320155748) do
     t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_posts_on_users_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,11 +51,24 @@ ActiveRecord::Schema.define(version: 20180320155748) do
     t.string "email"
     t.string "avatar"
     t.string "description"
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "posts", column: "posts_id"
-  add_foreign_key "posts", "users", column: "users_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "posts", "users"
 end

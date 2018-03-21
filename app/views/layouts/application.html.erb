@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <%= render 'shared/flash', flash: flash %>
     <%= yield %>
   </body>
+  <%= debug params %>
 </html>
