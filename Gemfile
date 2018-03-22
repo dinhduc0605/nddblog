@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'mysql2'
+gem 'mysql2', '~> 0.4.10'
 gem 'devise'
 gem 'jquery-rails'
 gem 'http_accept_language'
