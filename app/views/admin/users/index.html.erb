@@ -1,2 +1,27 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="header">
+  <%= link_to new_admin_user_url, class: 'btn btn-primary' do %>
+    <i class="fas fa-plus-circle"></i> <%= t '.new' %>
+  <% end %>
+
+  <%= form_tag nil, class: 'form-search form-inline' do %>
+    <%= text_field_tag :name, nil, class: 'form-control', placeholder: t('.search_placeholder') %>
+    <%= button_tag class: 'btn btn-primary', style: 'margin-left: 5px' do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  <% end %>
+</div>
+
+<table class="table">
+  <thead class="table-primary">
+  <tr>
+    <th><%= t '.stt' %></th>
+    <th><%= t '.avatar' %></th>
+    <th><%= t '.name' %></th>
+    <th><%= t '.email' %></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @users %>
+  </tbody>
+</table>

@@ -8,8 +8,11 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 },
+            presence: true, on: :create,
+            confirmation: true
+  validates :password_confirmation, presence: true, on: :create
 
   has_many :posts
-
+  mount_uploader :avatar, AvatarUploader
 end

@@ -1,6 +1,8 @@
 <nav class="vertical-nav bg-primary">
   <div class="profile-header">
-    <%= image_tag 'anonymous_user.png', class: 'circle' %>
+    <%= link_to edit_admin_user_path(current_admin_user) do %>
+      <%= image_tag avatar_url(current_admin_user), class: 'rounded-circle nav-avatar' %>
+  <% end %>
     <div class="divider" style="margin-bottom: 20px"></div>
   </div>
   <div class="nav-menu">
@@ -12,6 +14,8 @@
   </div>
 </nav>
 <script type="text/javascript" charset="utf-8">
-    $(".nav-menu a").removeClass("active");
-    $(".nav-menu a:nth-child(" + sessionStorage["position"] + ")").addClass("active");
+    if (sessionStorage["position"] !== undefined) {
+        $(".nav-menu a").removeClass("active");
+        $(".nav-menu a:nth-child(" + sessionStorage["position"] + ")").addClass("active");
+    }
 </script>

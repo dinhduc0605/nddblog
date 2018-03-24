@@ -25,6 +25,8 @@ vi:
         unconfirmed_email: Email chưa xác nhận
         unlock_token: Mã mở khoá
         updated_at: "Được cập nhật lúc"
+        description: Mô tả bản thân
+        name: Tên
     models:
       user: Người dùng
   devise:

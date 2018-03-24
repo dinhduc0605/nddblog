@@ -7,8 +7,8 @@
 .header-login {
     text-align: center;
 }
-.circle {
-    border-radius: 50%;
-    width: 150px;
+
+.login-avatar {
     margin: 20px auto;
+    width: 150px;
 }

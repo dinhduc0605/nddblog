@@ -5,7 +5,7 @@
   <% end %>
   <% if message_type == "alert" || message_type == "danger" %>
     <% message_type = "danger" %>
-    <% message_title = "Oh snap!" %>
+    <% message_title = t('oh_snap') %>
   <% end %>
   <div id="flash-alert" class="alert alert-dismissible alert-<%= message_type %>">
     <button type="button" class="close" data-dismiss="alert">&times;</button>

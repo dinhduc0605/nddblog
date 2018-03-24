@@ -1,3 +1,26 @@
 // Place all the styles related to the Admin::Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.list-avatar {
+  height: 70px;
+  width: 70px;
+}
+
+#image-preview {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ecf0f1;
+  background-position: center;
+  background-size: cover;
+}
+
+#image-preview input {
+  line-height: 200px;
+  font-size: 200px;
+  position: absolute;
+  opacity: 0;
+  z-index: 10;
+}

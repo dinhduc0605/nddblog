@@ -208,6 +208,22 @@ vi:
         post: Bài viết
         comment: Bình luận
         logout: Đăng xuất
+    users:
+      index:
+        stt: STT
+        avatar: Ảnh đại diện
+        name: Họ Tên
+        email: Email
+        search_placeholder: Tìm qua tên...
+        new: Thêm
+      edit:
+        password_notice: (Để trống nếu không muốn thay đổi)
+      user:
+        delete_confirm: Bạn có muốn xóa tài khoản này không?
+      create:
+        notice: Tạo tài khoản mới thành công
+      update:
+        notice: "Sửa thông tin người dùng thành công"
 
   title: ducnojinsei
   well_done: Tuyệt vời!

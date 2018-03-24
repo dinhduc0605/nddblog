@@ -33,6 +33,7 @@ gem 'mysql2', '~> 0.4.10'
 gem 'devise'
 gem 'jquery-rails'
 gem 'http_accept_language'
+gem 'carrierwave', '~> 1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
