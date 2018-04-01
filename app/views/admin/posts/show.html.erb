@@ -1,2 +1,15 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<%= image_tag @post.cover, class: 'post-show-cover' %>
+<div class="row justify-content-center">
+  <div class="post-show-content col-md-11">
+    <div class="post-show-title">
+      <%= @post.title %>
+    </div>
+    <hr>
+    <%= markdown(@post.content) %>
+  </div>
+</div>
+<div class="tags">
+  <% @post.tags.each do |tag| %>
+    <%= link_to tag.name, admin_tag_url(tag), class: 'tag' %>
+  <% end %>
+</div>

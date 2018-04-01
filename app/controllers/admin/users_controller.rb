@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.where.not id: current_admin_user.id
@@ -22,16 +22,15 @@ class Admin::UsersController < ApplicationController
     if @user.update user_params
       redirect_to admin_users_path, notice: t('.notice')
     else
-      # devise auto redirect_to show user page -> not use show user page anymore
       render :edit
     end
   end
 
   def destroy
     if @user.destroy
-      redirect_to admin_users_path, notice: 'Xóa tài khoản thành công'
+      redirect_to admin_users_path, notice: t('.notice')
     else
-      redirect_to admin_users_path, alert: 'Xóa tài khoản thất bại'
+      redirect_to admin_users_path, alert: t('.alert')
     end
   end
 

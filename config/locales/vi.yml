@@ -6,6 +6,11 @@ vi:
         restrict_dependent_destroy:
           has_one: Không thể xóa do tồn tại đối tượng phụ thuộc %{record}
           has_many: Không thể xóa do tồn tại một số đối tượng phụ thuộc %{record}
+    attributes:
+      post:
+        title: Tiêu đề
+        content: Nội dung
+        category: Thể loại
   date:
     abbr_day_names:
     - CN
@@ -224,7 +229,25 @@ vi:
         notice: Tạo tài khoản mới thành công
       update:
         notice: "Sửa thông tin người dùng thành công"
+      destroy:
+        notice: "Xóa tài khoản thành công"
+        alert: "Xóa tài khoản thất bại"
+    posts:
+      index:
+        new: "Tạo mới"
+        search_placeholder: "Tìm qua tên"
+      post:
+        data_confirm: "Bạn có muốn xóa bài viết này không"
+      create:
+        notice: "Đăng bài viết thành công"
+      update:
+        notice: "Sửa bài viết thành công"
+      destroy:
+        notice: "Xóa bài viết thành công"
+        alert: "Xóa bài viết thất bại"
 
   title: ducnojinsei
   well_done: Tuyệt vời!
   oh_snap: Rất tiếc!
+  stt: STT
+  submit: Gửi

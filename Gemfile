@@ -32,9 +32,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mysql2', '~> 0.4.10'
 gem 'devise'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'http_accept_language'
 gem 'carrierwave', '~> 1.0'
-
+gem 'simplemde-rails'
+gem 'redcarpet'
+gem 'coderay'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
