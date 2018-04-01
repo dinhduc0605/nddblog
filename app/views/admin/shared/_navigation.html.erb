@@ -14,8 +14,6 @@
   </div>
 </nav>
 <script type="text/javascript" charset="utf-8">
-    if (sessionStorage["position"] !== undefined) {
-        $(".nav-menu a").removeClass("active");
-        $(".nav-menu a:nth-child(" + sessionStorage["position"] + ")").addClass("active");
-    }
+  $(".nav-menu a").removeClass("active");
+  $(".nav-menu a[href$='<%= "#{request.path}?locale=#{I18n.locale}" %>']").addClass("active");
 </script>
