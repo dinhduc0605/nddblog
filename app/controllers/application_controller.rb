@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :authenticate_admin_user!
+  before_action :authenticate_admin_user! if (self.class.parent == Admin)
   before_action :set_locale
 
   layout :select_layout
@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
     else
       'application'
     end
-    # only turn it off for sign_in/sign_up pages:
-    is_a?(Devise::SessionsController) ? false : 'admin'
   end
 
   def set_locale

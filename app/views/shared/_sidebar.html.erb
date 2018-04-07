@@ -1,0 +1,6 @@
+<div class="sidebar">
+  <div class="sidebar-header"> Các bài viết hay nhất </div>
+  <% @hot_posts.each do |hot_post| %>
+    <%= render 'posts/sidebar_post', post: hot_post %>
+  <% end %>
+</div>

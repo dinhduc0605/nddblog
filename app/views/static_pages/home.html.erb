@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t 'title' %></title>
+    <%= csrf_meta_tags %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/inscrybmde@1.11.3/dist/inscrybmde.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/inscrybmde@1.11.3/dist/inscrybmde.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'shared/navigation' %>
+    <%= render 'shared/flash', flash: flash %>
+    <div class="home-profile">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="blockquote">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cumque eius nam nesciunt quis recusandae voluptatum. Ad commodi, debitis, eum hic iste magni mollitia, obcaecati odit praesentium quo quos voluptatibus!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="avatar">
+              <% user = User.first %>
+              <%= image_tag user.avatar, class: 'rounded-circle', id: 'home-avatar' %>
+              <p id="name"><%= user.name %></p>
+              <div class="contact-icon">
+                <i class="fab fa-facebook-square fa-3x"></i>
+                <i class="fab fa-github-square fa-3x"></i>
+                <i class="fab fa-line fa-3x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 30px">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="home">
+            <%= render @new_posts %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <%= render 'shared/sidebar' %>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
+  </body>
+</html>

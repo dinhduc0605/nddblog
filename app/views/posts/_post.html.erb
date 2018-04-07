@@ -1,0 +1,13 @@
+<div class="post-item">
+  <%= image_tag post.cover, class: 'post-item-cover fit-in' %>
+  <div style="padding: 15px;">
+    <div class="post-item-title"><%= post.title %></div>
+    <div>
+      <div class="post-item-time"><i class="far fa-clock"></i> <%= post.created_at %></div>
+      <div class="post-item-comment"><i class="far fa-comment"></i> 20 COMMENTS</div>
+    </div>
+    <div class="post-item-description"><%= markdown(post.description) %></div>
+    <%= link_to 'Đọc tiếp >>', post_url(post) %>
+  </div>
+  
+</div>
