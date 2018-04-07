@@ -9,5 +9,5 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   mount_uploader :cover, AvatarUploader
-  CATEGORIES = %w(Technique Life Relax)
+  CATEGORIES = %w(Techniques Life Relax)
 end

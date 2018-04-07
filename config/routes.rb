@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   resources :posts
   resources :tags
+  get 'techniques', to: 'posts#techniques'
+  get 'life_stories', to: 'posts#life_stories'
+  get 'japan', to: 'posts#japan'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
