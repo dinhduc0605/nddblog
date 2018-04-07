@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    rndr = MarkdownRenderer.new(:filter_html => true, :hard_wrap => true)
+    rndr = MarkdownRenderer.new(:hard_wrap => true)
     options = {
         :fenced_code_blocks => true,
         :no_intra_emphasis => true,
