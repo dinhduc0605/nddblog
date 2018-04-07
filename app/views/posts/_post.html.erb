@@ -1,13 +1,19 @@
-<div class="post-item">
-  <%= image_tag post.cover, class: 'post-item-cover fit-in' %>
-  <div style="padding: 15px;">
-    <div class="post-item-title"><%= post.title %></div>
-    <div>
-      <div class="post-item-time"><i class="far fa-clock"></i> <%= post.created_at %></div>
-      <div class="post-item-comment"><i class="far fa-comment"></i> 20 COMMENTS</div>
-    </div>
-    <div class="post-item-description"><%= markdown(post.description) %></div>
-    <%= link_to 'Đọc tiếp >>', post_url(post) %>
+<div class="post-preview">
+  <a href="post.html">
+    <h2 class="post-title">
+      <%= post.title %>
+    </h2>
+    <h3 class="post-subtitle">
+      <%= post.description %>
+    </h3>
+  </a>
+  <p class="post-meta">Posted by
+    <a href="#">Start Bootstrap</a>
+    on September 24, 2018</p>
+  <div class="tags">
+    <% post.tags.each do |tag| %>
+      <%= link_to tag.name, tag_url(tag), class: 'black' %>
+    <% end %>
   </div>
-  
 </div>
+<hr>
