@@ -24,6 +24,18 @@ $(document).on('turbolinks:load', function () {
             }
         }
     });
+});
 
-    new InscrybMDE();
+$(document).on('click', '#edit-with-stackedit', function () {
+    const textareaEl = document.querySelector('textarea');
+    const stackedit = new Stackedit();
+    stackedit.on('fileChange', function onFileChange(file) {
+        textareaEl.value = file.content.text;
+    });
+    stackedit.openFile({
+        name: 'Markdown with StackEdit',
+        content: {
+            text: textareaEl.value
+        }
+    });
 });
