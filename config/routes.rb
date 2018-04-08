@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tags/show'
+
   get 'posts/show'
 
   namespace :admin do
@@ -15,9 +17,9 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   resources :posts
   resources :tags
-  get 'techniques', to: 'posts#techniques'
-  get 'life_stories', to: 'posts#life_stories'
-  get 'japan', to: 'posts#japan'
+  get 'techniques', to: 'static_pages#techniques'
+  get 'life_stories', to: 'static_pages#life_stories'
+  get 'japan', to: 'static_pages#japan'
   get 'about', to: 'static_pages#about'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

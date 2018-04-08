@@ -7,9 +7,7 @@
       <%= post.description %>
     </h3>
   </a>
-  <p class="post-meta">Posted by
-    <a href="#">Start Bootstrap</a>
-    on September 24, 2018</p>
+  <p class="post-meta">Posted by <b><%= post.user.name %></b> on <%= post.created_at.to_date %></p>
   <div class="tags">
     <% post.tags.each do |tag| %>
       <%= link_to tag.name, tag_url(tag), class: 'black' %>
