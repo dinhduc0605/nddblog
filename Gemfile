@@ -38,6 +38,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'simplemde-rails'
 gem 'redcarpet'
 gem 'coderay'
+gem 'friendly_id', '~> 5.1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
