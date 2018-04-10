@@ -2,7 +2,15 @@ class TagsController < ApplicationController
   before_action :set_tag
 
   def show
-    @posts = @tag.posts
+    if params[:post_id]
+      @posts = Post.includes(:tags).where("posts.id < ?", params[:post_id]).where(:tags => { id: @tag.id }).order(created_at: :desc).limit(5)
+    else
+      @posts = Post.includes(:tags).where(:tags => { id: @tag.id }).order(created_at: :desc).limit(5)
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

@@ -18,10 +18,13 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <%= render @new_posts %>
+      <div class="post-list">
+        <%= render @new_posts %>
+      </div>
+      <%= image_tag 'loading.gif', class: 'loading-gif' %>
       <!-- Pager -->
       <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <%= link_to "Older Posts &rarr;".html_safe, root_url, class: 'btn btn-primary float-right load-more' %>
       </div>
     </div>
   </div>

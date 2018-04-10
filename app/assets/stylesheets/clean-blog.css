@@ -433,3 +433,9 @@ footer .copyright {
     padding: 16px;
     margin-bottom: 10px;
 }
+
+.loading-gif {
+    width: 100px;
+    height: 100px;
+    display: none;
+}

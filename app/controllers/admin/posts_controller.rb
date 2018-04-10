@@ -52,9 +52,9 @@ class Admin::PostsController < ApplicationController
 
   protected
   def set_post
-    @post = Post.find params[:id]
+    @post = Post.friendly.find params[:id]
   end
   def post_params
-    params.require(:post).permit(:title, :content, :category, :cover, :tag)
+    params.require(:post).permit(:title, :content, :category, :cover, :tag, :description)
   end
 end
