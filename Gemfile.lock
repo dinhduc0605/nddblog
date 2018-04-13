@@ -79,6 +79,7 @@ GEM
     ffi (1.9.23)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    gemoji (3.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http_accept_language (2.1.1)
@@ -93,6 +94,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -168,6 +170,11 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     simplemde-rails (1.11.2)
+    slop (4.6.2)
+    somemoji (0.7.1)
+      gemoji (= 3.0.0)
+      json
+      slop
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -228,6 +235,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   simplemde-rails
+  somemoji
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
