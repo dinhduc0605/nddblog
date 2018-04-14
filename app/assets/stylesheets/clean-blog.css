@@ -1,5 +1,5 @@
 body {
-    font-size: 20px;
+    font-size: 18px;
     color: #212529;
     font-family: 'Lora', 'Times New Roman', serif;
 }
@@ -429,9 +429,13 @@ footer .copyright {
 }
 
 .code {
-    background-color: lightgray;
+    margin-bottom: 16px;
+}
+
+pre {
     padding: 16px;
-    margin-bottom: 10px;
+    background-color: #f6f8fa;
+    margin: 0;
 }
 
 .loading-gif {
