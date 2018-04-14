@@ -202,17 +202,23 @@ header.masthead .overlay {
 }
 
 header.masthead .page-heading,
-header.masthead .post-heading,
 header.masthead .site-heading {
     padding: 200px 0 150px;
     color: white;
 }
 
+header.masthead .post-heading {
+    padding: 250px 0 50px;
+    color: white;
+}
+
 @media only screen and (min-width: 768px) {
     header.masthead .page-heading,
-    header.masthead .post-heading,
     header.masthead .site-heading {
         padding: 150px 0;
+    }
+    header.masthead .post-heading {
+        padding: 250px 0 50px;
     }
 }
 
@@ -442,4 +448,10 @@ pre {
     width: 100px;
     height: 100px;
     display: none;
+}
+
+.quote-mark {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    font-size: 60px;
 }
