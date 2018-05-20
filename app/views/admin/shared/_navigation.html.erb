@@ -1,19 +1,42 @@
-<nav class="vertical-nav bg-primary">
-  <div class="profile-header">
-    <%= link_to edit_admin_user_path(current_admin_user) do %>
-      <%= image_tag avatar_url(current_admin_user), class: 'rounded-circle nav-avatar' %>
-  <% end %>
-    <div class="divider" style="margin-bottom: 20px"></div>
+<div class="sidebar" data-color="orange">
+  <!--
+Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+-->
+  <div class="logo">
+    <%= link_to t('title'), admin_root_path, class: 'simple-text logo-normal' %>
   </div>
-  <div class="nav-menu">
-    <%= link_to t('.dashboard'), admin_dashboard_url, class: 'nav-link active' %>
-    <%= link_to t('.user'), admin_users_url, class: 'nav-link' %>
-    <%= link_to t('.post'), admin_posts_url, class: 'nav-link' %>
-    <%= link_to t('.comment'), admin_comments_url, class: 'nav-link' %>
-    <%= link_to t('.logout'), destroy_admin_user_session_url, method: :delete, class: 'nav-link' %>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li>
+        <%= link_to admin_dashboard_url do %>
+          <i class="now-ui-icons design_app"></i>
+          <p><%= t('.dashboard') %></p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_users_url do %>
+          <i class="now-ui-icons users_single-02"></i>
+          <p><%= t('.user') %></p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_posts_url do %>
+          <i class="now-ui-icons files_single-copy-04"></i>
+          <p><%= t('.post') %></p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_comments_url do %>
+          <i class="now-ui-icons ui-2_chat-round"></i>
+          <p><%= t('.comment') %></p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_admin_user_session_url, method: :delete do %>
+          <i class="now-ui-icons media-1_button-power"></i>
+          <p><%= t('.logout') %></p>
+        <% end %>
+      </li>
+    </ul>
   </div>
-</nav>
-<script type="text/javascript" charset="utf-8">
-  $(".nav-menu a").removeClass("active");
-  $(".nav-menu a[href$='<%= "#{request.path}?locale=#{I18n.locale}" %>']").addClass("active");
-</script>
+</div>
