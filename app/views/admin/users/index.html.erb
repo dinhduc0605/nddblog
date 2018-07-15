@@ -1,27 +1,24 @@
-<div class="header">
+<div class="card-header">
+  <h4 class="card-title">User Table</h4>
+</div>
+<div class="card-body">
   <%= link_to new_admin_user_url, class: 'btn btn-primary' do %>
     <i class="fas fa-plus-circle"></i> <%= t '.new' %>
   <% end %>
-
-  <%= form_tag nil, class: 'form-search form-inline' do %>
-    <%= text_field_tag :name, nil, class: 'form-control', placeholder: t('.search_placeholder') %>
-    <%= button_tag class: 'btn btn-primary', style: 'margin-left: 5px' do %>
-      <i class="fas fa-search"></i>
-    <% end %>
-  <% end %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="text-primary">
+        <tr>
+          <th><%= t '.stt' %></th>
+          <th><%= t '.avatar' %></th>
+          <th><%= t '.name' %></th>
+          <th><%= t '.email' %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @users %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<table class="table">
-  <thead class="table-primary">
-  <tr>
-    <th><%= t '.stt' %></th>
-    <th><%= t '.avatar' %></th>
-    <th><%= t '.name' %></th>
-    <th><%= t '.email' %></th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <%= render @users %>
-  </tbody>
-</table>

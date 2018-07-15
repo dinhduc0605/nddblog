@@ -3,24 +3,49 @@
   <head>
     <title><%= t 'title' %></title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://unpkg.com/stackedit-js@1.0.3/docs/lib/stackedit.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
     <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'admin/now_ui_dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin/static_pages', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin/tags', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin/users', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/now_ui_dashboard', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'rails-ujs', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'jquery-ui', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'tag-it.min', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/posts', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/static_pages', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/upload_preview', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/users', 'data-turbolins-track': 'reload' %>
+    <script src="https://unpkg.com/stackedit-js@1.0.3/docs/lib/stackedit.min.js"></script>
   </head>
 
   <body>
     <%= render 'admin/shared/navigation' %>
     <%= render 'shared/flash', flash: flash %>
     <div class="main-panel">
-      <%= yield %>
+      <%= render 'admin/shared/head_nav' %>
+      <div class="panel-header panel-header-sm">
+        <canvas id="bigDashboardChart"></canvas>
+      </div>
+      <div class="content">
+        <div class="col-md-12">
+          <div class="card">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
       <%= render 'admin/shared/footer' %>
     </div>
-    <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'admin/now_ui_dashboard', 'data-turbolinks-track': 'reload' %>
+
     <script type="text/javascript" charset="utf-8">
         $(".nav li").removeClass("active");
         $(".nav a[href$='<%= "#{request.path}" %>']").parent().addClass("active");
