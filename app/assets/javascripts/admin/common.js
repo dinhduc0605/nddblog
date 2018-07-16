@@ -2,7 +2,7 @@ $(document).on("turbolinks:load", function () {
     $(".data-table").DataTable({
         searching: false,
         info: false,
-        autoWidth: true,
+        autoWidth: false,
         stateSave: true,
         lengthChange: false,
         columnDefs: [
@@ -18,3 +18,16 @@ $(document).on("turbolinks:before-cache", function () {
         datatable = null;
     }
 } );
+
+$(document).on('click', '.nav li', function () {
+    $toggle = $('.navbar-toggle');
+
+    if (nowuiDashboard.misc.navbar_menu_visible == 1) {
+        $('html').removeClass('nav-open');
+        nowuiDashboard.misc.navbar_menu_visible = 0;
+        setTimeout(function () {
+            $toggle.removeClass('toggled');
+            $('#bodyClick').remove();
+        }, 550);
+    }
+});

@@ -15,6 +15,7 @@
     <%= stylesheet_link_tag 'admin/static_pages', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'admin/tags', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'admin/users', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin/common', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'bootstrap.min', 'data-turbolins-track': 'reload' %>
@@ -41,9 +42,11 @@
         <canvas id="bigDashboardChart"></canvas>
       </div>
       <div class="content">
-        <div class="col-md-12">
-          <div class="card">
-            <%= yield %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <%= yield %>
+            </div>
           </div>
         </div>
       </div>
