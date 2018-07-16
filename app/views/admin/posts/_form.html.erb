@@ -1,7 +1,7 @@
 <%= form_for [:admin, @post], multipart: true do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="row justify-content-center">
-    <div class="col-md-11">
+    <div class="col-md-8 margin-20">
       <div class="rounded" id="background-preview" style="background-image: url(<%= asset_path background_url(@post) %>);">
         <%= f.file_field :cover %>
       </div>
@@ -37,7 +37,7 @@
         </ul>
       </div>
 
-      <%= f.submit t('submit'), class: 'btn btn-primary form-control' %>
+      <%= f.submit t('submit'), class: 'btn btn-primary btn-round full-width' %>
     </div>
   </div>
 <% end %>

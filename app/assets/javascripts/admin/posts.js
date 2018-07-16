@@ -31,6 +31,7 @@ $(document).on('click', '#edit-with-stackedit', function () {
     const stackedit = new Stackedit();
     stackedit.on('fileChange', function onFileChange(file) {
         textareaEl.value = file.content.text;
+        $('#post_content').get(0).style.height = $('#post_content').get(0).scrollHeight + "px";
     });
     stackedit.openFile({
         name: 'Markdown with StackEdit',
@@ -38,4 +39,8 @@ $(document).on('click', '#edit-with-stackedit', function () {
             text: textareaEl.value
         }
     });
+});
+
+$(document).on('input', '#post_content', function () {
+    this.style.height = this.scrollHeight + "px";
 });
