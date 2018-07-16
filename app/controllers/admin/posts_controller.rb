@@ -1,7 +1,8 @@
 class Admin::PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy, :show]
   def index
-    @posts = Post.all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
   end
 
   def new

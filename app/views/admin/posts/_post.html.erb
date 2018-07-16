@@ -4,11 +4,11 @@
   <td><%= link_to post.title, admin_post_url(post) %></td>
   <td><%= Post::CATEGORIES[post.category] %></td>
   <td class="text-center">
-    <%= link_to edit_admin_post_url(post), class: 'btn btn-primary' do %>
-      <i class="fas fa-edit"></i>
+    <%= link_to edit_admin_post_url(post), class: 'btn btn-primary btn-icon btn-round' do %>
+      <i class="fa fa-pencil-square-o"></i>
     <% end %>
-    <%= link_to admin_post_url(post), method: :delete, class: 'btn btn-danger', 'data-confirm': t('.data_confirm') do %>
-      <i class="fas fa-trash"></i>
+    <%= link_to admin_post_url(post), method: :delete, class: 'btn btn-danger btn-icon btn-round', 'data-confirm': t('.data_confirm') do %>
+      <i class="fa fa-trash-o"></i>
     <% end %>
   </td>
 </tr>
