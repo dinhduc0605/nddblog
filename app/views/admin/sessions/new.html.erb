@@ -3,44 +3,58 @@
 <head>
   <title><%= t 'title' %></title>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+  <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'admin/now_ui_dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'bootstrap.min', 'data-turbolins-track': 'reload' %>
+  <%= javascript_include_tag 'admin/now_ui_dashboard', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'rails-ujs', 'data-turbolins-track': 'reload' %>
+  <%= javascript_include_tag 'jquery-ui', 'data-turbolins-track': 'reload' %>
 </head>
 
 <body>
-  <%= render 'shared/flash', flash: flash %>
-  <div class="card-container card text-white bg-primary mb-3" style="max-width: 20rem;">
-    <div class="header-login card-header">
-      <%= image_tag 'anonymous_user.png', class: 'rounded-circle login-avatar' %>
-    </div>
-    <div class="card-body">
-      <div class="form-group">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group">
-            <%= f.label :email %><br/>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-          </div>
+<%= render 'shared/flash', flash: flash %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4 card" id="login-form">
+      <%= image_tag 'anonymous_user.png', style: 'margin: 25px 0px 60px 0px; height: 150px', class: 'rounded-circle' %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="input-group form-group-no-border input-lg">
+            <span class="input-group-addon">
+              <i class="now-ui-icons ui-1_email-85"></i>
+            </span>
+          <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+        </div>
+        <div class="input-group form-group-no-border input-lg">
+            <span class="input-group-addon">
+              <i class="now-ui-icons text_caps-small"></i>
+            </span>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Password' %>
+        </div>
 
-          <div class="form-group">
-            <%= f.label :password %><br/>
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-          </div>
-
-          <% if devise_mapping.rememberable? -%>
-            <div class="form-check">
-              <%= f.check_box :remember_me, class: 'form-check-input' %>
-              <%= f.label :remember_me, class: 'form-check-label' %>
-            </div>
-          <% end %>
-
-          <div class="actions">
-            <%= f.submit "Log in", class: 'btn btn-light', style: 'float: right' %>
+        <% if devise_mapping.rememberable? -%>
+          <div class="form-check" style="text-align: left">
+            <label class="form-check-label">
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              Remember me
+              <span class="form-check-sign">
+                <span class="check"></span>
+              </span>
+            </label>
           </div>
         <% end %>
-      </div>
+
+        <%= f.submit 'Get Started', class: 'btn btn-primary btn-round btn-lg full-width'%>
+      <% end %>
     </div>
   </div>
-  <%= debug params %>
+</div>
 </body>
 </html>
