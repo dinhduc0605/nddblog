@@ -3,7 +3,7 @@
   <td><%= image_tag background_url(post), class: 'rounded list-avatar' %></td>
   <td><%= link_to post.title, admin_post_url(post) %></td>
   <td><%= Post::CATEGORIES[post.category] %></td>
-  <td>
+  <td class="text-center">
     <%= link_to edit_admin_post_url(post), class: 'btn btn-primary' do %>
       <i class="fas fa-edit"></i>
     <% end %>

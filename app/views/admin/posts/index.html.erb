@@ -1,27 +1,33 @@
-<div class="header">
-  <%= link_to new_admin_post_url, class: 'btn btn-primary' do %>
-    <i class="fas fa-plus-circle"></i> <%= t '.new' %>
-  <% end %>
-
-  <%= form_tag nil, class: 'form-search form-inline' do %>
-    <%= text_field_tag :name, nil, class: 'form-control', placeholder: t('.search_placeholder') %>
-    <%= button_tag class: 'btn btn-primary', style: 'margin-left: 5px' do %>
-      <i class="fas fa-search"></i>
-    <% end %>
-  <% end %>
+<div class="card-header">
+  <h4 class="card-title">Posts Table</h4>
 </div>
+<div class="card-body">
+  <div class="header">
+    <%= link_to new_admin_post_url, class: 'btn btn-primary' do %>
+        <i class="fas fa-plus-circle"></i> <%= t '.new' %>
+    <% end %>
 
-<table class="table">
-  <thead class="table-primary">
-  <tr>
-    <th><%= t 'stt' %></th>
-    <th><%= Post.human_attribute_name(:cover) %></th>
-    <th><%= Post.human_attribute_name(:title) %></th>
-    <th><%= Post.human_attribute_name(:category) %></th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <%= render @posts %>
-  </tbody>
-</table>
+    <%= form_tag nil, class: 'form-search form-inline' do %>
+      <%= text_field_tag :name, nil, class: 'form-control', placeholder: t('.search_placeholder') %>
+      <%= button_tag class: 'btn btn-primary', style: 'margin-left: 5px' do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="table-responsive">
+    <table class="table data-table">
+      <thead class="text-primary">
+      <tr>
+        <th><%= t 'stt' %></th>
+        <th class="no-sort"><%= Post.human_attribute_name(:cover) %></th>
+        <th><%= Post.human_attribute_name(:title) %></th>
+        <th><%= Post.human_attribute_name(:category) %></th>
+        <th class="no-sort"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @posts %>
+      </tbody>
+    </table>
+  </div>
+</div>
