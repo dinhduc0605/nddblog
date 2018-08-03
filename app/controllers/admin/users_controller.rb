@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.where.not id: current_admin_user.id
+    @users = User.all
   end
 
   def new

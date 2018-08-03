@@ -221,6 +221,8 @@ vi:
         email: Email
         search_placeholder: Tìm qua tên...
         new: Thêm
+      user:
+        data_confirm: "Bạn có muốn xóa bài viết này không"
       edit:
         password_notice: (Để trống nếu không muốn thay đổi)
       user:

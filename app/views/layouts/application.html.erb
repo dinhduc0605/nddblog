@@ -13,15 +13,16 @@
     <%= stylesheet_link_tag 'clean-blog', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'tag', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'clean-blog', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'shared/navigation' %>
     <%= yield %>
     <%= render 'shared/footer' %>
-    <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'clean-blog', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
