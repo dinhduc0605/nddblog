@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :authenticate_admin_user! if (self.class.parent == Admin)
+  before_action :authenticate_admin_user!, if: :admin_page
   before_action :set_locale
 
   layout :select_layout
@@ -31,5 +31,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     stored_location_for(resource) || new_admin_user_session_path
+  end
+
+  def admin_page
+    self.class.parent == Admin
   end
 end

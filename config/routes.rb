@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'tags/show'
-
-  get 'posts/show'
-
   namespace :admin do
     devise_for :users
     resources :posts

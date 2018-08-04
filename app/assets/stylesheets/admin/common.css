@@ -4,12 +4,71 @@
         max-width: 180%; !important;
     }
 }
+
 .no-padding {
     padding: 0; !important;
 }
+
 textarea#post_content {
     max-height: none; !important;
 }
+
 .margin-20 {
     margin: 20px;
+}
+
+#flash-alert {
+    margin: 10px;
+    z-index: 9999;
+    position: fixed;
+    width: 98.5%;
+}
+
+.background-image {
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background {
+    min-height: 100vh;
+    max-height: 999px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .5) linear-gradient(0deg, rgba(44, 44, 44, .2), rgba(128, 12, 0, .6));
+}
+
+.login-text {
+    color: hsla(0,0%,100%,.8)
+}
+
+.login-input-group {
+    color: hsla(0,0%,100%,.8);
+    height: 46px;
+    margin-bottom: 15px;
+}
+
+.no-border {
+    border: none;
+}
+
+.card-login {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.card-login .card-body {
+    padding: 5px;
+    margin-bottom: 50px;
+}
+
+.card-login .card-footer {
+    padding: 0;
+}
+
+.form-check .form-check-sign::after {
+    color: white;
 }
