@@ -1,16 +1,16 @@
 @media only screen and (max-width: 768px) {
     table.dataTable {
-        width: 180%; !important;
-        max-width: 180%; !important;
+        width: 180% !important;
+        max-width: 180% !important;
     }
 }
 
 .no-padding {
-    padding: 0; !important;
+    padding: 0 !important;
 }
 
 textarea#post_content {
-    max-height: none; !important;
+    max-height: none !important;
 }
 
 .margin-20 {
