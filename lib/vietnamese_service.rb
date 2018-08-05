@@ -41,6 +41,6 @@ module VietnameseService
 
     VIETNAMESE_CONVERT_TABLE.each {|k, v| v.each {|char| mapping_table[char] = k}}
     mapping_table.each {|origin_char, normalize_char| normalize_string.gsub!(origin_char, normalize_char)}
-    return normalize_string
+    normalize_string.downcase
   end
 end

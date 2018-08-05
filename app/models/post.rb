@@ -16,7 +16,12 @@ class Post < ApplicationRecord
   CATEGORIES = %w(Techniques Life Japan)
 
   def normalize_friendly_id(string)
-    "#{normalize_with_hyphen(string)}"
+    normalized_string = normalize_with_hyphen(string)
+    if (normalized_string =~ /[^0-9-]/).nil?
+      string.parameterize
+    else
+      normalized_string
+    end
   end
 
   private
