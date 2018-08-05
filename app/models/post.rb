@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include VietnameseService
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -12,5 +13,15 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   mount_uploader :cover, AvatarUploader
-  CATEGORIES = %w(Techniques Life Relax)
+  CATEGORIES = %w(Techniques Life Japan)
+
+  def normalize_friendly_id(string)
+    "#{normalize_with_hyphen(string)}"
+  end
+
+  private
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 end

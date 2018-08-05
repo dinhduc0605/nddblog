@@ -22,5 +22,8 @@ module DucnojinseiBlog
 
     # Set default locale to something other than :en
     I18n.default_locale = :vi
+
+    # Set auto load path
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
