@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js
+      format.js { render 'load_more.js.erb', locals: { posts: @new_posts } }
     end
   end
 
@@ -24,7 +24,7 @@ class StaticPagesController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js
+      format.js { render 'load_more.js.erb', locals: { posts: @technique_posts } }
     end
   end
 
@@ -36,7 +36,7 @@ class StaticPagesController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js
+      format.js { render 'load_more.js.erb', locals: { posts: @life_posts } }
     end
   end
 
@@ -48,7 +48,7 @@ class StaticPagesController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js
+      format.js { render 'load_more.js.erb', locals: { posts: @japan_posts } }
     end
   end
 end

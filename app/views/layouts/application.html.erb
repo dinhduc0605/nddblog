@@ -16,7 +16,6 @@
 
     <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'clean-blog', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -24,5 +23,6 @@
     <%= render 'shared/navigation' %>
     <%= yield %>
     <%= render 'shared/footer' %>
+    <%= javascript_include_tag 'clean-blog', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

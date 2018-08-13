@@ -45,11 +45,12 @@ $(document).on('click', '.load-more', function (e) {
     $('.load-more').hide();
     $('.loading-gif').show();
     var last_id = $('.post-preview').last().attr('data-id');
+    console.log(last_id);
     $.ajax({
         type: "GET",
         url: $(this).attr("href"),
         data: {
-            post_id: last_id
+            id: last_id
         },
         dataType: "script",
         success: function(){
