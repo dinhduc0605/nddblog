@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'mysql2', '~> 0.4.10'
+gem 'pg', '~> 1.1.3'
 gem 'devise', '~> 4.4.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

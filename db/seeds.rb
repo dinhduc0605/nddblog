@@ -6,12 +6,3 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create name: 'Dinh Duc', email: 'dinhduc0605@gmail.com', password: 'dinhduc', password_confirmation: 'dinhduc'
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 0, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 0, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 0, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 1, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 1, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 1, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 2, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 2, user_id: 1
-Post.create title: "fsadfsadf", content: "sdfsdaf", category: 2, user_id: 1
