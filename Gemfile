@@ -37,8 +37,9 @@ gem 'simplemde-rails'
 gem 'redcarpet'
 gem 'coderay'
 gem 'friendly_id', '~> 5.1.0'
-gem "somemoji"
+gem 'somemoji'
 gem 'ransack'
+gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
