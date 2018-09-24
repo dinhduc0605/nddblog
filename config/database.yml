@@ -24,6 +24,7 @@ test:
 
 production:
   <<: *default
+  host: localhost
   database: blog
   username: dinhduc
   password: dinhduc
