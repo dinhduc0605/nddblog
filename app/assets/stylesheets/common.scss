@@ -1,0 +1,21 @@
+.emoji-icon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 4px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.load-more {
+    padding: 16px;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    &:hover {
+      background-color: white !important;
+      border: 1px solid #0085A1 !important;
+      color: #0085A1;
+    }
+}
