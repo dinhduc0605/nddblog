@@ -41,16 +41,16 @@
 })(jQuery); // End of use strict
 
 $(document).on('click', '.load-more', function (e) {
+    var last_id = $('.post-preview').last().attr('data-id');
     e.preventDefault();
     $('.load-more').hide();
     $('.loading-gif').show();
-    var last_id = $('.post-preview').last().attr('data-id');
-    console.log(last_id);
     $.ajax({
         type: "GET",
         url: $(this).attr("href"),
+        cache: true,
         data: {
-            id: last_id
+            last_post_id: last_id
         },
         dataType: "script",
         success: function(){

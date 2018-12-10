@@ -2,10 +2,10 @@ class TagsController < ApplicationController
   before_action :set_tag
 
   def show
-    if params[:post_id]
-      @posts = Post.joins(:tags).where("posts.id < ?", params[:post_id]).where(:tags => { id: @tag.id }).order(created_at: :desc).limit(5)
+    if params[:last_post_id]
+      @posts = Post.joins(:tags).where(:tags => { id: @tag.id }).where("posts.id < ?", params[:last_post_id]).order(id: :desc).limit(5)
     else
-      @posts = Post.joins(:tags).where(:tags => { id: @tag.id }).order(created_at: :desc).limit(5)
+      @posts = Post.joins(:tags).where(:tags => { id: @tag.id }).order(id: :desc).limit(5)
     end
     respond_to do |format|
       format.html
