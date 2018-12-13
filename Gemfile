@@ -41,6 +41,7 @@ gem 'somemoji'
 gem 'ransack'
 gem 'figaro'
 gem 'rspec'
+gem 'rspec_junit_formatter'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
