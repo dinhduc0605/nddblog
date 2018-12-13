@@ -40,6 +40,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'somemoji'
 gem 'ransack'
 gem 'figaro'
+gem 'rspec'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
