@@ -1,9 +1,9 @@
-class Tag < ApplicationRecord
+class Category < ApplicationRecord
   include VietnameseService
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_and_belongs_to_many :posts
+  has_many :posts
 
   def normalize_friendly_id(string)
     normalized_string = normalize_with_hyphen(string)

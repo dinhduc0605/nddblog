@@ -40,8 +40,8 @@
 
 })(jQuery); // End of use strict
 
-$(document).on('click', '.load-more', function (e) {
-    var last_id = $('.post-preview').last().attr('data-id');
+$('.load-more').click(function (e) {
+    let last_id = $('.post-preview').last().attr('data-id');
     e.preventDefault();
     $('.load-more').hide();
     $('.loading-gif').show();

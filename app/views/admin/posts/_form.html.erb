@@ -24,8 +24,8 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :category %>
-        <%= f.select :category, Post::CATEGORIES.each_with_index.map{|value, index| [value, index]}, {include_blank: 'Select from below'}, class: 'form-control'  %>
+        <%= f.label :category_id %>
+        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {include_blank: 'Select from below'}, class: 'form-control'  %>
       </div>
 
       <div class="form-group">

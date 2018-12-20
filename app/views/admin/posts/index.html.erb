@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-5"></div>
       <div class="col-md-2 btn-group-vertical">
-        <%= f.select :category_eq, {Post::CATEGORIES[0] => 0, Post::CATEGORIES[1] => 1, Post::CATEGORIES[2] => 2}, { include_blank: 'Select one...'}, class: 'form-control' %>
+        <%= f.select :category_id_eq, options_from_collection_for_select(Category.all, :id, :name), { include_blank: 'Select one...'}, class: 'form-control' %>
       </div>
       <div class="col-md-3 btn-group-vertical no-padding">
         <%= f.search_field :title_cont, class: 'form-control', placeholder: t('.search_placeholder') %>

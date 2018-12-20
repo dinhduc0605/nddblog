@@ -1,12 +1,11 @@
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('<%= image_path 'home-bg.jpg' %>')">
+<header class="masthead" style="background-image: url('<%= image_path @category.image %>')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h2><span class="quote-mark">&ldquo;</span> IT'S NOT A BUG, IT'S A FEATURE <span class="quote-mark">&bdquo;</span></h2>
-          <span class="subheading" style="position: absolute; right: 100px">Unknown</span>
+          <h2><%= @category.name %></h2>
         </div>
       </div>
     </div>
@@ -18,13 +17,13 @@
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <div class="post-list">
-        <%= render @new_posts %>
+        <%= render @posts %>
       </div>
-      <% if Post.exists?(['id < ?', @new_posts&.last&.id]) %>
+      <% if Post.exists?(['id < ?', @posts&.last&.id]) %>
         <%= image_tag 'loading.gif', class: 'loading-gif' %>
         <!-- Pager -->
         <div class="clearfix">
-          <%= link_to "Older Posts &rarr;".html_safe, root_url, class: 'btn btn-primary float-right load-more' %>
+          <%= link_to "Older Posts &rarr;".html_safe, "/#{@category.slug}", class: 'btn btn-primary float-right load-more' %>
         </div>
       <% end %>
     </div>

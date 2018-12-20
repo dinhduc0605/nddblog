@@ -56,6 +56,6 @@ class Admin::PostsController < ApplicationController
     @post = Post.friendly.find params[:id]
   end
   def post_params
-    params.require(:post).permit(:title, :content, :category, :cover, :tag, :description)
+    params.require(:post).permit(:title, :content, :category_id, :cover, :tag, :description)
   end
 end
