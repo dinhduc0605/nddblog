@@ -11,15 +11,11 @@
         <li class="nav-item">
           <%= link_to 'Home', root_url, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Techniques', techniques_url, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Life Stories', life_stories_url, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'japan', japan_url, class: 'nav-link' %>
-        </li>
+        <% Category.all.order(id: :asc).each do |category| %>
+          <li class="nav-item">
+            <%= link_to category.name, "/#{category.slug}", class: 'nav-link' %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to 'About', about_url, class: 'nav-link' %>
         </li>

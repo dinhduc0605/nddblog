@@ -6,14 +6,14 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :tags
   belongs_to :user
+  belongs_to :category
   has_and_belongs_to_many :tags
 
-  validates :category, presence: true
+  validates :category_id, presence: true
   validates :title, presence: true
   validates :content, presence: true
 
   mount_uploader :cover, AvatarUploader
-  CATEGORIES = %w(Techniques Life Japan)
 
   def normalize_friendly_id(string)
     normalized_string = normalize_with_hyphen(string)
@@ -23,8 +23,6 @@ class Post < ApplicationRecord
       normalized_string
     end
   end
-
-  private
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
