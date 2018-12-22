@@ -1,0 +1,14 @@
+// Place all the styles related to the Admin::Categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#admin-categories {
+  .card-header {
+    .card-title {
+      display: inline-block;
+    }
+    a {
+      margin: -2px 0 0 10px;
+    }
+  }
+
+}

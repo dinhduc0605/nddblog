@@ -20,6 +20,12 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
         <% end %>
       </li>
       <li>
+        <%= link_to admin_categories_url do %>
+          <i class="now-ui-icons design_bullet-list-67"></i>
+          <p><%= t('.category') %></p>
+        <% end %>
+      </li>
+      <li>
         <%= link_to admin_posts_url do %>
           <i class="now-ui-icons files_single-copy-04"></i>
           <p><%= t('.post') %></p>
