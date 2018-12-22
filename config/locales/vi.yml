@@ -10,7 +10,11 @@ vi:
       post:
         title: Tiêu đề
         content: Nội dung
-        category: Thể loại
+        category_id: Thể loại
+        cover: Ảnh
+      category:
+        name: Thể loại
+        image: Ảnh bìa
   date:
     abbr_day_names:
     - CN
@@ -210,6 +214,7 @@ vi:
       navigation:
         dashboard: Quản lý
         user: Người dùng
+        category: Thể loại
         post: Bài viết
         comment: Bình luận
         logout: Đăng xuất
@@ -247,6 +252,16 @@ vi:
       destroy:
         notice: "Xóa bài viết thành công"
         alert: "Xóa bài viết thất bại"
+    categories:
+      category:
+        data_confirm: "Bạn có muốn xoá thể loại này không"
+      create:
+        notice: "Tạo thể loại thành công"
+      update:
+        notice: "Sửa thể loại thành công"
+      destroy:
+        notice: "Xoá thể loại thành công"
+        alert: "Xoá thể loại thất bại"
 
   title: NDD Blog | Blog của Đức
   well_done: Tuyệt vời!

@@ -1,0 +1,13 @@
+<tr class="category-<%= category.id %> category-row">
+  <td class="text-center"><%= category_counter + 1 %></td>
+  <td><%= image_tag image_url(category.image), class: 'rounded list-avatar' %></td>
+  <td><%= category.name %></td>
+  <td class="text-center">
+    <%= link_to edit_admin_category_url(category), class: 'btn btn-primary btn-icon btn-round' do %>
+      <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+    <%= link_to admin_category_url(category), method: :delete, class: 'btn btn-danger btn-icon btn-round', 'data-confirm': t('.data_confirm') do %>
+      <i class="fa fa-trash-o"></i>
+    <% end %>
+  </td>
+</tr>

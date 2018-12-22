@@ -72,3 +72,7 @@ textarea#post_content {
 .form-check .form-check-sign::after {
     color: white;
 }
+
+img {
+    object-fit: cover !important;
+}
