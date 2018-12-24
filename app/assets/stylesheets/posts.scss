@@ -7,3 +7,11 @@
   object-fit: cover;
   margin: 10px;
 }
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 15px;
+}

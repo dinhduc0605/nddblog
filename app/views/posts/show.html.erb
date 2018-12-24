@@ -1,3 +1,8 @@
+<% content_for :css_tags do %>
+  <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'github-markdown', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <div id="fb-root"></div>
 <script>
     window.fbAsyncInit = function() {
@@ -34,19 +39,13 @@
 </header>
 
 <!-- Post Content -->
-<article>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <%= markdown(@post.content) %>
-        <div class="tags">
-          <% @post.tags.each do |tag| %>
-            <%= link_to tag.name, tag_url(tag), class: 'black' %>
-          <% end %>
-        </div>
-        <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
-      </div>
-    </div>
+<article class="markdown-body">
+  <%= markdown(@post.content) %>
+  <div class="tags">
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name, tag_url(tag), class: 'black' %>
+    <% end %>
   </div>
+  <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
 </article>
 <hr>
