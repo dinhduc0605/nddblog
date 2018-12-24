@@ -12,6 +12,7 @@ vi:
         content: Nội dung
         category_id: Thể loại
         cover: Ảnh
+        published: Đăng bài
       category:
         name: Thể loại
         image: Ảnh bìa
@@ -267,4 +268,4 @@ vi:
   well_done: Tuyệt vời!
   oh_snap: Rất tiếc!
   stt: STT
-  submit: Gửi
+  submit: Lưu bài

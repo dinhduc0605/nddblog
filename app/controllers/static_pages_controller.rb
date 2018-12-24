@@ -6,9 +6,9 @@ class StaticPagesController < ApplicationController
 
   def home
     @new_posts = if params[:last_post_id]
-                   Post.where("id < ?", params[:last_post_id]).order(id: :desc)
+                   Post.published.where("id < ?", params[:last_post_id]).order(id: :desc)
                  else
-                   Post.order(id: :desc)
+                   Post.published.order(id: :desc)
                  end
     @new_posts = @new_posts.limit(POST_LIMIT)
     respond_to do |format|
@@ -19,9 +19,9 @@ class StaticPagesController < ApplicationController
 
   def show_category
     @posts = if params[:last_post_id]
-               @category.posts.where("id < ?", params[:last_post_id]).order(id: :desc)
+               @category.posts.published.where("id < ?", params[:last_post_id]).order(id: :desc)
              else
-               @category.posts.order(id: :desc)
+               @category.posts.published.order(id: :desc)
              end
     @posts = @posts.limit(POST_LIMIT)
     respond_to do |format|
