@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   belongs_to :category
   has_and_belongs_to_many :tags
 
+  scope :published, -> { where(published: true) }
+
   validates :category_id, presence: true
   validates :title, presence: true
   validates :content, presence: true

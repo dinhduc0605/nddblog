@@ -37,6 +37,11 @@
         </ul>
       </div>
 
+      <div>
+        <%= f.label :published %>
+        <%= f.check_box :published, class: 'form-control' %>
+      </div>
+
       <%= f.submit t('submit'), class: 'btn btn-primary btn-round full-width' %>
     </div>
   </div>
