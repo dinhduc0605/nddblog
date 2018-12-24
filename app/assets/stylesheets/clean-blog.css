@@ -1,11 +1,11 @@
 body {
-    font-size: 18px;
+    font-size: 18px !important;
     color: #212529;
     font-family: 'Lora', 'Times New Roman', serif;
 }
 
 p {
-    line-height: 1.5;
+    line-height: 1.5 !important;
     margin: 30px 0;
 }
 
@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 800;
+    font-weight: 800 !important;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -40,13 +40,13 @@ blockquote {
 }
 
 .section-heading {
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 36px !important;
+    font-weight: 700 !important;
     margin-top: 60px;
 }
 
 .caption {
-    font-size: 14px;
+    font-size: 14px !important;
     font-style: italic;
     display: block;
     margin: 0;
@@ -86,21 +86,21 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-brand {
-    font-weight: 800;
+    font-weight: 800 !important;
     color: #343a40;
 }
 
 #mainNav .navbar-toggler {
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 12px !important;
+    font-weight: 800 !important;
     padding: 13px;
     text-transform: uppercase;
     color: #343a40;
 }
 
 #mainNav .navbar-nav > li.nav-item > a {
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 12px !important;
+    font-weight: 800 !important;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -229,15 +229,15 @@ header.masthead .site-heading {
 
 header.masthead .page-heading h1,
 header.masthead .site-heading h1 {
-    font-size: 50px;
+    font-size: 50px !important;
     margin-top: 0;
 }
 
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
-    font-size: 24px;
-    font-weight: 300;
-    line-height: 1.1;
+    font-size: 24px !important;
+    font-weight: 300 !important;
+    line-height: 1.1 !important;
     display: block;
     margin: 10px 0 0;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -246,30 +246,30 @@ header.masthead .site-heading .subheading {
 @media only screen and (min-width: 768px) {
     header.masthead .page-heading h1,
     header.masthead .site-heading h1 {
-        font-size: 80px;
+        font-size: 80px !important;
     }
 }
 
 header.masthead .post-heading h1 {
-    font-size: 35px;
+    font-size: 35px !important;
 }
 
 header.masthead .post-heading .meta,
 header.masthead .post-heading .subheading {
-    line-height: 1.1;
+    line-height: 1.1 !important;
     display: block;
 }
 
 header.masthead .post-heading .subheading {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 24px !important;
+    font-weight: 600 !important;
     margin: 10px 0 30px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 header.masthead .post-heading .meta {
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 20px !important;
+    font-weight: 300 !important;
     font-style: italic;
     font-family: 'Lora', 'Times New Roman', serif;
 }
@@ -280,11 +280,11 @@ header.masthead .post-heading .meta a {
 
 @media only screen and (min-width: 768px) {
     header.masthead .post-heading h1 {
-        font-size: 55px;
+        font-size: 55px !important;
     }
 
     header.masthead .post-heading .subheading {
-        font-size: 30px;
+        font-size: 30px !important;
     }
 }
 
@@ -298,18 +298,18 @@ header.masthead .post-heading .meta a {
 }
 
 .post-preview > a > .post-title {
-    font-size: 30px;
+    font-size: 30px !important;
     margin-top: 30px;
     margin-bottom: 10px;
 }
 
 .post-preview > a > .post-subtitle {
-    font-weight: 300;
+    font-weight: 300 !important;
     margin: 0 0 10px;
 }
 
 .post-preview > .post-meta {
-    font-size: 18px;
+    font-size: 18px !important;
     font-style: italic;
     margin-top: 0;
     color: #868e96;
@@ -327,12 +327,12 @@ header.masthead .post-heading .meta a {
 
 @media only screen and (min-width: 768px) {
     .post-preview > a > .post-title {
-        font-size: 36px;
+        font-size: 36px !important;
     }
 }
 
 .floating-label-form-group {
-    font-size: 14px;
+    font-size: 14px !important;
     position: relative;
     margin-bottom: 0;
     padding-bottom: 0.5em;
@@ -361,7 +361,7 @@ header.masthead .post-heading .meta a {
 
 .floating-label-form-group label {
     font-size: 0.85em;
-    line-height: 1.764705882em;
+    line-height: 1.764705882em !important;
     position: relative;
     z-index: 0;
     top: 2em;
@@ -403,14 +403,14 @@ footer .list-inline {
 }
 
 footer .copyright {
-    font-size: 14px;
+    font-size: 14px !important;
     margin-bottom: 0;
     text-align: center;
 }
 
 .btn {
-    font-size: 14px;
-    font-weight: 800;
+    font-size: 14px !important;
+    font-weight: 800 !important;
     padding: 15px 25px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -430,7 +430,7 @@ footer .copyright {
 }
 
 .btn-lg {
-    font-size: 16px;
+    font-size: 16px !important;
     padding: 25px 35px;
 }
 
@@ -452,6 +452,6 @@ pre {
 
 .quote-mark {
     font-family: "Times New Roman", serif;
-    font-weight: bold;
-    font-size: 60px;
+    font-weight: bold !important;
+    font-size: 60px !important;
 }
