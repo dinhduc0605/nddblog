@@ -1,3 +1,14 @@
+<% content_for :fb_meta_tags do %>
+  <meta property="og:url" content="http://nddblog.life/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<%= t('title') %>" />
+  <meta property="og:description" content="<%= @post.description %>"/>
+  <meta property="og:image" content="<%= @post.cover.url %>" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+<% end %>
+
 <% content_for :css_tags do %>
   <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'github-markdown', media: 'all', 'data-turbolinks-track': 'reload' %>
