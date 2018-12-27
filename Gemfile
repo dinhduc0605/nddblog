@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2', '>= 5.2.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -39,10 +39,13 @@ gem 'redcarpet'
 gem 'coderay'
 gem 'friendly_id', '~> 5.1.0'
 gem 'somemoji'
-gem 'ransack'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'figaro'
 gem 'rspec'
 gem 'rspec_junit_formatter'
+
+# for railties app_generator_test
+gem "bootsnap", ">= 1.1.0", require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
