@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2', '>= 5.2.2'
@@ -27,32 +28,29 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'pg', '~> 1.1.3'
+gem 'carrierwave', '~> 1.0'
+gem 'coderay'
 gem 'devise', '~> 4.4.0'
+gem 'figaro'
+gem 'fog-aws'
+gem 'friendly_id', '~> 5.1.0'
+gem 'http_accept_language'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'http_accept_language'
-gem 'carrierwave', '~> 1.0'
-gem 'fog-aws'
-gem 'simplemde-rails'
-gem 'redcarpet'
-gem 'coderay'
-gem 'friendly_id', '~> 5.1.0'
-gem 'somemoji'
+gem 'pg', '~> 1.1.3'
 gem 'ransack', github: 'activerecord-hackery/ransack'
-gem 'figaro'
-gem 'rspec'
-gem 'rspec_junit_formatter'
+gem 'redcarpet'
+gem 'somemoji'
 
 # for railties app_generator_test
-gem "bootsnap", ">= 1.1.0", require: false
+gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
@@ -60,21 +58,33 @@ end
 
 group :development do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'mysql2', '< 0.5'
+  gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-figaro-yml', '~> 1.0.2'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano3-puma', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
-  gem 'capistrano-figaro-yml', '~> 1.0.2'
+
+  # Rubocop check
+  gem 'checkstyle_filter-git', '~> 1.1.0'
+  gem 'rubocop', '~> 0.61.1', require: false
+  gem 'rubocop-checkstyle_formatter', '~> 0.2.0'
+  gem 'rubocop-select', '~> 1.0.0'
+  gem 'saddler', '~> 1.0.0'
+  gem 'saddler-reporter-github', '~> 1.0.0'
+
+  # Rspec test
+  gem 'rspec'
+  gem 'rspec_junit_formatter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

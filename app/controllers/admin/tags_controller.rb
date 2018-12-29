@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::TagsController < ApplicationController
   def index
     respond_to do |format|
@@ -7,12 +9,9 @@ class Admin::TagsController < ApplicationController
     end
   end
 
-  def new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 end

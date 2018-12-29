@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Model for Tag
 class Tag < ApplicationRecord
   include VietnameseService
   extend FriendlyId

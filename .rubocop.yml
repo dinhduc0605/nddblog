@@ -1,0 +1,57 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  DisplayCopNames: true
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'vendor/**/*'
+
+# Commonly used screens these days easily fit more than 80 characters.
+Metrics/LineLength:
+  Max: 120
+
+# The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
+Metrics/ClassLength:
+  Max: 1500
+
+# We do not need to support Ruby 1.9, so this is good to use.
+Style/SymbolArray:
+  Enabled: true
+
+# Most readable form.
+
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+# String#% is by far the least verbose and only object oriented variant.
+Style/FormatString:
+  EnforcedStyle: percent
+
+# Indenting the chained dots beneath each other is not supported by this cop,
+# see https://github.com/bbatsov/rubocop/issues/1633
+Layout/MultilineOperationIndentation:
+  Enabled: false
+
+Layout/SpaceInsideBlockBraces:
+  # The space here provides no real gain in readability while consuming
+  # horizontal space that could be used for a better parameter name.
+  # Also {| differentiates better from a hash than { | does.
+  EnforcedStyle: no_space
+
+# No trailing space differentiates better from the block:
+# foo} means hash, foo } means block.
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Style/ClassAndModuleChildren:
+  Enabled: false

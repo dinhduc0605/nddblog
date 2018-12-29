@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Model for category
 class Category < ApplicationRecord
   include VietnameseService
   extend FriendlyId
