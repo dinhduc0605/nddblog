@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Admin::PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy, :show]
+  before_action :set_post, only: %i[edit update destroy show]
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result
@@ -10,11 +12,11 @@ class Admin::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new post_params
+    @post = Post.new(post_params)
     @post.user = current_admin_user
     @tags = []
     params[:tags].split(',').each do |tag|
-      (Tag.exists?(name: tag)) ? @tags << Tag.find_by(name: tag) : @tags << Tag.create(name: tag)
+      @tags << Tag.find_or_create_by(name: tag)
     end
     @post.tags = @tags
     if @post.save
@@ -24,13 +26,12 @@ class Admin::PostsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @tags = []
     params[:tags].split(',').each do |tag|
-      (Tag.exists?(name: tag)) ? @tags << Tag.find_by(name: tag) : @tags << Tag.create(name: tag)
+      @tags << (Tag.exists?(name: tag) ? Tag.find_by(name: tag) : Tag.create(name: tag))
     end
     @post.tags = @tags
     if @post.update post_params
@@ -40,8 +41,7 @@ class Admin::PostsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def destroy
     if @post.destroy
@@ -52,9 +52,11 @@ class Admin::PostsController < ApplicationController
   end
 
   protected
+
   def set_post
     @post = Post.friendly.find params[:id]
   end
+
   def post_params
     params.require(:post).permit(:title, :content, :category_id, :cover, :tag, :description, :published)
   end

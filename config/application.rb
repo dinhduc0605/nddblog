@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -18,12 +20,12 @@ module DucnojinseiBlog
     I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
 
     # Whitelist locales available for the application
-    I18n.available_locales = [:vi, :ja]
+    I18n.available_locales = %i[vi ja]
 
     # Set default locale to something other than :en
     I18n.default_locale = :vi
 
     # Set auto load path
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W[#{config.root}/lib]
   end
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: %i[edit update destroy]
 
   def index
     @users = User.all
@@ -35,6 +37,7 @@ class Admin::UsersController < ApplicationController
   end
 
   protected
+
   def set_user
     @user = User.find params[:id]
   end

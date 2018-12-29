@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   namespace :admin do
     devise_for :users
@@ -6,8 +8,8 @@ Rails.application.routes.draw do
     resources :users
     resources :comments
     resources :tags
-    get '/dashboard', to: "static_pages#dashboard"
-    root "static_pages#dashboard"
+    get '/dashboard', to: 'static_pages#dashboard'
+    root 'static_pages#dashboard'
   end
 
   root 'static_pages#home'

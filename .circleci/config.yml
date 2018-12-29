@@ -53,6 +53,11 @@ jobs:
         environment:
           DATABASE_URL: "postgres://dinhduc@localhost:5432/blog"
 
+    # Run rubocop
+    - run:
+        name: Run rubocop
+        command: sh/rubocop.sh
+
     # run tests!
     - run:
         name: run tests
