@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :users
     resources :comments
     resources :tags
+    resources :image_files, only: [:create, :destroy]
     get '/dashboard', to: 'static_pages#dashboard'
     root 'static_pages#dashboard'
   end

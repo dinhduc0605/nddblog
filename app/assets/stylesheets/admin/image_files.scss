@@ -1,0 +1,20 @@
+#images-index {
+  margin-top: 15px;
+
+  #url {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #image {
+    img {
+      width: 55px;
+      height: 55px;
+    }
+  }
+
+  div:first-child {
+    margin-top: 5px;
+  }
+}

@@ -20,6 +20,7 @@
     <%= stylesheet_link_tag 'admin/common', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'admin/categories', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin/image_files', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'bootstrap.min', 'data-turbolins-track': 'reload' %>
@@ -36,6 +37,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <%= javascript_include_tag 'admin/common', 'data-turbolins-track': 'reload' %>
     <%= javascript_include_tag 'admin/categories', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/image_files', 'data-turbolins-track': 'reload' %>
   </head>
 
   <body>
@@ -55,6 +57,7 @@
           </div>
         </div>
       </div>
+      <%= render 'admin/shared/upload_modal' %>
       <%= render 'admin/shared/footer' %>
     </div>
 
