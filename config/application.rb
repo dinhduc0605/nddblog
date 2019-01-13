@@ -27,5 +27,11 @@ module DucnojinseiBlog
 
     # Set auto load path
     config.autoload_paths += %W[#{config.root}/lib]
+
+    config.generators do |g|
+      g.test_framework  false
+      g.assets  false
+      g.helper false
+    end
   end
 end

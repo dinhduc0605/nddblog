@@ -1,0 +1,29 @@
+<!-- Modal -->
+<div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-labelledby="upload-modal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Upload Images</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="now-ui-icons ui-1_simple-remove"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="upload-image">
+          <%= form_tag admin_image_files_path, remote: true, multipart: true do %>
+            <%= file_field_tag 'images[]', multiple: true, accept: 'image/*' %>
+            <%= button_tag type: :submit, class: 'btn btn-primary btn-icon btn-round' do %>
+              <i class="now-ui-icons arrows-1_cloud-upload-94"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <div id="images-index">
+          <%= render ImageFile.order(id: :desc).limit(5) %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

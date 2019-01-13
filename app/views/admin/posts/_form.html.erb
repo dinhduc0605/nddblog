@@ -23,6 +23,12 @@
         </div>
       </div>
 
+      <%= form_for [:admin, @post], url: admin_post_path(@post) do |f| %>
+        <%= f.label :images %>
+        <%= f.file_field :images, multiple: true, accept: 'image/*' %>
+        <%= f.submit 'Add More Images' %>
+      <% end %>
+
       <div class="form-group">
         <%= f.label :category_id %>
         <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @post.category_id), {include_blank: 'Select from below'}, class: 'form-control'  %>
