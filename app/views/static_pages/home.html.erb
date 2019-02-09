@@ -20,13 +20,15 @@
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <div class="post-list">
-        <%= render @new_posts %>
+        <%= render @posts %>
       </div>
-      <% if Post.exists?(['id < ?', @new_posts&.last&.id]) %>
-        <%= image_tag 'loading.gif', class: 'loading-gif' %>
-        <!-- Pager -->
-        <div class="clearfix">
-          <%= link_to "Older Posts &rarr;".html_safe, root_url, class: 'btn btn-primary float-right load-more' %>
+      <% unless @load_done %>
+        <div class="load-more-wrapper">
+          <%= image_tag 'loading.gif', class: 'loading-gif' %>
+          <!-- Pager -->
+          <div class="clearfix">
+            <%= link_to "Older Posts &rarr;".html_safe, root_url, class: 'btn btn-primary float-right load-more' %>
+          </div>
         </div>
       <% end %>
     </div>
