@@ -4,11 +4,11 @@
       <%= image_tag image_file.image_url %>
     </div>
     <div class="col-md-8" id="url">
-      <%= link_to image_file.image_identifier, image_file.image_url, target: :_blank %>
+      <%= text_field_tag nil, image_file.image_url, class: 'form-control' %>
     </div>
     <div class="col-md-2" id="copy-url">
       <%= button_tag type: 'button', class: 'btn btn-info btn-icon btn-round btn-simple' do %>
-        <i class="now-ui-icons files_single-copy-04" data-url="<%= image_file.image_url %>"></i>
+        <i class="now-ui-icons files_single-copy-04"></i>
       <% end %>
     </div>
   </div>
