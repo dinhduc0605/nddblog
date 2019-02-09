@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi-VN">
   <head>
-    <title><%= t 'title' %></title>
+    <title><%= content_for?(:title) ? yield(:title) : t(:title) %></title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Facebook Opengraph -->
