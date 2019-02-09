@@ -53,5 +53,8 @@ Style/Documentation:
 Metrics/MethodLength:
   Max: 30
 
+Metrics/AbcSize:
+  Max: 20
+
 Style/ClassAndModuleChildren:
   Enabled: false

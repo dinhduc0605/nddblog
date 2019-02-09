@@ -21,11 +21,13 @@
       <div class="post-list">
         <%= render @posts %>
       </div>
-      <% if Post.exists?(['id < ?', @posts&.last&.id]) %>
-        <%= image_tag 'loading.gif', class: 'loading-gif' %>
-        <!-- Pager -->
-        <div class="clearfix">
-          <%= link_to "Older Posts &rarr;".html_safe, "/#{@category.slug}", class: 'btn btn-primary float-right load-more' %>
+      <% unless @load_done %>
+        <div class="load-more-wrapper">
+          <%= image_tag 'loading.gif', class: 'loading-gif' %>
+          <!-- Pager -->
+          <div class="clearfix">
+            <%= link_to "Older Posts &rarr;".html_safe, "/#{@category.slug}", class: 'btn btn-primary float-right load-more' %>
+          </div>
         </div>
       <% end %>
     </div>
