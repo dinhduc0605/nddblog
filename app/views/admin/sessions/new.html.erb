@@ -26,30 +26,29 @@
             <%= image_tag 'login_ava.png', style: 'margin: 80px 0px 25px 0px; height: 130px;', class: 'rounded-circle img-raised' %>
           </div>
           <div class="card-body">
-              <div class="input-group form-group no-border input-lg login-input-group">
-              <span class="input-group-addon login-text">
-                <i class="now-ui-icons ui-1_email-85"></i>
-              </span>
-                <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
-              </div>
-              <div class="input-group form-group no-border input-lg login-input-group">
-              <span class="input-group-addon login-text">
-                <i class="now-ui-icons text_caps-small"></i>
-              </span>
-                <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Password' %>
-              </div>
+            <div class="input-group form-group no-border input-lg login-input-group">
+            <span class="input-group-addon login-text">
+              <i class="now-ui-icons ui-1_email-85"></i>
+            </span>
+              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+            </div>
+            <div class="input-group form-group no-border input-lg login-input-group">
+            <span class="input-group-addon login-text">
+              <i class="now-ui-icons text_caps-small"></i>
+            </span>
+              <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Password' %>
+            </div>
 
-              <% if devise_mapping.rememberable? -%>
-                <div class="form-check" style="text-align: left">
-                  <label class="form-check-label">
-                    <%= f.check_box :remember_me, class: "form-check-input" %>
-                    Remember me
-                    <span class="form-check-sign">
-                </span>
-                  </label>
-                </div>
-              <% end %>
-
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-check" style="text-align: left">
+                <label class="form-check-label">
+                  <%= f.check_box :remember_me, class: "form-check-input" %>
+                  Remember me
+                  <span class="form-check-sign">
+              </span>
+                </label>
+              </div>
+            <% end %>
           </div>
           <div class="card-footer">
             <%= f.submit 'Get Started', class: 'btn btn-primary btn-round btn-lg full-width'%>

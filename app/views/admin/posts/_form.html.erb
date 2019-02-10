@@ -1,3 +1,11 @@
+<% content_for :css_tags do %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
+<% end %>
+<% content_for :js_tags do %>
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+<% end %>
 <%= form_for [:admin, @post], multipart: true do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="row justify-content-center">
@@ -18,14 +26,12 @@
       <div class="form-group">
         <%= f.label :content %>
         <%= f.text_area :content, class: 'form-control', rows: 10 %>
-        <div class="stackedit-button-wrapper">
-          <a id="edit-with-stackedit"><img src="<%= image_path 'stackedit.svg' %>" style="width: 20px">Edit with StackEdit</a>
-        </div>
       </div>
 
       <div class="form-group">
         <%= f.label :category_id %>
-        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @post.category_id), {include_blank: 'Select from below'}, class: 'form-control'  %>
+        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @post.category_id),
+                     {include_blank: 'Select from below'}, class: 'form-control' %>
       </div>
 
       <div class="form-group">
@@ -45,4 +51,20 @@
       <%= f.submit t('submit'), class: 'btn btn-primary btn-round full-width' %>
     </div>
   </div>
+<% end %>
+<% content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    new SimpleMDE({
+      spellChecker: false,
+      autosave: {
+        enabled: true,
+        uniqueId: 'edit-post',
+        delay: 5000,
+      },
+      renderingConfig: {
+        singleLineBreaks: false,
+        codeSyntaxHighlighting: true,
+      },
+    });
+  </script>
 <% end %>
