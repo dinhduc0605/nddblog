@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi-VN">
   <head>
     <title><%= t 'title' %></title>
     <%= csrf_meta_tags %>
@@ -23,21 +23,21 @@
     <%= stylesheet_link_tag 'admin/image_files', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'bootstrap.min', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin/now_ui_dashboard', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'rails-ujs', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'rails-ujs', 'data-turbolinks-track': 'reload' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-    <%= javascript_include_tag 'admin/tag-it.min', 'data-turbolins-track': 'reload' %>
-    <%= javascript_include_tag 'admin/posts', 'data-turbolins-track': 'reload' %>
-    <%= javascript_include_tag 'admin/static_pages', 'data-turbolins-track': 'reload' %>
-    <%= javascript_include_tag 'admin/upload_preview', 'data-turbolins-track': 'reload' %>
-    <%= javascript_include_tag 'admin/users', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/tag-it.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/posts', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/static_pages', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/upload_preview', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/users', 'data-turbolinks-track': 'reload' %>
     <script src="https://unpkg.com/stackedit-js@1.0.3/docs/lib/stackedit.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <%= javascript_include_tag 'admin/common', 'data-turbolins-track': 'reload' %>
-    <%= javascript_include_tag 'admin/categories', 'data-turbolins-track': 'reload' %>
-    <%= javascript_include_tag 'admin/image_files', 'data-turbolins-track': 'reload' %>
+    <%= javascript_include_tag 'admin/common', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/categories', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/image_files', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -61,6 +61,7 @@
       <%= render 'admin/shared/footer' %>
     </div>
 
+    <%= yield :javascript %>
     <script type="text/javascript" charset="utf-8">
         $(".nav li").removeClass("active");
         $(".nav a[href$='<%= "#{request.path}" %>']").parent().addClass("active");
