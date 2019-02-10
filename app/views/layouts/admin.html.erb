@@ -21,19 +21,20 @@
     <%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'admin/categories', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'admin/image_files', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= yield :css_tags %>
 
     <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin/now_ui_dashboard', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'rails-ujs', 'data-turbolinks-track': 'reload' %>
+    <%= yield :js_tags %>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
     <%= javascript_include_tag 'admin/tag-it.min', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin/posts', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin/static_pages', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin/upload_preview', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin/users', 'data-turbolinks-track': 'reload' %>
-    <script src="https://unpkg.com/stackedit-js@1.0.3/docs/lib/stackedit.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <%= javascript_include_tag 'admin/common', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin/categories', 'data-turbolinks-track': 'reload' %>
