@@ -12,7 +12,7 @@ $(document).on("turbolinks:load", function () {
 } );
 
 $(document).on("turbolinks:before-cache", function () {
-    var datatable = $(".data-table").DataTable();
+    let datatable = $(".data-table").DataTable();
     if (datatable !== null) {
         datatable.destroy();
         datatable = null;
@@ -20,9 +20,9 @@ $(document).on("turbolinks:before-cache", function () {
 } );
 
 $(document).on('click', '.nav li', function () {
-    $toggle = $('.navbar-toggle');
+    let $toggle = $('.navbar-toggle');
 
-    if (nowuiDashboard.misc.navbar_menu_visible == 1) {
+    if (nowuiDashboard.misc.navbar_menu_visible === 1) {
         $('html').removeClass('nav-open');
         nowuiDashboard.misc.navbar_menu_visible = 0;
         setTimeout(function () {

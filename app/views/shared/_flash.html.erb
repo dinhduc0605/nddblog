@@ -12,7 +12,8 @@
     <strong><%= message_title %></strong> <%= message %>
   </div>
 <% end %>
-<script type="text/javascript">
+<% content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
     $("#flash-alert").delay(3000).fadeOut("slow");
-</script>
-
+  </script>
+<% end %>

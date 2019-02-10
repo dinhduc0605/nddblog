@@ -1,12 +1,12 @@
-(function($) {
+(function ($) {
   "use strict"; // Start of use strict
 
   // Floating label headings for the contact form
-  $("body").on("input propertychange", ".floating-label-form-group", function(e) {
+  $("body").on("input propertychange", ".floating-label-form-group", function (e) {
     $(this).toggleClass("floating-label-form-group-with-value", !!$(e.target).val());
-  }).on("focus", ".floating-label-form-group", function() {
+  }).on("focus", ".floating-label-form-group", function () {
     $(this).addClass("floating-label-form-group-with-focus");
-  }).on("blur", ".floating-label-form-group", function() {
+  }).on("blur", ".floating-label-form-group", function () {
     $(this).removeClass("floating-label-form-group-with-focus");
   });
 
@@ -19,7 +19,7 @@
     $(window).on('scroll', {
         previousTop: 0
       },
-      function() {
+      function () {
         var currentTop = $(window).scrollTop();
         //check if user is scrolling up
         if (currentTop < this.previousTop) {
@@ -41,21 +41,21 @@
 })(jQuery); // End of use strict
 
 $('.load-more').click(function (e) {
-    let last_id = $('.post-preview').last().attr('data-id');
-    e.preventDefault();
-    $('.load-more').hide();
-    $('.loading-gif').show();
-    $.ajax({
-        type: "GET",
-        url: $(this).attr("href"),
-        cache: true,
-        data: {
-            last_post_id: last_id
-        },
-        dataType: "script",
-        success: function(){
-            $(".loading-gif").hide();
-            $(".load-more").show();
-        }
-    })
+  let last_id = $('.post-preview').last().attr('data-id');
+  e.preventDefault();
+  $('.load-more').hide();
+  $('.loading-gif').show();
+  $.ajax({
+    type: "GET",
+    url: $(this).attr("href"),
+    cache: true,
+    data: {
+      last_post_id: last_id
+    },
+    dataType: "script",
+    success: function () {
+      $(".loading-gif").hide();
+      $(".load-more").show();
+    }
+  })
 });
