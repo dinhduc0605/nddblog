@@ -7,7 +7,13 @@
       <%= post.description %>
     </h3>
   </a>
-  <p class="post-meta">Posted by <b><%= post.user.name %></b> on <%= post.created_at.to_date %></p>
+  <ul class="post-meta post-info">
+    <li class="text-italic"><i class="far fa-user"></i> <%= post.user.name %></li>
+    <li>|</li>
+    <li class="text-italic"><i class="far fa-clock"></i> <%= post.created_at.to_date %></li>
+    <li>|</li>
+    <li class="text-italic"><i class="far fa-thumbs-up"></i> <%= post.clap_count %></li>
+  </ul>
   <div class="tags">
     <% post.tags.each do |tag| %>
       <%= link_to tag.name, tag_url(tag), class: 'black' %>

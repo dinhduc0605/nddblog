@@ -15,6 +15,7 @@
 <% content_for :css_tags do %>
   <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'github-markdown', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'clap_button', media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
 <div id="fb-root"></div>
@@ -54,12 +55,18 @@
 
 <!-- Post Content -->
 <article class="markdown-body">
+  <%= render 'shared/clap_button', view_mode: 'clap-pc' %>
   <%= markdown(@post.content) %>
   <div class="tags">
     <% @post.tags.each do |tag| %>
       <%= link_to tag.name, tag_url(tag), class: 'black' %>
     <% end %>
   </div>
+  <%= render 'shared/clap_button', view_mode: 'clap-mobile' %>
   <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
 </article>
 <hr>
+<% content_for :javascript do %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.1/mo.min.js" type="text/javascript" charset="utf-8"></script>
+  <%= javascript_include_tag 'clap_button' %>
+<% end %>

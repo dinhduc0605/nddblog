@@ -181,4 +181,3 @@ hexToRGB = function hexToRGB(hex, alpha) {
         return "rgb(" + r + ", " + g + ", " + b + ")";
     }
 };
-//# sourceMappingURL=now_ui_dashboard.js.map

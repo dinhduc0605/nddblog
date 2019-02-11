@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get '/:category_id', to: 'static_pages#show_category'
-  resources :posts
+  resources :posts do
+    member do
+      patch 'clap'
+    end
+  end
   resources :tags
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
