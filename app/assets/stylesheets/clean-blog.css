@@ -309,8 +309,7 @@ header.masthead .post-heading .meta a {
 }
 
 .post-preview > .post-meta {
-    font-size: 18px !important;
-    font-style: italic;
+    font-size: 16px !important;
     margin-top: 0;
     color: #868e96;
 }
