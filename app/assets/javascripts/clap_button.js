@@ -61,6 +61,9 @@ const countTotalAnimation = new mojs.Html({
   duration: tlDuration,
   y: {0: -3}
 });
+
+$clap.find('#clap--count-total').css({'opacity': 1, 'transform': 'none'});
+
 const scaleButton = new mojs.Html({
   el: clap,
   duration: tlDuration,
@@ -80,7 +83,10 @@ animationTimeline.add([
 
 
 clap.addEventListener('click', function () {
-  if (numberOfClaps < 5) {
+  if (numberOfClaps === 0) {
+    $clap.find('#clap--count-total').css({'opacity': 0, 'transform': 'scale(0)','margin-top': '0'});
+  }
+  if (numberOfClaps < 3) {
     $.ajax({
       method: 'PATCH',
       url: document.location.href + '/clap',
@@ -93,7 +99,7 @@ clap.addEventListener('click', function () {
       }
     });
   } else {
-    alert('Mỗi người chỉ được vỗ tay tối đa 5 lần');
+    alert('Mỗi người chỉ được vỗ tay tối đa 3 lần');
   }
 });
 
@@ -122,9 +128,10 @@ function updateNumberOfClaps() {
 
 if ($('.clap-pc:visible').length) {
   const offsetTop = clap.offsetTop;
+  const imgHeaderHeight = $('header.masthead').height();
   $(document).scroll(function() {
     let scroll_distance = $(window).scrollTop();
-    if (scroll_distance >= 380) {
+    if (scroll_distance >= imgHeaderHeight - 10) {
       $('.clap-pc').css({'position': 'fixed', 'top': '75px'});
     } else {
       $('.clap-pc').css({'position': 'absolute', 'top': offsetTop + 'px'});
