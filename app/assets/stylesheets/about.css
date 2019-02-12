@@ -538,16 +538,3 @@ button:focus,
 .lead {
     margin-top: 15px;
 }
-
-.about-back {
-    position: absolute;
-    left: 25px;
-    top: 25px;
-    color: #ffffff;
-    z-index: 100;
-    text-shadow: 1px 1px 2px #888888;
-}
-
-a.about-back:visited {
-    color: #ffffff;
-}
