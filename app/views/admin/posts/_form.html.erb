@@ -3,8 +3,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
 <% end %>
 <% content_for :js_tags do %>
-  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js" data-turbolinks-track="reload"></script>
+  <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js" data-turbolinks-track="reload"></script>
 <% end %>
 <%= form_for [:admin, @post], multipart: true do |f| %>
   <%= render "shared/error_messages", object: f.object %>
