@@ -74,12 +74,13 @@ $secondary-color: rgba(39, 174, 96, 1);
 
   .clap--count-total {
     position: absolute;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: $btn-dimension;
     text-align: center;
     left: 0;
-    top: -$btn-dimension/3.5;
+    top: $btn-dimension/3;
     color: $primary-color;
+    margin-left: 55px;
   }
 }
 
@@ -97,17 +98,29 @@ $secondary-color: rgba(39, 174, 96, 1);
   }
 }
 
-.clap-pc {
+.float-sidebar-pc {
   position: absolute;
-  margin-left: -150px;
+  margin-left: -145px;
   @media (max-width: 768px) {
     display: none;
   }
+  .fb-share {
+    margin: 30px 0 0 5px;
+    display: block;
+    position: absolute;
+    i {
+      color: black;
+    }
+  }
 }
 
-.clap-mobile {
+.float-sidebar-mobile {
   margin: 20px 0;
   @media (min-width: 768px) {
     display: none;
+  }
+  .fb-share {
+    float: right;
+    margin-top: 15px;
   }
 }

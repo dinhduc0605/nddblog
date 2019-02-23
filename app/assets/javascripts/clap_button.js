@@ -59,7 +59,7 @@ const countTotalAnimation = new mojs.Html({
   opacity: {0: 1},
   delay: 3 * (tlDuration) / 2,
   duration: tlDuration,
-  y: {0: -3}
+  x: {'-10': 0}
 });
 
 $clap.find('#clap--count-total').css({'opacity': 1, 'transform': 'none'});
@@ -82,7 +82,7 @@ animationTimeline.add([
 ]);
 
 
-clap.addEventListener('click', function () {
+$clap.click(function () {
   if (numberOfClaps === 0) {
     $clap.find('#clap--count-total').css({'opacity': 0, 'transform': 'scale(0)','margin-top': '0'});
   }
@@ -126,15 +126,16 @@ function updateNumberOfClaps() {
   clapTotalCount.innerHTML = initialNumberOfClaps + numberOfClaps
 }
 
-if ($('.clap-pc:visible').length) {
-  const offsetTop = clap.offsetTop;
+$floatSidebarPc = $('.float-sidebar-pc:visible');
+if ($floatSidebarPc.length) {
+  const offsetTop = $floatSidebarPc[0].offsetTop;
   const imgHeaderHeight = $('header.masthead').height();
   $(document).scroll(function() {
     let scroll_distance = $(window).scrollTop();
     if (scroll_distance >= imgHeaderHeight - 10) {
-      $('.clap-pc').css({'position': 'fixed', 'top': '75px'});
+      $floatSidebarPc.css({'position': 'fixed', 'top': '75px'});
     } else {
-      $('.clap-pc').css({'position': 'absolute', 'top': offsetTop + 'px'});
+      $floatSidebarPc.css({'position': 'absolute', 'top': offsetTop + 'px'});
     }
   });
 }

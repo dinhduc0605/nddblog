@@ -10,7 +10,7 @@
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="fb:app_id" content="381510432318810" />
+  <meta property="fb:app_id" content="<%= ENV['FB_APP_ID'] %>" />
 <% end %>
 
 <% content_for :css_tags do %>
@@ -23,7 +23,7 @@
 <script>
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '381510432318810',
+            appId      : '<%= ENV['FB_APP_ID'] %>',
             cookie     : true,
             xfbml      : true,
             version    : 'v3.1'
@@ -56,18 +56,19 @@
 
 <!-- Post Content -->
 <article class="markdown-body">
-  <%= render 'shared/clap_button', view_mode: 'clap-pc' %>
+  <%= render 'shared/clap_button', view_mode: 'float-sidebar-pc' %>
   <%= markdown(@post.content) %>
   <div class="tags">
     <% @post.tags.each do |tag| %>
       <%= link_to tag.name, tag_url(tag), class: 'black' %>
     <% end %>
   </div>
-  <%= render 'shared/clap_button', view_mode: 'clap-mobile' %>
+  <%= render 'shared/clap_button', view_mode: 'float-sidebar-mobile' %>
   <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
 </article>
 <hr>
 <% content_for :javascript do %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.1/mo.min.js" type="text/javascript" charset="utf-8"></script>
-  <%= javascript_include_tag 'clap_button' %>
+  <%= javascript_include_tag 'post', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'clap_button', 'data-turbolinks-track': 'reload' %>
 <% end %>
