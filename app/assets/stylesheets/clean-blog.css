@@ -203,8 +203,12 @@ header.masthead .overlay {
 
 header.masthead .page-heading,
 header.masthead .site-heading {
-    padding: 200px 0 150px;
+    padding: 200px 0;
     color: white;
+}
+
+header.masthead .site-heading h2 {
+    font-size: 2.5rem;
 }
 
 header.masthead .post-heading {
@@ -215,7 +219,7 @@ header.masthead .post-heading {
 @media only screen and (min-width: 768px) {
     header.masthead .page-heading,
     header.masthead .site-heading {
-        padding: 150px 0;
+        padding: 200px 0
     }
     header.masthead .post-heading {
         padding: 250px 0 50px;
