@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi-VN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Description" content="Giới thiệu về Nguyễn Đình Đức">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title><%= 'About' %></title>
+
+  <!-- favicon -->
+  <link href="<%= image_path('favicon.ico') %>" rel=icon>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/brands.css" integrity="sha384-BKw0P+CQz9xmby+uplDwp82Py8x1xtYPK3ORn/ZSoe6Dk3ETP59WCDnX+fI1XCKK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag 'about', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'skill_progress', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar">
+<div id="main-wrapper">
+  <div class="columns-block">
+    <div class="left-col-block blocks">
+      <header class="header">
+        <div class="content text-center">
+          <h1>Nguyen Dinh Duc</h1>
+
+          <p class="lead">Software Engineer</p>
+          <ul class="social-icon">
+            <li><a href="https://www.facebook.com/dinhduc6594"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="https://github.com/dinhduc0605"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/nguyen-dinh-duc-0605/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fab fa-slack-hash" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="profile-img" style="background-image: url('<%= image_path('profile.jpg') %>');"></div>
+      </header>
+      <!-- .header-->
+    </div>
+
+
+    <div class="right-col-block blocks">
+      <section class="intro section-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2>Mình là ai</h2>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <p>
+                Chào các bạn, mình là <b>Nguyễn Đình Đức</b> tác giả của NDD Blog này, đang sống và làm việc tại Nhật Bản.
+                Hiện tại thì công việc của mình là Web developer (Ruby on Rails) nhưng mới chỉ là newbie thôi (tự học 6 tháng, làm việc 1 tháng =))) ).
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro section-wrapper gray-bg">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2>Tại sao lại có blog này</h2>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <p>
+                Mình thì luôn muốn được trải nghiệm những cái mới (công nghệ mới, vùng đất mới...), vì vậy mình cần 1 nơi
+                để lưu lại và chia sẻ những thứ đã học và làm được cho mọi người. Và đó chính là NDD blog.
+              </p>
+              <p>
+                À tất nhiên là còn những lý do khác như là rảnh quá không biết làm gì =))), thấy bạn bè ai cũng viết blog nên đua đòi :(,
+                có cái ghi vào CV cho đẹp, có chỗ để xàm :3.....
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="expertise-wrapper section-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2>Kỹ năng</h2>
+              </div>
+            </div>
+          </div>
+          <!-- .row -->
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="expertise-item">
+                <h3>Làm việc nhóm</h3>
+
+                <p>
+                  Đã từng làm việc trong 1 team 8 người. Biết cách phối hợp để tạo hiệu quả cao.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="expertise-item">
+                <h3>Tự học</h3>
+
+                <p>
+                  Tự học tiếng Nhật tại nhà trong 3 năm. (mặc dù giờ vẫn chưa giỏi lắm)
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- .row -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="expertise-item">
+                <h3>Giải quyết vấn đề</h3>
+
+                <p>
+                  Có khả năng tự tìm cách và giải quyết các vấn đề khó khăn.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="expertise-item">
+                <h3>Tiếp cận công nghệ</h3>
+
+                <p>
+                  Luôn hứng thú với công nghệ mới nên có khả năng tiếp cận công nghệ nhanh chóng, hiệu quả.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- .row -->
+        </div>
+        <!--.container-fluid-->
+      </section>
+      <!-- .expertise-wrapper -->
+
+      <section class="section-wrapper skills-wrapper gray-bg">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2>Ngôn ngữ lập trình</h2>
+              </div>
+            </div>
+          </div>
+
+          <!--.row-->
+          <div class="row">
+
+            <div class="col-md-12">
+              <ul class="skills-bar-container">
+
+                <li>
+                  <div class="progressbar-title">
+                    <h3>Java (Android)</h3>
+                    <span class="percent" id="html-pourcent"></span>
+                  </div>
+                  <div class="bar-container">
+                    <span class="progressbar progressred" id="progress-html"></span>
+                  </div>
+                </li>
+                <li>
+                  <div class="progressbar-title">
+                    <h3>Ruby (Rails)</h3>
+                    <span class="percent" id="css-pourcent"></span>
+                  </div>
+                  <div class="bar-container">
+                    <span class="progressbar progressblue" id="progress-css"></span>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="progressbar-title">
+                    <h3>PHP (Laravel)</h3>
+                    <span class="percent" id="javascript-pourcent"></span>
+                  </div>
+                  <div class="bar-container">
+                    <span class="progressbar progresspurple" id="progress-javascript"></span>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="progressbar-title">
+                    <h3>Javascript</h3>
+                    <span class="percent" id="php-pourcent"></span>
+                  </div>
+                  <div class="bar-container">
+                    <span class="progressbar progressorange" id="progress-php"></span>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="progressbar-title">
+                    <h3>HTML/CSS</h3>
+                    <span class="percent" id="angular-pourcent"></span>
+                  </div>
+                  <div class="bar-container">
+                    <span class="progressbar progressgreen" id="progress-angular"></span>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+            <!--.row -->
+          </div>
+          <!-- .container-fluid -->
+        </div>
+      </section>
+      <!-- .skills-wrapper -->
+
+      <section class="section-wrapper section-experience">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title"><h2>Kinh nghiệm làm việc</h2></div>
+            </div>
+          </div>
+          <!--.row-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="content-item">
+                <small>3/2018 - Hiện tại</small>
+                <h3>Rails Developer</h3>
+                <h4>GA Technologies Inc</h4>
+
+                <p>
+                  Hiện tại mình đang làm việc tại GA Technologies, Nhật Bản. Công ty chuyên về bất động sản.
+                  Tuy không phải chuyên về IT, không có quy trình chuẩn như các công ty khác, nhưng hiện tại cũng đang phát triển mạnh về mảng này.
+                  Ngoài điểm ý ra thì không còn gì để chê, môi trường làm việc trẻ, mọi người đều thân thiện, đặc biệt mỗi tháng có party nhỏ
+                  để nhân viên làm quen với nhau, giúp tiếng Nhật của mình lên không ít :3.
+                </p>
+              </div>
+
+              <!-- .experience-item -->
+              <div class="content-item">
+                <small>4/2016 - 12/2016</small>
+                <h3>Android Developer Internship</h3>
+                <h4>FRAMGIA VIETNAM CO., LTD</h4>
+
+                <p>Trong khoảng thời gian này có lẽ mình học được nhiều nhất, không phải kiến thức về các ngôn ngữ lập trình, mà là
+                  cách làm việc nhóm, cách quản lý, phân chia công việc, cách sử dụng Git hiệu quả... Đặc biệt mình còn làm quen được với 1
+                  team ( iship4` à nhầm ishipper =)) ) thực sự hợp cạ, phải nói là đi làm mà chưa bao giờ thấy chán. Chính bọn hắn đã khiến mình từ 1 người <b>"trong sáng"</b> thành
+                  1 người <b>"đen tối"</b> như hiện nay :((((</p>.
+              </div>
+              <!-- .experience-item -->
+              <div class="content-item">
+                <small>8/2015 - 4/2016</small>
+                <h3>ANDROID DEVELOPER INTERNSHIP</h3>
+                <h4>LIFORTE JSC</h4>
+
+                <p>Đây là công ty đầu tiên mình thực tập, cũng là bộ môn thực tập kỹ thuật trong trường luôn. Ở đây thì mình học về OpenGL ES 2.0, để chỉnh sửa hình ảnh,
+                  đồ họa trên mobile (Android). Lần đầu tiên mình học cái khó như thế, tài liệu thì ít, debug lại khó :(.
+                  Sau khi nghỉ tại công ty thì tới giờ cũng chưa sử dụng lại công nghệ ý, quên kha khá rồi =))).
+                </p>
+              </div>
+              <!-- .experience-item -->
+            </div>
+          </div>
+          <!--.row-->
+        </div>
+        <!-- .container-fluid -->
+
+      </section>
+      <!-- .section-experience -->
+
+      <section class="section-wrapper section-education gray-bg">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title"><h2>Sự nghiệp học hành</h2></div>
+            </div>
+          </div>
+          <!--.row-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="content-item">
+                <small>9/2012 - 7/2017</small>
+                <h3>Software Engineer</h3>
+                <h4>Ha Noi University of Science and Technology</h4>
+
+                <p>
+                  5 năm đại học tưởng dài nhưng thực sự qua rất nhanh. Lúc học thì muốn xong nhanh để ra trường đi làm.
+                  Đến lúc đi làm rồi thì lại thấy...ờ ra trường nhanh đúng là vui thật =)))).
+                </p>
+              </div>
+              <!-- .experience-item -->
+              <div class="content-item">
+                <small>9/2009 - 4/2012</small>
+                <h3>Normal Student</h3>
+                <h4>High School for Gifted Student</h4>
+
+                <p>
+                  Mặc dù học chuyên Tin từ cấp 3, nhưng hồi ý mình cũng không biết nhiều về lập trình ngoài 1 ít Pascal và C.
+                  Giờ nghĩ lại thời ý mà chăm chỉ thì giờ chắc bá lắm r :3.
+                </p>
+              </div>
+              <!-- .experience-item -->
+            </div>
+          </div>
+          <!--.row-->
+        </div>
+        <!-- .container-fluid -->
+
+      </section>
+      <!-- .section-education -->
+
+      <section class="section-wrapper section-interest">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2>Sở thích</h2>
+              </div>
+            </div>
+          </div>
+          <!-- .row -->
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="content-item">
+                <h3>Game</h3>
+
+                <p>
+                  Lúc bé cũng ham chơi game lắm, giờ đỡ nhiều rồi, do đi làm về mệt chả muốn chơi nữa :v.
+                  Kinh nghiệm đầy mình trong 1 số trò như Dota 2 ( 8 năm ), Counter Strike ( từ lớp 4 =)) )....
+                </p>
+              </div>
+              <div class="content-item">
+                <h3>Thể thao</h3>
+
+                <p>
+                  Không thích xem và chơi đá bóng nhưng thích chơi Pes. Có 3 năm kinh nghiệp chơi cầu lông,
+                  cơ mà giờ vẫn cùi bắp :3. Giờ thì có môn luyện cơ chân, mỗi ngày đi làm đứng 1h30 trên tàu :v.
+                </p>
+
+              </div>
+              <div class="content-item">
+                <h3>Manga và Anime</h3>
+
+                <p>
+                  Manga thì thích xem từ bé rồi, còn Anime thì phải đến năm 2 đại học mới xem nhiều. Chính 2 thứ này
+                  là khởi đầu cho mong muốn đi Nhật của mình, may mà giờ cũng đạt được, không bỏ phí mấy năm học tiếng.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- .row -->
+
+        </div>
+      </section>
+      <!-- .section-publications -->
+
+      <footer class="footer">
+        <div class="copyright-section">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="copytext">&copy; 2015 Online CV. All rights reserved | Design By: <a
+                  href="https://themehippo.com">ThemeHippo</a></div>
+              </div>
+            </div>
+            <!--.row-->
+          </div>
+          <!-- .container-fluid -->
+        </div>
+        <!-- .copyright-section -->
+      </footer>
+      <!-- .footer -->
+    </div>
+    <!-- .right-col-block -->
+  </div>
+  <!-- .columns-block -->
+</div>
+<!-- #main-wrapper -->
+<%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'skill_progress', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'turbolinks', 'data-turbolinks-track': 'reload' %>
+</body>
+</html>

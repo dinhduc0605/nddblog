@@ -76,3 +76,15 @@
 .text-italic {
   font-style: italic;
 }
+
+.about-header, .home-header {
+  height: 500px;
+}
+@media (max-width: 768px) {
+  .about-header {
+    background-position: left !important;
+  }
+  .home-header {
+    background-position: right !important;
+  }
+}

@@ -2,7 +2,6 @@
 
 # Controller for client static page
 class StaticPagesController < ApplicationController
-  layout false, only: :about
   before_action :set_category, only: :show_category
 
   POST_LIMIT = 10
