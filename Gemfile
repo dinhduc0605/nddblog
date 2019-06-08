@@ -41,6 +41,7 @@ gem 'pg', '~> 1.1.3'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'redcarpet'
 gem 'somemoji'
+gem 'slack-ruby-client'
 
 # for railties app_generator_test
 gem 'bootsnap', '>= 1.1.0', require: false

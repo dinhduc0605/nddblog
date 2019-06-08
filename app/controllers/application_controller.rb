@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
   #   { locale: I18n.locale }
   # end
 
+  rescue_from StandardError do |e|
+    SlackNotifier.ping_errors(e, request.original_url)
+    raise e
+  end
+
   protected
 
   def after_sign_in_path_for(resource)
