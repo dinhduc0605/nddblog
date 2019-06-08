@@ -60,4 +60,4 @@ $('.load-more').click(function (e) {
   })
 });
 
-$('.markdown-body p img').closest('p').addClass('text-center');
+$('.markdown-body p img[src*=nddblog]').closest('p').addClass('text-center');
