@@ -59,3 +59,5 @@ $('.load-more').click(function (e) {
     }
   })
 });
+
+$('.markdown-body p img').closest('p').addClass('text-center');
