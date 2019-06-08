@@ -26,6 +26,7 @@ module DucnojinseiBlog
     I18n.default_locale = :vi
 
     # Set auto load path
+    config.enable_dependency_loading = true
     config.autoload_paths += %W[#{config.root}/lib]
 
     config.generators do |g|
