@@ -2,7 +2,10 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show clap]
+  before_action :set_post_preview, only: :preview
   protect_from_forgery with: :null_session, only: :clap
+
+  layout false, only: :preview
 
   def show; end
 
@@ -19,9 +22,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def preview
+    render :preview
+  end
+
   private
 
   def set_post
     @post = Post.published.friendly.find params[:id]
+  end
+
+  def set_post_preview
+    @post = Post.new(post_params)
+    @post.user = current_admin_user
+    @post.created_at = Time.now
+    @post.id = 99999
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :content, :category_id, :cover, :tag, :description, :published)
   end
 end
