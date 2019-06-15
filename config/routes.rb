@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     member do
       patch 'clap'
     end
+    collection do
+      post :preview
+    end
   end
   resources :tags
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

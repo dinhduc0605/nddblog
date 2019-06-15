@@ -49,12 +49,17 @@
       </div>
 
       <%= f.submit t('submit'), class: 'btn btn-primary btn-round full-width' %>
+      <button type="button" class="btn btn-primary btn-icon" id="preview-modal-toggle">
+        <i class="fa fa-eye"></i>
+      </button>
     </div>
   </div>
+  <%= render 'preview_modal' %>
 <% end %>
 <% content_for :javascript do %>
   <script type="text/javascript" charset="utf-8">
     new SimpleMDE({
+      forceSync: true,
       spellChecker: false,
       autosave: {
         enabled: true,
@@ -66,5 +71,25 @@
         codeSyntaxHighlighting: true,
       },
     });
+    $('#preview-modal-toggle').click(function () {
+      let data = $('form').serializeArray().reduce(function(obj, item) {
+        if (item.name !== '_method') {
+          obj[item.name] = item.value;
+        }
+        return obj;
+      }, {});
+      $.ajax({
+        url: '/posts/preview',
+        method: 'POST',
+        data: data,
+        dataType: 'html',
+        success: function (data) {
+          $previewModalBody = $('#preview-modal-body');
+          $previewModalBody.empty();
+          $previewModalBody.append(data);
+          $('#preview-modal').modal('show')
+        }
+      });
+    })
   </script>
 <% end %>

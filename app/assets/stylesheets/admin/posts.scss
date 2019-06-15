@@ -56,3 +56,35 @@ a.tag:hover {
   text-decoration: none;
   color: white;
 }
+
+#preview-modal-toggle {
+  position: fixed;
+  top: 130px;
+  right: 110px;
+  box-shadow: 0 5px 35px 0 rgba(0,0,0,.3);
+}
+
+.preview-post-body {
+  height: 75vh;
+  overflow: scroll;
+  font-size: 18px !important;
+  color: #212529;
+  font-family: 'Lora', 'Times New Roman', serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 800 !important;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+}
+
+#preview-modal {
+  .modal-dialog {
+    margin: 20px;
+    max-width: initial;
+  }
+}
