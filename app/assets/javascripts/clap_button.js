@@ -86,20 +86,21 @@ $clap.click(function () {
   if (numberOfClaps === 0) {
     $clap.find('#clap--count-total').css({'opacity': 0, 'transform': 'scale(0)','margin-top': '0'});
   }
-  if (numberOfClaps < 3) {
+  if (getCookie('is_clapped') === '') {
     $.ajax({
       method: 'PATCH',
       url: document.location.href + '/clap',
       dataType: 'json',
       success: function () {
         repeatClapping();
+        document.cookie = 'is_clapped=true;'
       },
       error: function () {
         alert('Xảy ra lỗi không thể vỗ tay :(');
       }
     });
   } else {
-    alert('Mỗi người chỉ được vỗ tay tối đa 3 lần');
+    alert('Rất tiếc, mỗi người chỉ được vỗ tay 1 lần!');
   }
 });
 
