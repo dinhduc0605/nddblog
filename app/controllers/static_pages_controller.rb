@@ -19,63 +19,63 @@ class StaticPagesController < ApplicationController
   def about
     @skills = [
       {
-        name: 'Java (Android)',
+        name:       'Java (Android)',
         percentage: 50,
-        color: '#c0392b'
+        color:      '#c0392b'
       },
       {
-        name: 'Ruby (Rails)',
+        name:       'Ruby (Rails)',
         percentage: 80,
-        color: '#1199ff'
+        color:      '#1199ff'
       },
       {
-        name: 'PHP (Laravel)',
+        name:       'PHP (Laravel)',
         percentage: 20,
-        color: '#9b59b6'
+        color:      '#9b59b6'
       },
       {
-        name: 'Javascript',
+        name:       'Javascript',
         percentage: 60,
-        color: '#ffa500'
+        color:      '#ffa500'
       },
       {
-        name: 'HTML/CSS',
+        name:       'HTML/CSS',
         percentage: 50,
-        color: '#27ae60'
+        color:      '#27ae60'
       }
     ]
     @job_timelines = [
-        {
-            timestamp: '3/2018 - Hiện tại',
-            title: 'GA Technologies Inc - Rails Developer',
-            content: 'Hiện tại mình đang làm việc tại GA Technologies, Nhật Bản. Công ty chuyên về bất động sản.' +
-                'Tuy không phải chuyên về IT, không có quy trình chuẩn như các công ty khác, nhưng hiện tại cũng đang phát triển mạnh về mảng này.' +
-                'Ngoài điểm ý ra thì không còn gì để chê, môi trường làm việc trẻ, mọi người đều thân thiện, đặc biệt mỗi tháng có party nhỏ' +
-                'để nhân viên làm quen với nhau, giúp tiếng Nhật của mình lên không ít 😁.'
+      {
+        timestamp: '3/2018 - Hiện tại',
+        title:     'GA Technologies Inc - Rails Developer',
+        content:   'Hiện tại mình đang làm việc tại GA Technologies, Nhật Bản. Công ty chuyên về bất động sản.' \
+              'Tuy không phải chuyên về IT, không có quy trình chuẩn như các công ty khác, nhưng hiện tại cũng đang phát triển mạnh về mảng này.' \
+              'Ngoài điểm ý ra thì không còn gì để chê, môi trường làm việc trẻ, mọi người đều thân thiện, đặc biệt mỗi tháng có party nhỏ' \
+              'để nhân viên làm quen với nhau, giúp tiếng Nhật của mình lên không ít 😁.'
 
-        },
-        {
-            timestamp: '4/2016 - 12/2016',
-            title: 'FRAMGIA VIETNAM CO., LTD - Android Developer Internship',
-            content: 'Trong khoảng thời gian này có lẽ mình học được nhiều nhất, không phải kiến thức về các ngôn ngữ lập trình, mà là' +
-                'cách làm việc nhóm, cách quản lý, phân chia công việc, cách sử dụng Git hiệu quả... Đặc biệt mình còn làm quen được với 1' +
-                'team ( iship4` à nhầm ishipper 🤣 ) thực sự hợp cạ, phải nói là đi làm mà chưa bao giờ thấy chán.'
-        }
+      },
+      {
+        timestamp: '4/2016 - 12/2016',
+        title:     'FRAMGIA VIETNAM CO., LTD - Android Developer Internship',
+        content:   'Trong khoảng thời gian này có lẽ mình học được nhiều nhất, không phải kiến thức về các ngôn ngữ lập trình, mà là' \
+              'cách làm việc nhóm, cách quản lý, phân chia công việc, cách sử dụng Git hiệu quả... Đặc biệt mình còn làm quen được với 1' \
+              'team ( iship4` à nhầm ishipper 🤣 ) thực sự hợp cạ, phải nói là đi làm mà chưa bao giờ thấy chán.'
+      }
     ]
     @education_timelines = [
-        {
-            timestamp: '9/2012 - 7/2017',
-            title: 'Ha Noi University of Science and Technology',
-            content: '5 năm đại học tưởng dài nhưng thực sự qua rất nhanh. Lúc học thì muốn xong nhanh để ra trường đi làm.
-                    Đến lúc đi làm rồi thì lại thấy...ờ ra trường nhanh đúng là vui thật 😇.'
+      {
+        timestamp: '9/2012 - 7/2017',
+        title:     'Ha Noi University of Science and Technology',
+        content:   '5 năm đại học tưởng dài nhưng thực sự qua rất nhanh. Lúc học thì muốn xong nhanh để ra trường đi làm.
+                  Đến lúc đi làm rồi thì lại thấy...ờ ra trường nhanh đúng là vui thật 😇.'
 
-        },
-        {
-            timestamp: '9/2009 - 4/2012',
-            title: 'High School for Gifted Student',
-            content: 'Mặc dù học chuyên Tin từ cấp 3, nhưng hồi ý mình cũng không biết nhiều về lập trình ngoài 1 ít Pascal và C.
-                    Giờ nghĩ lại thời ý mà chăm chỉ thì giờ chắc bá lắm r.'
-        }
+      },
+      {
+        timestamp: '9/2009 - 4/2012',
+        title:     'High School for Gifted Student',
+        content:   'Mặc dù học chuyên Tin từ cấp 3, nhưng hồi ý mình cũng không biết nhiều về lập trình ngoài 1 ít Pascal và C.
+                  Giờ nghĩ lại thời ý mà chăm chỉ thì giờ chắc bá lắm r.'
+      }
     ]
   end
 
