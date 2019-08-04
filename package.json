@@ -1,12 +1,15 @@
 {
   "dependencies": {
+    "@babel/preset-env": "^7.5.5",
     "@rails/webpacker": "^4.0.7",
+    "element-ui": "^2.11.1",
     "rails-ujs": "^5.2.3",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
+    "babel-plugin-component": "^1.1.1",
     "webpack-dev-server": "^3.7.2"
   }
 }

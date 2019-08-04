@@ -1,5 +1,8 @@
 <% content_for :title, 'About' %>
 <% content_for :description, 'About myself' %>
+<% content_for :javascript do %>
+  <%= javascript_pack_tag 'javascripts/about' %>
+<% end %>
 <%= stylesheet_link_tag 'skill_progress', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 <!-- Page Header -->
@@ -16,7 +19,7 @@
 </header>
 
 <!-- Main Content -->
-<div class="container">
+<div class="container" id="about-page">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <div class="right-col-block blocks">
@@ -136,58 +139,9 @@
             <div class="row">
 
               <div class="col-md-12">
-                <ul class="skills-bar-container">
-
-                  <li>
-                    <div class="progressbar-title">
-                      Java (Android)
-                      <span class="percent" id="html-pourcent"></span>
-                    </div>
-                    <div class="bar-container">
-                      <span class="progressbar progressred" id="progress-html"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="progressbar-title">
-                      Ruby (Rails)
-                      <span class="percent" id="css-pourcent"></span>
-                    </div>
-                    <div class="bar-container">
-                      <span class="progressbar progressblue" id="progress-css"></span>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div class="progressbar-title">
-                      PHP (Laravel)
-                      <span class="percent" id="javascript-pourcent"></span>
-                    </div>
-                    <div class="bar-container">
-                      <span class="progressbar progresspurple" id="progress-javascript"></span>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div class="progressbar-title">
-                      Javascript
-                      <span class="percent" id="php-pourcent"></span>
-                    </div>
-                    <div class="bar-container">
-                      <span class="progressbar progressorange" id="progress-php"></span>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div class="progressbar-title">
-                      HTML/CSS
-                      <span class="percent" id="angular-pourcent"></span>
-                    </div>
-                    <div class="bar-container">
-                      <span class="progressbar progressgreen" id="progress-angular"></span>
-                    </div>
-                  </li>
-
-                </ul>
+                <% @skills.each do |skill| %>
+                  <skill-progress skill_name="<%= skill[:name] %>" :percentage="<%= skill[:percentage] %>" color="<%= skill[:color] %>"></skill-progress>
+                <% end %>
               </div>
               <!--.row -->
             </div>
@@ -206,28 +160,7 @@
             <!--.row-->
             <div class="row">
               <div class="col-md-12">
-                <div class="content-item">
-                  <i>3/2018 - Hiện tại</i>
-                  <h5>GA Technologies Inc - Rails Developer</h5>
-
-                  <p>
-                    Hiện tại mình đang làm việc tại GA Technologies, Nhật Bản. Công ty chuyên về bất động sản.
-                    Tuy không phải chuyên về IT, không có quy trình chuẩn như các công ty khác, nhưng hiện tại cũng đang phát triển mạnh về mảng này.
-                    Ngoài điểm ý ra thì không còn gì để chê, môi trường làm việc trẻ, mọi người đều thân thiện, đặc biệt mỗi tháng có party nhỏ
-                    để nhân viên làm quen với nhau, giúp tiếng Nhật của mình lên không ít 😁.
-                  </p>
-                </div>
-
-                <!-- .experience-item -->
-                <div class="content-item">
-                  <i>4/2016 - 12/2016</i>
-                  <h5>FRAMGIA VIETNAM CO., LTD - Android Developer Internship</h5>
-
-                  <p>Trong khoảng thời gian này có lẽ mình học được nhiều nhất, không phải kiến thức về các ngôn ngữ lập trình, mà là
-                    cách làm việc nhóm, cách quản lý, phân chia công việc, cách sử dụng Git hiệu quả... Đặc biệt mình còn làm quen được với 1
-                    team ( iship4` à nhầm ishipper 🤣 ) thực sự hợp cạ, phải nói là đi làm mà chưa bao giờ thấy chán.
-                  </p>
-                </div>
+                <customer-timeline :items="<%= @job_timelines.to_json %>"></customer-timeline>
               </div>
             </div>
             <!--.row-->
@@ -247,26 +180,7 @@
             <!--.row-->
             <div class="row">
               <div class="col-md-12">
-                <div class="content-item">
-                  <i>9/2012 - 7/2017</i>
-                  <h5>Ha Noi University of Science and Technology</h5>
-
-                  <p>
-                    5 năm đại học tưởng dài nhưng thực sự qua rất nhanh. Lúc học thì muốn xong nhanh để ra trường đi làm.
-                    Đến lúc đi làm rồi thì lại thấy...ờ ra trường nhanh đúng là vui thật 😇.
-                  </p>
-                </div>
-                <!-- .experience-item -->
-                <div class="content-item">
-                  <i>9/2009 - 4/2012</i>
-                  <h5>High School for Gifted Student</h5>
-
-                  <p>
-                    Mặc dù học chuyên Tin từ cấp 3, nhưng hồi ý mình cũng không biết nhiều về lập trình ngoài 1 ít Pascal và C.
-                    Giờ nghĩ lại thời ý mà chăm chỉ thì giờ chắc bá lắm r.
-                  </p>
-                </div>
-                <!-- .experience-item -->
+                <customer-timeline :items="<%= @education_timelines.to_json %>"></customer-timeline>
               </div>
             </div>
             <!--.row-->
@@ -301,7 +215,7 @@
                   <h4>Thể thao</h4>
 
                   <p>
-                    Không thích xem và chơi đá bóng nhưng thích chơi Pes. Có <bold>tận</bold> 3 năm kinh nghiệp chơi cầu lông,
+                    Không thích xem và chơi đá bóng nhưng thích chơi Pes. Có <b>tận</b> 3 năm kinh nghiệp chơi cầu lông,
                     nhưng đó là chuyện quá khứ rồi, giờ thì gà lắm 😢. Từ khi qua Nhật mình chuyển qua môn luyện cơ chân, mỗi ngày đi làm đứng khoảng 1h30' trên tàu :v.
                   </p>
 
