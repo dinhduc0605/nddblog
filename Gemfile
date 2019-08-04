@@ -42,6 +42,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'redcarpet'
 gem 'somemoji'
 gem 'slack-ruby-client'
+gem 'webpacker', '~> 4.x'
 
 # for railties app_generator_test
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -70,6 +71,7 @@ group :development do
   gem 'capistrano-figaro-yml', '~> 1.0.2'
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
+  gem 'capistrano-yarn'
   gem 'capistrano3-puma', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
