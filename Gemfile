@@ -71,7 +71,6 @@ group :development do
   gem 'capistrano-figaro-yml', '~> 1.0.2'
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano-yarn'
   gem 'capistrano-npm'
   gem 'capistrano3-puma', require: false
   gem 'spring'
