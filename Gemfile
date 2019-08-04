@@ -71,7 +71,7 @@ group :development do
   gem 'capistrano-figaro-yml', '~> 1.0.2'
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano-npm'
+  gem 'capistrano-yarn'
   gem 'capistrano3-puma', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
