@@ -3,7 +3,7 @@
     <el-timeline-item v-for="item in items" :timestamp="item.timestamp" placement="top" :key="item.title">
       <el-card>
         <h5>{{item.title}}</h5>
-        <p>{{item.title}}</p>
+        <p>{{item.content}}</p>
       </el-card>
     </el-timeline-item>
   </el-timeline>

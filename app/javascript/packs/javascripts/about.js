@@ -6,7 +6,6 @@ import SkillProgress from '../components/skill_progress'
 import CustomerTimeline from '../components/timeline'
 
 import {Progress, Timeline, TimelineItem, Card} from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Progress);
 Vue.use(Timeline);
 Vue.use(TimelineItem);
