@@ -43,6 +43,8 @@ gem 'redcarpet'
 gem 'somemoji'
 gem 'slack-ruby-client'
 gem 'webpacker', '~> 4.x'
+gem 'ed25519', '~> 1.2'
+gem 'bcrypt_pbkdf', '~> 1'
 
 # for railties app_generator_test
 gem 'bootsnap', '>= 1.1.0', require: false
