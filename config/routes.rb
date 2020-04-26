@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get 'about', to: 'static_pages#about'
+  get '/service-worker.js', to: 'pwa#service_worker'
+  get '/manifest.json', to: 'pwa#manifest'
   get '/:category_id', to: 'static_pages#show_category'
   resources :posts do
     member do
