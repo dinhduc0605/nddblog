@@ -80,11 +80,50 @@
 .about-header, .home-header {
   height: 500px;
 }
+
+.pwa-install-guide {
+  display: none;
+  width: 100%;
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  div {
+    width: fit-content;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    img {
+      width: 20px;
+      padding: 1px;
+      border: 1px solid;
+    }
+    span {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+    button {
+      font-size: 13px;
+      background-color: white;
+      color: black;
+      border: 1px solid white;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .about-header {
     background-position: left !important;
   }
   .home-header {
     background-position: right !important;
+  }
+  .pwa-install-guide {
+    margin-top: 57px;
+    div {
+      width: 100%;
+      padding: 8px 16px;
+    }
   }
 }
