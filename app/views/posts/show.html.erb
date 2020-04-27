@@ -14,31 +14,23 @@
 <% end %>
 
 <% content_for :css_tags do %>
-  <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag 'github-markdown', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag 'clap_button', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'posts', media: 'all' %>
+  <%= stylesheet_link_tag 'github-markdown', media: 'all' %>
+  <%= stylesheet_link_tag 'clap_button', media: 'all' %>
 <% end %>
 
 <div id="fb-root"></div>
 <script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '<%= ENV['FB_APP_ID'] %>',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v3.1'
-        });
-        FB.AppEvents.logPageView();
-    };
-
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+  window.fbAsyncInit = function() {
+      FB.init({
+          appId      : '<%= ENV['FB_APP_ID'] %>',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v6.0'
+      });
+  };
 </script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('<%= @post.cover.url %>')">
   <div class="overlay"></div>
@@ -73,5 +65,5 @@
 <hr>
 <% content_for :javascript do %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.1/mo.min.js" type="text/javascript" charset="utf-8"></script>
-  <%= javascript_include_tag 'clap_button', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'clap_button' %>
 <% end %>
