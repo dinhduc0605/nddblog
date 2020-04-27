@@ -33,13 +33,10 @@
     <%= render 'shared/navigation' %>
     <%= yield %>
     <%= render 'shared/footer' %>
-    <%= javascript_include_tag 'jquery-3.5.0.min' %>
+    <%= javascript_include_tag 'jquery-3.4.1.min' %>
     <%= javascript_include_tag 'bootstrap.bundle' %>
-    <%= javascript_include_tag 'turbolinks' %>
     <%= javascript_include_tag 'clean-blog' %>
     <%= javascript_include_tag 'common' %>
-    <%= javascript_include_tag 'sw_reg' %>
-    <%= javascript_include_tag 'pwa_install' %>
     <%= yield :javascript %>
   </body>
 </html>

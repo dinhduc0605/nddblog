@@ -44,3 +44,7 @@
 </div>
 
 <hr>
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'sw_reg' %>
+  <%= javascript_include_tag 'pwa_install' %>
+<% end %>
