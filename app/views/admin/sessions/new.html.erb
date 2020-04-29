@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi-VN">
 <head>
-  <title>'Sign In'</title>
+  <title>Sign In</title>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="<%= image_path('favicon.ico') %>" rel=icon>
@@ -16,13 +16,13 @@
 <body>
   <div class="background login-text">
     <%= render 'shared/flash', flash: flash %>
-    <div class="background-image" style="background-image:url(<%= image_path('login_bg.jpg') %>)"></div>
+    <div class="background-image" style="background-image:url(<%= image_path('login_bg.webp') %>)"></div>
     <div class="container">
       <div class="col-md-4 ml-auto mr-auto">
         <div class="card-plain card-login">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="card-header text-center no-border">
-            <%= image_tag 'login_ava.png', style: 'margin: 80px 0px 25px 0px; height: 130px;', class: 'rounded-circle img-raised' %>
+            <%= image_tag 'logo.png', style: 'margin: 80px 0px 25px 0px; height: 130px;', class: 'rounded-circle img-raised' %>
           </div>
           <div class="card-body">
             <div class="input-group form-group no-border input-lg login-input-group">
@@ -58,8 +58,7 @@
     </div>
   </div>
   <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'bootstrap.min', 'data-turbolins-track': 'reload' %>
-  <%= javascript_include_tag 'popper.min', 'data-turbolins-track': 'reload' %>
+  <%= javascript_include_tag 'bootstrap.bundle', 'data-turbolins-track': 'reload' %>
   <%= javascript_include_tag 'admin/now_ui_dashboard', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>
