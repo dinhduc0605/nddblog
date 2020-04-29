@@ -20,17 +20,6 @@
 <% end %>
 
 <div id="fb-root"></div>
-<script>
-  window.fbAsyncInit = function() {
-      FB.init({
-          appId      : '<%= ENV['FB_APP_ID'] %>',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v6.0'
-      });
-  };
-</script>
-<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('<%= @post.cover.url %>')">
   <div class="overlay"></div>
@@ -63,6 +52,18 @@
   <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
 </article>
 <hr>
+
+<script>
+  window.fbAsyncInit = function() {
+      FB.init({
+          appId      : '<%= ENV['FB_APP_ID'] %>',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v6.0'
+      });
+  };
+</script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 <% content_for :javascript do %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.1/mo.min.js" type="text/javascript" charset="utf-8"></script>
   <%= javascript_include_tag 'clap_button' %>
