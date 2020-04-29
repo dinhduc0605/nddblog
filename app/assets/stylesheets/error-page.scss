@@ -1,0 +1,27 @@
+.navbar:not(.is-visible) {
+  background-color: black !important;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.erorr-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .message-box {
+    text-align: center;
+    .oops {
+      font-size: 120px;
+      font-weight: bold;
+    }
+    .message {
+      font-size: 20px;
+    }
+  }
+}

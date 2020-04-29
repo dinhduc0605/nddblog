@@ -6,7 +6,7 @@ module SlackNotifier
     attachments = [
       {
         "title": "Error message",
-        "text": (location.present? ? "URL: #{location}\n" : '') + e.message,
+        "text": (location.present? ? "URL: #{location}\n" : '') + e&.message,
         "color": "#FF0000",
         "footer": "Bellow is full traces",
         "ts": Time.current.to_i

@@ -23,13 +23,29 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || http_accept_language.compatible_language_from(I18n.available_locales)
   end
 
-  # def default_url_options
-  #   { locale: I18n.locale }
-  # end
+  def raise_not_found
+    raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
+  end
+
+  def render_error_page(error_code)
+    case error_code
+    when 404
+      render 'static_pages/error_404', status: :not_found
+    else
+      render 'static_pages/error_500', status: :internal_server_error
+    end
+  end
 
   rescue_from StandardError do |e|
-    SlackNotifier.ping_errors(e, request.original_url)
-    raise e
+    # raise e if Rails.env.development?
+    if e.is_a?(ActionController::RoutingError) || e.is_a?(ActiveRecord::RecordNotFound)
+      render_error_page(404)
+    elsif e.is_a?(ActionController::InvalidAuthenticityToken)
+      redirect_to :back
+    else
+      render_error_page(500)
+      SlackNotifier.ping_errors(e, request.original_url)
+    end
   end
 
   protected

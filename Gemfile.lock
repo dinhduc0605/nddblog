@@ -70,7 +70,6 @@ GEM
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.0)
-    backport (1.1.2)
     bcrypt (3.1.13)
     bcrypt_pbkdf (1.0.1)
     bindex (0.8.1)
@@ -200,7 +199,6 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    maruku (0.7.3)
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
@@ -230,6 +228,14 @@ GEM
       ast (~> 2.4.0)
     pg (1.1.4)
     powerpack (0.1.2)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.9.0)
+      byebug (~> 11.0)
+      pry (~> 0.13.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (4.0.4)
     puma (3.12.4)
     rack (2.2.2)
@@ -273,8 +279,6 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    reverse_markdown (1.4.0)
-      nokogiri
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -346,18 +350,6 @@ GEM
       hashie
       websocket-driver
     slop (4.8.1)
-    solargraph (0.38.0)
-      backport (~> 1.1)
-      bundler (>= 1.17.2)
-      jaro_winkler (~> 1.5)
-      maruku (~> 0.7, >= 0.7.3)
-      nokogiri (~> 1.9, >= 1.9.1)
-      parser (~> 2.3)
-      reverse_markdown (~> 1.0, >= 1.0.5)
-      rubocop (~> 0.52)
-      thor (~> 0.19, >= 0.19.4)
-      tilt (~> 2.0)
-      yard (~> 0.9)
     somemoji (0.7.1)
       gemoji (= 3.0.0)
       json
@@ -405,7 +397,6 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.24)
     zeitwerk (2.3.0)
 
 PLATFORMS
@@ -440,6 +431,8 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mysql2 (< 0.5)
   pg (~> 1.1.3)
+  pry-byebug
+  pry-rails
   puma (~> 3.7)
   rails (~> 6.0)
   ransack!
@@ -454,7 +447,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   slack-ruby-client
-  solargraph
   somemoji
   spring
   spring-watcher-listen (~> 2.0.0)

@@ -90,8 +90,8 @@ group :development do
   gem 'rspec'
   gem 'rspec_junit_formatter'
 
-  # vs code solargraph extention
-  gem 'solargraph'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
