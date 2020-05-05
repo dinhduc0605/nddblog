@@ -7,7 +7,9 @@ class PostsController < ApplicationController
 
   layout false, only: :preview
 
-  def show; end
+  def show
+    @post.update(view_count: @post.view_count + 1)
+  end
 
   def clap
     respond_to do |format|

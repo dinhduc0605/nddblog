@@ -3,7 +3,7 @@
 # Change these
 server '35.194.110.144', port: 22, roles: %i[web app db], primary: true
 
-set :repo_url,        'git@github.com:dinhduc0605/ducnojinsei-blog.git'
+set :repo_url,        'git@github.com:dinhduc0605/nddblog.git'
 set :application,     'nddblog'
 set :user,            'dinhduc0605'
 set :puma_threads,    [4, 16]
