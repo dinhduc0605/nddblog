@@ -1,4 +1,4 @@
-<% content_for :title, @post.title %>
+<% content_for :title, raw(@post.title) %>
 <% content_for :description, @post.description %>
 
 <% content_for :fb_meta_tags do %>
