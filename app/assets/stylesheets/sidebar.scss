@@ -1,0 +1,51 @@
+@import "colors";
+
+#sidebar {
+  #search-box {
+    input {
+      width: 100%;
+      padding: 13px 20px;
+      border: none;
+      font-size: 14px;
+      box-shadow: 0 15px 45px -9px rgba(0,0,0,.2);
+      transition: box-shadow 0.5s;
+      &:focus {
+        outline: none;
+        box-shadow: 0 1px 1px 1px rgba(0,0,0,.06);
+      }
+    }
+    button {
+      position: absolute;
+      top: -1px;
+      right: 14px;
+      background-color: #f0f0f0;
+      padding: 11px 15px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  #tags-box {
+    .tags {
+      a {
+        background-color: #f0f0f0;
+        margin: 5px 5px 5px 0;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        color: #8d8d8d;
+        &:hover {
+          color: #ffffff;
+          background-color: #294cff;
+        }
+      }
+    }
+  }
+  #tags-box, #social-media {
+    margin-top: 40px;
+    .label {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
+}

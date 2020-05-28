@@ -1,23 +1,25 @@
-<div class="post-preview" data-id="<%= post.id %>">
-  <a href="<%= post_url(post) %>">
-    <h2 class="post-title">
-      <%= post.title %>
-    </h2>
-    <h3 class="post-subtitle">
+<div class="row post-item" data-id="<%= post.id %>">
+  <div class="cover col-sm-12 col-md-5">
+    <a href="<%= post_url(post) %>">
+      <%= image_tag post.cover_url %>
+    </a>
+  </div>
+  <div class="detail col-sm-12 col-md-7">
+    <div class="title">
+      <a href="<%= post_url(post) %>"><%= post.title %></a>
+    </div>
+    <div class="info">
+      <div class="author">by <span><%= post.user.name %></span></div>
+      <div class="published_date"> <%= post.created_at.to_date %></div>
+    </div>
+    <div class="description">
       <%= post.description %>
-    </h3>
-  </a>
-  <ul class="post-meta post-info">
-    <li class="text-italic"><i class="far fa-user"></i> <%= post.user.name %></li>
-    <li>|</li>
-    <li class="text-italic"><i class="far fa-clock"></i> <%= post.created_at.to_date %></li>
-    <li>|</li>
-    <li class="text-italic"><i class="far fa-thumbs-up"></i> <%= post.clap_count %></li>
-  </ul>
-  <div class="tags">
-    <% post.tags.each do |tag| %>
-      <%= link_to tag.name, tag_url(tag), class: 'black' %>
-    <% end %>
+    </div>
+    <div class="tags">
+      <i class="fas fa-tag"></i>
+      <% post.tags.each do |tag| %>
+        <%= link_to tag.name, tag_url(tag), class: 'black' %>
+      <% end %>
+    </div>
   </div>
 </div>
-<hr>

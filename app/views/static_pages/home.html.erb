@@ -1,18 +1,18 @@
 <% content_for :title, 'Home' %>
 <% content_for :description, 'NDD Blog | Blog của Đức' %>
 
+<% content_for :css_tags do %>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+  <%= stylesheet_link_tag 'sidebar', media: 'all' %>
+<% end %>
+
 <!-- Page Header -->
 <header class="masthead home-header" style="background-image: url('<%= image_path 'home-bg.jpg' %>')">
   <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h2><span class="quote-mark">&ldquo;</span> IT'S NOT A BUG, IT'S A FEATURE <span class="quote-mark">&bdquo;</span></h2>
-          <span class="subheading" style="position: absolute; right: 100px">Unknown</span>
-        </div>
-      </div>
-    </div>
+  <div class="famous-quote">
+
+    <div class="quote">&ldquo; IT'S NOT A BUG, IT'S A FEATURE <span class="quote-mark">&bdquo;</span></div>
+    <div class="author">Unknown</div>
   </div>
 </header>
 <div class="pwa-install-guide">
@@ -26,19 +26,14 @@
 <!-- Main Content -->
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-sm-12 col-lg-9">
       <div class="post-list">
         <%= render @posts %>
       </div>
-      <% unless @load_done %>
-        <div class="load-more-wrapper">
-          <%= image_tag 'loading.gif', class: 'loading-gif' %>
-          <!-- Pager -->
-          <div class="clearfix">
-            <%= link_to "Older Posts &rarr;".html_safe, root_url, class: 'btn btn-primary float-right load-more' %>
-          </div>
-        </div>
-      <% end %>
+      <%= paginate @posts %>
+    </div>
+    <div class="col-sm-12 col-lg-3">
+      <%= render 'shared/sidebar' %>
     </div>
   </div>
 </div>

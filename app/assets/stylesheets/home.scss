@@ -1,0 +1,47 @@
+@import "colors";
+
+$famous-quote-text-color: #ffffff;
+
+header.masthead {
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $overlay-color;
+    opacity: 0.75;
+  }
+  .famous-quote {
+    width: 700px;
+    padding: 0 16px;
+    font-family: 'Montserrat', serif;
+    color: $famous-quote-text-color;
+    z-index: 1;
+    .quote {
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .author {
+      font-size: 16px;
+      margin-top: 8px;
+      text-align: right;
+      font-style: italic;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .famous-quote {
+    font-size: 30px;
+  }
+}

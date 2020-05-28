@@ -1,9 +1,11 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light absolute-top" id="mainNav">
   <div class="container">
-    <%= link_to 'NDD Blog', root_url, class: 'navbar-brand' %>
+    <%= link_to root_url, class: 'navbar-brand' do %>
+      <%= image_tag 'white-navbar-brand.png', class: 'white-navbar-brand' %>
+      <%= image_tag 'black-navbar-brand.png', class: 'black-navbar-brand' %>
+  <% end %>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
       <i class="fa fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">

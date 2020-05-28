@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from StandardError do |e|
-    # raise e if Rails.env.development?
+    raise e if Rails.env.development?
     if e.is_a?(ActionController::RoutingError) || e.is_a?(ActiveRecord::RecordNotFound)
       render_error_page(404)
     elsif e.is_a?(ActionController::InvalidAuthenticityToken)

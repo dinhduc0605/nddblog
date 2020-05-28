@@ -30,11 +30,8 @@
 
     <link href="<%= image_path('favicon.ico') %>" rel=icon>
 
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&display=swap' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&display=swap' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag 'bootstrap', media: 'all' %>
     <%= stylesheet_link_tag 'font-awesome', media: 'all' %>
-    <%= stylesheet_link_tag 'clean-blog', media: 'all' %>
     <%= stylesheet_link_tag 'common', media: 'all' %>
     <%= stylesheet_link_tag 'posts', media: 'all' %>
     <%= yield :css_tags %>
@@ -52,7 +49,6 @@
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'jquery-3.4.1.min' %>
     <%= javascript_include_tag 'bootstrap.bundle' %>
-    <%= javascript_include_tag 'clean-blog' %>
     <%= javascript_include_tag 'common' %>
     <%= yield :javascript %>
   </body>

@@ -4,11 +4,9 @@
 class StaticPagesController < ApplicationController
   before_action :set_category, only: :show_category
 
-  POST_LIMIT = 10
-
   def home
-    published_posts = Post.published
-    filter_posts(published_posts)
+    @posts = Post.published.order(id: :desc).page(params[:page]).per(5)
+    # filter_posts(published_posts)
   end
 
   def show_category

@@ -1,76 +1,202 @@
-.emoji-icon {
-    width: 22px;
-    height: 22px;
-    margin-bottom: 4px;
+@import "colors";
+
+@media (min-width: 1250px) {
+  .container {
+    max-width: 1200px !important;
+    width: 1200px !important;
+    padding: 0;
+  }
+}
+// navigation bar
+@font-face {
+  font-family: 'Montserrat';
+  src: font-url('montserrat/Montserrat-Medium.ttf') format('truetype');
 }
 
-.full-width {
-    width: 100%;
-}
-
-.load-more {
-    padding: 16px;
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-    &:hover {
-      background-color: white !important;
-      border: 1px solid #0085A1 !important;
-      color: #0085A1;
-    }
-}
-
-.tags a {
-  display: inline-block;
-  height: 24px;
-  line-height: 24px;
-  position: relative;
-  margin: 0 0 8px 12px;
-  padding: 0 10px 0 12px;
-  background: #777;
-  -webkit-border-bottom-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  -webkit-border-top-right-radius: 3px;
-  border-top-right-radius: 3px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  color: #fff !important;
-  font-size: 12px;
-  font-family: "Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;
-  text-decoration: none;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+@font-face {
+  font-family: 'Montserrat';
+  src: font-url('montserrat/Montserrat-Bold.ttf') format('truetype');
   font-weight: bold;
 }
 
-.tags a:before {
-  content: "";
-  position: absolute;
-  top:0;
-  left: -12px;
-  width: 0;
-  height: 0;
-  border-color: transparent black transparent transparent;
-  border-style: solid;
-  border-width: 12px 12px 12px 0;
+@font-face {
+  font-family: 'Montserrat';
+  src: font-url('montserrat/Montserrat-Light.ttf') format('truetype');
+  font-weight: 100;
 }
 
-.tags a:after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 1px;
-  float: left;
-  width: 5px;
-  height: 5px;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  background: #fff;
-  -webkit-box-shadow: -1px -1px 2px rgba(0,0,0,0.4);
-  box-shadow: -1px -1px 2px rgba(0,0,0,0.4);
+body {
+  background-color: $primary-background-color;
+  font-family: 'Montserrat', serif;
 }
 
-.tags a.black {
-  background: black;
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+a {
+  color: $primary-text-color;
+  &:hover {
+    color: $hover-text-color;
+    text-decoration: none;
+  }
+}
+
+#mainNav {
+  font-family: 'Montserrat', serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  a.navbar-brand, a.nav-link {
+    img {
+      height: 40px;
+      &.white-navbar-brand {
+        display: inline-block;
+      }
+      &.black-navbar-brand {
+        display: none;
+      }
+    }
+    color: $nav-default-text-color;
+    &:hover {
+      color: $nav-hover-default-text-color;
+    }
+  }
+  .navbar-nav {
+    li {
+      margin-left: 24px;
+    }
+  }
+  &.absolute-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+  .navbar-toggler {
+    span, span:before, span:after {
+      cursor: pointer;
+      border-radius: 1px;
+      height: 5px;
+      width: 35px;
+      background: white;
+      position: absolute;
+      display: block;
+      content: '';
+    }
+    span:before {
+      top: -10px;
+    }
+    span:after {
+      bottom: -10px;
+    }
+    span, span:before, span:after {
+      transition: all 500ms ease-in-out;
+    }
+    .active span {
+      background-color: transparent;
+    }
+    .active span:before, .active span:after {
+      top: 0;
+    }
+    .active span:before {
+      transform: rotate(45deg);
+    }
+    .active span:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media all and (min-width: 992px) {
+  #mainNav {
+    &.is-fixed {
+      position: fixed;
+      margin-top: -75px;
+      transition: transform 0.2s;
+      background-color: rgba(255,255,255,0.9);
+      a.navbar-brand, a.nav-link {
+        color: #7e7e7e;
+        &:hover {
+          color: $primary-text-color;
+        }
+      }
+    }
+    &.is-visible {
+      transform: translate(0, 75px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      a.navbar-brand {
+        .white-navbar-brand {
+          display: none;
+        }
+        .black-navbar-brand {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  #mainNav {
+    position: fixed !important;
+    background-color: rgba(255,255,255,0.9);
+    border-bottom: 1px solid rgba(0,0,0,.08);
+
+    a.navbar-brand {
+      img {
+        &.white-navbar-brand {
+          display: none;
+        }
+        &.black-navbar-brand {
+          display: inline-block;
+        }
+      }
+    }
+
+    .navbar-toggler {
+      i {
+        color: $primary-text-color;
+      }
+    }
+    .navbar-collapse {
+      li {
+        margin-left: 5px;
+        padding: 8px 0;
+        border-bottom: 1px solid #e6e4e4;
+        &:last-child {
+          border-bottom: none;
+        }
+        a.nav-link {
+          color: $primary-text-color;
+        }
+      }
+    }
+  }
+}
+
+.emoji-icon {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 4px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.load-more {
+  padding: 16px;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  &:hover {
+    background-color: white !important;
+    border: 1px solid #0085A1 !important;
+    color: #0085A1;
+  }
 }
 
 .text-italic {
@@ -109,6 +235,56 @@
       background-color: white;
       color: black;
       border: 1px solid white;
+    }
+  }
+}
+
+footer {
+  .copyright {
+    text-align: center;
+  }
+}
+
+.pagination {
+  margin: 40px 0;
+  float: right;
+  & > div {
+    background-color: #f4f4f4;
+    padding: 8px;
+    border-radius: 50px;
+    font-size: 14px;
+    span {
+      &:not(.page) {
+        &:first-child {
+          margin-left: 8px;
+        }
+        &:last-child {
+          margin-right: 8px;
+        }
+      }
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      text-align: center;
+      margin: 0 2px;
+      color: #969696;
+      &:hover {
+        color: $hover-text-color;
+      }
+      a {
+        color: #969696;
+        &:hover {
+          color: $hover-text-color;
+        }
+      }
+    }
+    .page {
+      width: 40px;
+      &.current {
+        background-color: $hover-text-color;
+        border-radius: 50%;
+        color: #ffffff;
+      }
     }
   }
 }
