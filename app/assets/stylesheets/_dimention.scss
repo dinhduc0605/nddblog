@@ -1,0 +1,119 @@
+@charset "utf-8";
+
+$margin-array-config: (
+  top: 8 16,
+  right: 8 16,
+  bottom: 8 16,
+  left: 8 16,
+);
+
+$padding-array-config: (
+  top: 8 16,
+  right: 8 16 30,
+  bottom: 8 16,
+  left: 8 16,
+);
+
+/*======================
+  For margin-top class
+======================*/
+@mixin m-top($size) {
+  .m-top#{$size} {
+    margin-top: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($margin-array-config, top) {
+  @include m-top($size)
+}
+
+/*======================
+  For margin-right class
+======================*/
+@mixin m-right($size) {
+  .m-right#{$size} {
+      margin-right: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($margin-array-config, right) {
+  @include m-right($size)
+}
+
+/*======================
+  For margin-bottom class
+======================*/
+@mixin m-bottom($size) {
+  .m-bottom#{$size} {
+    margin-bottom: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($margin-array-config, bottom) {
+  @include m-bottom($size)
+}
+
+/*======================
+  For margin-left class
+======================*/
+@mixin m-left($size) {
+  .m-left#{$size} {
+    margin-left: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($margin-array-config, left) {
+  @include m-left($size)
+}
+
+/*======================
+  For padding-top class
+======================*/
+@mixin p-top($size) {
+  .p-top#{$size} {
+    padding-top: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($padding-array-config, top) {
+  @include p-top($size)
+}
+
+/*======================
+  For padding-right class
+======================*/
+@mixin p-right($size) {
+  .p-right#{$size} {
+    padding-right: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($padding-array-config, right) {
+  @include p-right($size)
+}
+
+/*======================
+  For padding-bottom class
+======================*/
+@mixin p-bottom($size) {
+  .p-bottom#{$size} {
+    padding-right: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($padding-array-config, bottom) {
+  @include p-bottom($size)
+}
+
+/*======================
+  For padding-left class
+======================*/
+@mixin p-left($size) {
+  .p-left#{$size} {
+    padding-left: $size * 1px !important;
+  }
+}
+
+@each $size in map-get($padding-array-config, left) {
+  @include p-left($size)
+}

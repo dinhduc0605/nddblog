@@ -1,5 +1,12 @@
 <% content_for :title, 'About' %>
 <% content_for :description, 'About myself' %>
+<% content_for :body_class, 'about-page' %>
+
+<% content_for :css_tags do %>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+  <%= stylesheet_link_tag 'about', media: 'all' %>
+<% end %>
+
 <% content_for :javascript do %>
   <%= javascript_pack_tag 'javascripts/about' %>
 <% end %>

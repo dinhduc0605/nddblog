@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show clap]
+  before_action :set_post, only: %i[show toggle_like]
   before_action :set_post_preview, only: :preview
   protect_from_forgery with: :null_session, only: :clap
 
@@ -9,14 +9,14 @@ class PostsController < ApplicationController
 
   def show; end
 
-  def clap
+  def toggle_like
     respond_to do |format|
       format.html
       format.js do
-        if @post.update(clap_count: @post.clap_count + 1)
-          render json: {message: 'successful'}, status: :ok
+        if @post.update(clap_count: @post.clap_count + params[:value].to_i)
+          render json: { message: 'successful', clap_count: @post.clap_count }, status: :ok
         else
-          render json: {message: 'failed'}, status: :internal_server_error
+          render json: { message: 'failed' }, status: :internal_server_error
         end
       end
     end

@@ -3,6 +3,7 @@
 $famous-quote-text-color: #ffffff;
 
 header.masthead {
+  height: 500px;
   position: relative;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -21,6 +22,10 @@ header.masthead {
     background-color: $overlay-color;
     opacity: 0.75;
   }
+  .site-heading {
+    text-align: center;
+    color: #ffffff;
+  }
   .famous-quote {
     width: 700px;
     padding: 0 16px;
@@ -36,6 +41,100 @@ header.masthead {
       margin-top: 8px;
       text-align: right;
       font-style: italic;
+    }
+  }
+}
+
+.post-list {
+  .post-item {
+    margin-bottom: 32px;
+    .cover {
+      overflow: hidden;
+      padding: 0;
+      border-left: 15px solid white;
+      border-right: 15px solid white;
+
+      &:hover img {
+        transform: scale(1.2);
+      }
+      img {
+        box-sizing: border-box;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        transition: transform .5s ease;
+      }
+    }
+    .detail {
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: 20px;
+        font-weight: 900;
+      }
+      .info {
+        font-size: 14px;
+        color: $primary-text-light-color;
+        margin-top: 10px;
+        div {
+          display: inline-block;
+          &.author {
+            width: 100px;
+            span {
+              font-weight: bold;
+              &:hover {
+                color: $primary-text-color;
+              }
+            }
+          }
+        }
+      }
+      .description {
+        flex-grow: 1;
+        color: $primary-text-light-color;
+        margin-top: 10px;
+        font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
+        font-size: 15px;
+      }
+      .tags {
+        padding-top: 16px;
+        margin-top: 16px;
+        border-top: 1px solid $divider-color;
+        color: $primary-text-light-color;
+        font-size: 13px;
+        font-weight: 100;
+        i {
+          margin-right: 5px;
+        }
+        a {
+          color: $primary-text-light-color;
+          &:hover {
+            color: $primary-text-color;
+          }
+          &:after {
+            content: ',';
+          }
+          &:last-child:after {
+            content: none;
+          }
+        }
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  .post-list {
+    .post-item {
+      .detail {
+        .title {
+          margin-top: 16px;
+        }
+        .description {
+          margin-bottom: 16px;
+        }
+      }
     }
   }
 }

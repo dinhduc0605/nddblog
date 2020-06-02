@@ -13,17 +13,17 @@ function getCookie(cname) {
   return "";
 }
 
-let old_position = 0;
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 $(window).on('scroll', function () {
   if (this.scrollY === 0) {
-    $('#mainNav').removeClass('is-fixed is-visible');
+    $('#mainNav').removeClass('is-sticky');
   } else {
-    $('#mainNav').addClass('is-fixed');
-    if (this.scrollY > old_position) {
-      $('#mainNav').addClass('is-visible');
-    } else {
-      $('#mainNav').removeClass('is-visible');
-    }
-    old_position = this.scrollY
+    $('#mainNav').addClass('is-sticky');
   }
 })

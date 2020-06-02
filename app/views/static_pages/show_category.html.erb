@@ -1,6 +1,11 @@
 <% content_for :title, "#{@category.name}" %>
 <% content_for :description, "NDD Blog | #{@category.name}" %>
 
+<% content_for :css_tags do %>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+  <%= stylesheet_link_tag 'sidebar', media: 'all' %>
+<% end %>
+
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('<%= image_path @category.image %>')">
   <div class="overlay"></div>
@@ -18,21 +23,14 @@
 <!-- Main Content -->
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-sm-12 col-lg-9">
       <div class="post-list">
         <%= render @posts %>
       </div>
-      <% unless @load_done %>
-        <div class="load-more-wrapper">
-          <%= image_tag 'loading.gif', class: 'loading-gif' %>
-          <!-- Pager -->
-          <div class="clearfix">
-            <%= link_to "Older Posts &rarr;".html_safe, "/#{@category.slug}", class: 'btn btn-primary float-right load-more' %>
-          </div>
-        </div>
-      <% end %>
+      <%= paginate @posts %>
+    </div>
+    <div class="col-sm-12 col-lg-3">
+      <%= render 'shared/sidebar' %>
     </div>
   </div>
 </div>
-
-<hr>

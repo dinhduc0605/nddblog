@@ -33,11 +33,10 @@
     <%= stylesheet_link_tag 'bootstrap', media: 'all' %>
     <%= stylesheet_link_tag 'font-awesome', media: 'all' %>
     <%= stylesheet_link_tag 'common', media: 'all' %>
-    <%= stylesheet_link_tag 'posts', media: 'all' %>
     <%= yield :css_tags %>
   </head>
 
-  <body>
+  <body class="<%= yield(:body_class) %>">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RJ2GLQ" height="0" width="0" style="display:none;visibility:hidden"></iframe>

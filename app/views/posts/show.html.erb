@@ -1,5 +1,6 @@
 <% content_for :title, raw(@post.title) %>
 <% content_for :description, @post.description %>
+<% content_for :body_class, 'post-show' %>
 
 <% content_for :fb_meta_tags do %>
   <meta property="og:url" content="<%= request.original_url %>" />
@@ -16,40 +17,68 @@
 <% content_for :css_tags do %>
   <%= stylesheet_link_tag 'posts', media: 'all' %>
   <%= stylesheet_link_tag 'github-markdown', media: 'all' %>
-  <%= stylesheet_link_tag 'clap_button', media: 'all' %>
+  <%= stylesheet_link_tag 'sidebar', media: 'all' %>
 <% end %>
 
 <div id="fb-root"></div>
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('<%= @post.cover.url %>')">
-  <div class="overlay"></div>
+
+<!-- Post Content -->
+<div class="post-header">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-heading">
-          <h1><%= @post.title %>
-            <% if current_admin_user %>
-              <%= link_to 'Sửa', edit_admin_post_path(@post), class: 'btn btn-primary', target: '_blank' %>
-            <% end %>
-          </h1>
-          <span class="meta">Posted by <b style="font-weight: bold;"><%= @post.user.name %></b> <%= @post.created_at.to_date %></span>
-        </div>
+    <div>
+      <div class="title">
+        <%= @post.title %>
+      </div>
+      <div class="info">
+        <span class="author">by <%= @post.user.name %></span>
+        <span class="published_date"> <%= @post.created_at.to_date %></span>
       </div>
     </div>
   </div>
-</header>
-
-<!-- Post Content -->
-<article class="markdown-body">
-  <%= render 'shared/clap_button', view_mode: 'float-sidebar-pc' %>
-  <%= markdown(@post.content) %>
-  <div class="tags">
-    <% @post.tags.each do |tag| %>
-      <%= link_to tag.name, tag_url(tag), class: 'black' %>
-    <% end %>
+</div>
+<article class="container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-9 post-detail">
+      <%= image_tag @post.cover_url, class: 'cover'%>
+      <div class="markdown-body">
+        <%= markdown(@post.content) %>
+      </div>
+      <div class="tags m-top16 m-bottom16">
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag), class: 'btn' %>
+        <% end %>
+      </div>
+      <hr>
+      <div class="post-reaction">
+        <div class="share-area">
+          <div class="share-btn">
+            <i class="fas fa-share-alt"></i>
+            <span>SHARE</span>
+          </div>
+          <div class="social-btns">
+            <a href="javascript:window.open('https://facebook.com/sharer/sharer.php?u=' + location.href, '', 'menubar=no, width=500, height=300')">
+              <i class="fab fa-facebook-f grey-stroke"></i>
+            </a>
+            <a href="javascript:window.open('https://twitter.com/share?url=' + location.href, '', 'menubar=no, width=500, height=300')">
+              <i class="fab fa-twitter grey-stroke"></i>
+            </a>
+            <a href="javascript:window.open('mailto:?subject=' + location.href, '', 'menubar=no, width=500, height=300')">
+              <i class="far fa-envelope grey-stroke"></i>
+            </a>
+          </div>
+        </div>
+        <div class="like-area">
+          <span class="total-like"><%= @post.clap_count %></span>
+          <i class="fas fa-thumbs-up grey-stroke like-btn"></i>
+        </div>
+      </div>
+      <hr>
+      <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
+    </div>
+    <div class="col-sm-12 col-lg-3">
+      <%= render 'shared/sidebar' %>
+    </div>
   </div>
-  <%= render 'shared/clap_button', view_mode: 'float-sidebar-mobile' %>
-  <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
 </article>
 <hr>
 
@@ -65,6 +94,8 @@
 </script>
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 <% content_for :javascript do %>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.1/mo.min.js" type="text/javascript" charset="utf-8"></script>
-  <%= javascript_include_tag 'clap_button' %>
+  <%= javascript_include_tag 'post' %>
+  <script type="text/javascript" charset="utf-8">
+    $('.markdown-body p img[src*=nddblog]').closest('p').addClass('text-center');
+  </script>
 <% end %>

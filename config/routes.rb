@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/:category_id', to: 'static_pages#show_category'
   resources :posts do
     member do
-      patch 'clap'
+      patch 'toggle_like'
     end
     collection do
       post :preview
