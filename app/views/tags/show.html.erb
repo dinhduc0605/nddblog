@@ -1,5 +1,12 @@
 <% content_for :title, "##{@tag.name}" %>
 <% content_for :description, "Các bài viết theo tag ##{@tag.name}" %>
+<% content_for :body_class, 'tag-page' %>
+
+<% content_for :css_tags do %>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+  <%= stylesheet_link_tag 'sidebar', media: 'all' %>
+  <%= stylesheet_link_tag 'tag', media: 'all' %>
+<% end %>
 
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('<%= image_path 'label_tag.jpg' %>')">
@@ -22,13 +29,6 @@
       <div class="post-list">
         <%= render @posts %>
       </div>
-      <%= image_tag 'loading.gif', class: 'loading-gif' %>
-      <!-- Pager -->
-      <div class="clearfix">
-        <%= link_to "Older Posts &rarr;".html_safe, tag_url(@tag), class: 'btn btn-primary float-right load-more' %>
-      </div>
     </div>
   </div>
 </div>
-
-<hr>
