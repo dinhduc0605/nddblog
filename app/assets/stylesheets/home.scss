@@ -125,6 +125,10 @@ header.masthead {
 }
 
 @media all and (max-width: 767px) {
+  .famous-quote {
+    font-size: 30px;
+  }
+
   .post-list {
     .post-item {
       .detail {
@@ -136,11 +140,5 @@ header.masthead {
         }
       }
     }
-  }
-}
-
-@media all and (max-width: 768px) {
-  .famous-quote {
-    font-size: 30px;
   }
 }
