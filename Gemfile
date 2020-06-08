@@ -46,6 +46,7 @@ gem 'webpacker', '~> 4.x'
 gem 'ed25519', '~> 1.2'
 gem 'bcrypt_pbkdf', '~> 1'
 gem 'kaminari'
+gem 'foreman'
 
 # for railties app_generator_test
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -62,9 +63,6 @@ group :development, :test do
 end
 
 group :development do
-  # Use sqlite3 as the database for Active Record
-  gem 'mysql2', '< 0.5'
-  gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
