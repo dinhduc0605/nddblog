@@ -58,3 +58,6 @@ Metrics/AbcSize:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Bundler/OrderedGems
+  Enabled: false

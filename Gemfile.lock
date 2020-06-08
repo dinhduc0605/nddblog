@@ -161,6 +161,7 @@ GEM
     fog-xml (0.1.3)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
+    foreman (0.87.1)
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
@@ -222,7 +223,6 @@ GEM
     msgpack (1.3.3)
     multi_json (1.14.1)
     multipart-post (2.1.1)
-    mysql2 (0.4.10)
     natural_number_string (1.0.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -377,7 +377,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -435,6 +434,7 @@ DEPENDENCIES
   ed25519 (~> 1.2)
   figaro
   fog-aws
+  foreman
   friendly_id (~> 5.1.0)
   http_accept_language
   jbuilder (~> 2.5)
@@ -442,7 +442,6 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   listen (>= 3.0.5, < 3.2)
-  mysql2 (< 0.5)
   pg (~> 1.1.3)
   pry-byebug
   pry-rails
@@ -463,7 +462,6 @@ DEPENDENCIES
   somemoji
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
@@ -471,4 +469,4 @@ DEPENDENCIES
   webpacker (~> 4.x)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

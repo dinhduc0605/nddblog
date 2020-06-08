@@ -1,0 +1,36 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: bash -c "rm -f /myapp/tmp/pids/server.pid & bundle exec foreman start -f Procfile.dev"
+    environment:
+      - PGHOST=db
+      - PGUSER=dinhduc
+    volumes:
+      - .:/myapp:cached
+      - ~/.aws/credentials:/root/.aws/credentials
+      - ./node_modules:/myapp/node_modules:cached
+      - bundle_path:/bundle:cached
+    ports:
+      - 3000:3000
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+
+  db:
+    image: postgres:11.1
+    ports:
+      - 15432:5432
+    environment:
+      - POSTGRES_DB=blog_dev
+      - POSTGRES_USER=dinhduc
+      - POSTGRES_PASSWORD=dinhduc
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  bundle_path:
+    driver: local
+  postgres-data:
+    driver: local

@@ -1,0 +1,9 @@
+.circleci
+.idea
+.git
+/tmp/*
+/log/*
+/public/packs/*
+
+# Ignore node_modules
+/node_modules/*
