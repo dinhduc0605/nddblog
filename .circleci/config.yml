@@ -6,74 +6,113 @@ version: 2
 jobs:
   build:
     docker:
-    # specify the version you desire here
-    - image: circleci/ruby:2.5.3-node-browsers
-      environment:
-        PG_HOST: localhost
-        PG_USER: dinhduc
-        RAILS_ENV: test
-        RACK_ENV: test
+      # specify the version you desire here
+      - image: circleci/ruby:2.5.3-node
+        environment:
+          PG_HOST: localhost
+          PG_USER: dinhduc
+          RAILS_ENV: test
+          RACK_ENV: test
 
-    # Specify service dependencies here if necessary
-    # CircleCI maintains a library of pre-built images
-    # documented at https://circleci.com/docs/2.0/circleci-images/
-    - image: circleci/postgres:10.6
-      environment:
-        POSTGRES_USER: dinhduc
-        POSTGRES_DB: blog
+      - image: circleci/postgres:10.6
+        environment:
+          POSTGRES_USER: dinhduc
+          POSTGRES_DB: blog
 
-    working_directory: ~/repo
+    working_directory: ~/nddblog
 
     steps:
-    - checkout
+      - checkout
 
-    # Download and cache dependencies
-    - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "Gemfile.lock" }}
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
-    - run:
-        name: install dependencies
-        command: |
-          bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run:
+          name: Install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-    - save_cache:
-        paths:
-        - ./vendor/bundle
-        key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-    # Database setup
-    - run:
-        name: Set up DB
-        command: |
-          bundle exec rake db:create
-          bundle exec rake db:migrate
-        environment:
-          DATABASE_URL: "postgres://dinhduc@localhost:5432/blog"
+      # Database setup
+      - run:
+          name: Set up DB
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:migrate
+          environment:
+            DATABASE_URL: "postgres://dinhduc@localhost:5432/blog"
 
-    # Run rubocop
-    - run:
-        name: Run rubocop
-        command: sh/rubocop.sh
+      # Run rubocop
+      - run:
+          name: Run rubocop
+          command: sh/rubocop.sh
 
-    # run tests!
-    - run:
-        name: run tests
-        command: |
-          mkdir /tmp/test-results
-          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+      # Run Rspec
+      - run:
+          name: Rspec
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
 
-          bundle exec rspec --format progress \
-                          --format RspecJunitFormatter \
-                          --out /tmp/test-results/rspec.xml \
-                          --format progress \
-                          $TEST_FILES
+            bundle exec rspec --format progress \
+                              --format RspecJunitFormatter \
+                              --out /tmp/test-results/rspec.xml \
+                              --format progress \
+                              $TEST_FILES
 
-    # collect reports
-    - store_test_results:
-        path: /tmp/test-results
-    - store_artifacts:
-        path: /tmp/test-results
-        destination: test-results
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+  deploy:
+    docker:
+      - image: circleci/ruby:2.5.3
+
+    working_directory: ~/nddblog
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Deploy if tests pass and branch is Master
+          command: bundle exec cap production deploy
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
