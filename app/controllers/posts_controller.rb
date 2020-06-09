@@ -3,6 +3,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show toggle_like]
   before_action :set_post_preview, only: :preview
+  before_action :set_popular_posts, only: [:show]
+
   protect_from_forgery with: :null_session, only: :clap
 
   layout false, only: :preview
@@ -41,5 +43,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :category_id, :cover, :tag, :description, :published)
+  end
+
+  def set_popular_posts
+    @popular_posts = Post.published.order(clap_count: :desc).limit(3)
   end
 end

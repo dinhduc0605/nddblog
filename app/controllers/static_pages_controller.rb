@@ -3,6 +3,7 @@
 # Controller for client static page
 class StaticPagesController < ApplicationController
   before_action :set_category, only: :show_category
+  before_action :set_popular_posts, only: [:home, :show_category]
 
   def home
     @posts = Post.published.order(id: :desc).page(params[:page])
@@ -79,5 +80,9 @@ class StaticPagesController < ApplicationController
 
   def set_category
     @category = Category.friendly.find(params[:category_id])
+  end
+
+  def set_popular_posts
+    @popular_posts = Post.published.order(clap_count: :desc).limit(3)
   end
 end

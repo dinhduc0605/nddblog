@@ -7,6 +7,25 @@
       <% end %>
     <% end %>
   </div>
+  <div id="popular-posts-box">
+    <div class="label">Popular</div>
+    <div class="posts">
+      <% popular_posts.each do |popular_post| %>
+        <div class="post">
+          <div class="cover">
+            <a href="<%= post_url(popular_post) %>">
+              <%= image_tag popular_post.cover_url, class: 'w100' %>
+            </a>
+          </div>
+          <div class="title">
+            <a href="<%= post_url(popular_post) %>">
+              <%= popular_post.title %>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <div id="tags-box">
     <div class="label">Tags</div>
     <div class="tags">

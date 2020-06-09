@@ -25,7 +25,7 @@
       <%= paginate @posts %>
     </div>
     <div class="col-sm-12 col-lg-3">
-      <%= render 'shared/sidebar' %>
+      <%= render 'shared/sidebar', popular_posts: @popular_posts %>
     </div>
   </div>
 </div>
