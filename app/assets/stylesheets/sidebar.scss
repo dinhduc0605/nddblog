@@ -24,7 +24,41 @@
       border-bottom-left-radius: 0;
     }
   }
+
+  #popular-posts-box {
+    margin-top: 40px;
+    .label {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .post {
+      margin-bottom: 25px;
+      .cover {
+        overflow: hidden;
+        margin-bottom: 16px;
+        img {
+          width: 100%;
+          transition: transform .5s ease;
+        }
+        &:hover img {
+          transform: scale(1.2);
+        }
+      }
+      .title {
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+
   #tags-box {
+    margin-top: 40px;
+    .label {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
     .tags {
       a {
         background-color: #f0f0f0;
@@ -38,14 +72,6 @@
           background-color: #294cff;
         }
       }
-    }
-  }
-  #tags-box {
-    margin-top: 40px;
-    .label {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 20px;
     }
   }
 }

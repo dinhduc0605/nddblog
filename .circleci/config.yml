@@ -19,7 +19,7 @@ jobs:
           POSTGRES_USER: dinhduc
           POSTGRES_DB: blog
 
-    working_directory: ~/nddblog
+    working_directory: ~/repo
 
     steps:
       - checkout
@@ -79,7 +79,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.5.3
 
-    working_directory: ~/nddblog
+    working_directory: ~/repo
 
     steps:
       - checkout
