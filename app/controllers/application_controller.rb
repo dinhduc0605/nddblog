@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       redirect_to :back
     else
       render_error_page(500)
-      SlackNotifier.ping_errors(e, request.original_url)
+      Rollbar.error(e)
     end
   end
 

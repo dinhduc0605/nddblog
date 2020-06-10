@@ -47,6 +47,7 @@ gem 'ed25519', '~> 1.2'
 gem 'bcrypt_pbkdf', '~> 1'
 gem 'kaminari'
 gem 'foreman'
+gem 'rollbar'
 
 # for railties app_generator_test
 gem 'bootsnap', '>= 1.1.0', require: false
