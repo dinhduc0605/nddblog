@@ -11,6 +11,11 @@ class PostsController < ApplicationController
 
   def show; end
 
+  def search
+    @query = params[:q]
+    @posts = Post.published.where('title LIKE ?', "%#{@query}%")
+  end
+
   def toggle_like
     respond_to do |format|
       format.html

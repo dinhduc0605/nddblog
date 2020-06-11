@@ -1,6 +1,6 @@
-<% content_for :title, "##{@tag.name}" %>
-<% content_for :description, "Các bài viết theo tag ##{@tag.name}" %>
-<% content_for :body_class, 'tag-page' %>
+<% content_for :title, "Search for ##{@query}" %>
+<% content_for :description, "Tìm kiếm các bài viết theo từ khoá ##{@query}" %>
+<% content_for :body_class, 'search-page' %>
 
 <% content_for :css_tags do %>
   <%= stylesheet_link_tag 'home', media: 'all' %>
@@ -8,13 +8,13 @@
 <% end %>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('<%= image_path 'label_tag.jpg' %>')">
+<header class="masthead" style="background-image: url('<%= image_path 'search.png' %>')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h2><%= "##{@tag.name}" %></h2>
+          <h2><%= " # #{@query}" %></h2>
         </div>
       </div>
     </div>

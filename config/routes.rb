@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     collection do
       post :preview
+      get :search
     end
   end
   resources :tags

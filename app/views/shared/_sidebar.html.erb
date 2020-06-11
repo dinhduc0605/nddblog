@@ -1,8 +1,8 @@
 <aside id="sidebar">
   <div id="search-box">
-    <%= form_tag '#' do %>
-      <%= text_field_tag :query, nil, { placeholder: 'Tìm kiếm...' } %>
-      <%= button_tag :submit, class: 'btn' do %>
+    <%= form_tag search_posts_path, method: :get do %>
+      <%= text_field_tag :q, nil, { placeholder: 'Tìm kiếm...' } %>
+      <%= button_tag :search, class: 'btn', type: :button do %>
         <i class="fas fa-search"></i>
       <% end %>
     <% end %>
