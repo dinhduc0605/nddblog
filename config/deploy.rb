@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 # Change these
-server '35.194.110.144', port: 22, roles: %i[web app db], primary: true
+server '45.77.98.158', port: 22, roles: %i[web app db], primary: true
 
-set :repo_url,        'git@github.com:dinhduc0605/ducnojinsei-blog.git'
+set :repo_url,        'git@github.com:dinhduc0605/nddblog.git'
 set :application,     'nddblog'
-set :user,            'dinhduc0605'
+set :user,            'root'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
