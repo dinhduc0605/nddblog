@@ -24,7 +24,6 @@ set :ssh_options,     forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/i
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true # Change to false when not using ActiveRecord
-set :yarn_flags, '--silent --no-progress'
 
 ## Defaults:
 # set :scm,           :git
