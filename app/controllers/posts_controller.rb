@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_admin_user
     @post.created_at = Time.now
-    @post.id = 99999
+    @post.id = 99_999
   end
 
   def post_params

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def select_layout
     if is_a?(Devise::SessionsController)
       false
-    elsif self.class.parent == Admin
+    elsif self.class.module_parent == Admin
       'admin'
     else
       'application'
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def raise_not_found
-    raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
+    raise ActionController::RoutingError, "No route matches #{params[:unmatched_route]}"
   end
 
   def render_error_page(error_code)
@@ -38,6 +38,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from StandardError do |e|
     raise e if Rails.env.development?
+
     if e.is_a?(ActionController::RoutingError) || e.is_a?(ActiveRecord::RecordNotFound)
       render_error_page(404)
     elsif e.is_a?(ActionController::InvalidAuthenticityToken)
@@ -59,6 +60,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_page
-    self.class.parent == Admin
+    self.class.module_parent == Admin
   end
 end

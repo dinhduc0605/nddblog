@@ -13,11 +13,12 @@ jobs:
           PG_USER: dinhduc
           RAILS_ENV: test
           RACK_ENV: test
+          DATABASE_URL: "postgres://dinhduc@localhost:5432/blog_test"
 
       - image: circleci/postgres:10.6
         environment:
+          POSTGRES_DB: blog_test
           POSTGRES_USER: dinhduc
-          POSTGRES_DB: blog
 
     working_directory: ~/repo
 
@@ -47,8 +48,6 @@ jobs:
           command: |
             bundle exec rake db:create
             bundle exec rake db:migrate
-          environment:
-            DATABASE_URL: "postgres://dinhduc@localhost:5432/blog"
 
       # Run rubocop
       - run:

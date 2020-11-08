@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PwaController < ApplicationController
   skip_forgery_protection
 
