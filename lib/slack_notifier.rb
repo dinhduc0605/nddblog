@@ -5,11 +5,11 @@ module SlackNotifier
     client = Slack::Web::Client.new
     attachments = [
       {
-        "title": "Error message",
-        "text": (location.present? ? "URL: #{location}\n" : '') + e&.message,
-        "color": "#FF0000",
-        "footer": "Bellow is full traces",
-        "ts": Time.current.to_i
+        "title":  'Error message',
+        "text":   (location.present? ? "URL: #{location}\n" : '') + e&.message,
+        "color":  '#FF0000',
+        "footer": 'Bellow is full traces',
+        "ts":     Time.current.to_i
       }
     ]
     client.chat_postMessage(channel: ENV['ERROR_CHANNEL_SLACK'], as_user: true, attachments: attachments.to_json)

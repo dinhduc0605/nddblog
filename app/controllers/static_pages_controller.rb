@@ -3,7 +3,7 @@
 # Controller for client static page
 class StaticPagesController < ApplicationController
   before_action :set_category, only: :show_category
-  before_action :set_popular_posts, only: [:home, :show_category]
+  before_action :set_popular_posts, only: %i[home show_category]
 
   def home
     @posts = Post.published.order(id: :desc).page(params[:page])

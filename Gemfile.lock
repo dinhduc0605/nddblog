@@ -431,7 +431,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara (~> 2.13)
   carrierwave (~> 1.0)
-  checkstyle_filter-git (~> 1.1.0)
+  checkstyle_filter-git
   coderay
   coffee-rails (~> 5.0.0)
   devise (~> 4.7.1)

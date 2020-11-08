@@ -79,7 +79,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
   # Rubocop check
-  gem 'checkstyle_filter-git', '~> 1.1.0'
+  gem 'checkstyle_filter-git'
   gem 'rubocop', '~> 0.61.1', require: false
   gem 'rubocop-checkstyle_formatter', '~> 0.2.0'
   gem 'rubocop-select', '~> 1.0.0'
