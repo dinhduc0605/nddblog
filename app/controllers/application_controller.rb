@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def select_layout
     if is_a?(Devise::SessionsController)
       false
-    elsif self.class.parent == Admin
+    elsif self.class.module_parent == Admin
       'admin'
     else
       'application'
@@ -59,6 +59,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_page
-    self.class.parent == Admin
+    self.class.module_parent == Admin
   end
 end
