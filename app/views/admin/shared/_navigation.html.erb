@@ -8,12 +8,6 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li>
-        <%= link_to admin_dashboard_url do %>
-          <i class="now-ui-icons design_app"></i>
-          <p><%= t('.dashboard') %></p>
-        <% end %>
-      </li>
-      <li>
         <%= link_to admin_users_url do %>
           <i class="now-ui-icons users_single-02"></i>
           <p><%= t('.user') %></p>
@@ -29,12 +23,6 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
         <%= link_to admin_posts_url do %>
           <i class="now-ui-icons files_single-copy-04"></i>
           <p><%= t('.post') %></p>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_comments_url do %>
-          <i class="now-ui-icons ui-2_chat-round"></i>
-          <p><%= t('.comment') %></p>
         <% end %>
       </li>
       <li>
