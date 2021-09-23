@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :categories
     resources :users
-    resources :tags, only: [:index]
+    resources :tags, only: [:show]
     resources :image_files, only: [:create, :destroy]
   end
 
