@@ -21,6 +21,4 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
     region:                ENV['AWS_REGION']
   }
-  config.fog_public     = false 
-  config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
 end
