@@ -7,9 +7,14 @@
     <hr>
     <%= markdown(@post.content) %>
   </div>
-</div>
-<div class="tags">
-  <% @post.tags.each do |tag| %>
-    <%= link_to tag.name, admin_tag_url(tag), class: 'tag' %>
-  <% end %>
+  <div class="tags text-right col-md-11">
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name, admin_tag_url(tag), class: 'tag' %>
+    <% end %>
+  </div>
+  <div class="text-right col-md-11">
+    <%= link_to edit_admin_post_url(@post), class: 'btn btn-primary btn-icon btn-round' do %>
+      <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+  </div>
 </div>
