@@ -16,5 +16,8 @@
     <%= link_to edit_admin_post_url(@post), class: 'btn btn-primary btn-icon btn-round' do %>
       <i class="fa fa-pencil-square-o"></i>
     <% end %>
+    <%= link_to post_url(@post), target: 'blank', class: 'btn btn-success btn-icon btn-round' do %>
+      <i class="fa fa-share-square-o"></i>
+    <% end %>
   </div>
 </div>

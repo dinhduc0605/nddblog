@@ -36,7 +36,11 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.published.friendly.find params[:id]
+    @post = if admin_user_signed_in?
+              Post.friendly.find(params[:id])
+            else
+              Post.published.friendly.find(params[:id])
+            end
   end
 
   def set_post_preview
