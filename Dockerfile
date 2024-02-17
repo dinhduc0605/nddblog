@@ -1,9 +1,9 @@
-FROM ruby:2.5.3-slim
+FROM ruby:2.7.8-slim
 
 RUN apt-get update -qq \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends build-essential libpq-dev libxml2-dev libxslt1-dev curl git vim less \
-    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update -qq \
@@ -21,5 +21,8 @@ ADD Gemfile* $APP_HOME/
 ENV BUNDLER_VERSION 1.17.2
 ENV BUNDLE_PATH /bundle/vendor
 RUN gem install bundler -v $BUNDLER_VERSION && bundle install --path $BUNDLE_PATH
-ADD . /myapp
+
+ADD package.json $APP_HOME/
+ADD yarn.lock $APP_HOME/
 RUN yarn install
+ADD . $APP_HOME/

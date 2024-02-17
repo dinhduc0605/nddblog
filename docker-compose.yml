@@ -7,10 +7,9 @@ services:
       - PGHOST=db
       - PGUSER=dinhduc
     volumes:
-      - .:/myapp:cached
-      - ~/.aws/credentials:/root/.aws/credentials
-      - ./node_modules:/myapp/node_modules:cached
-      - bundle_path:/bundle:cached
+      - .:/myapp
+      - /myapp/node_modules
+      - bundle_path:/bundle
     ports:
       - 3000:3000
     tty: true
@@ -21,7 +20,7 @@ services:
   db:
     image: postgres:11.1
     ports:
-      - 15432:5432
+      - 5432:5432
     environment:
       - POSTGRES_DB=blog_dev
       - POSTGRES_USER=dinhduc
