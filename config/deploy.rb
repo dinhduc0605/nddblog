@@ -29,8 +29,19 @@ set :ssh_options,     forward_agent: true, user: fetch(:user), keys: %w[/Users/d
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :linked_dirs, %w[tmp/cache]
+# set :linked_dirs, %w[tmp/cache]
 
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
+
+
+namespace :git do
+  task :copy_config do
+    on roles(:app) do
+      execute "cp #{shared_path}/config/application.yml #{release_path}/config/"
+    end
+  end
+
+  after :create_release, :copy_config
+end

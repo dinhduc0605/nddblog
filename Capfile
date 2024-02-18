@@ -4,7 +4,6 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 
-require 'capistrano/figaro_yml'
 require 'capistrano/decompose'
 
 require 'capistrano/scm/git'
