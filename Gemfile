@@ -41,13 +41,14 @@ gem 'ransack', '~> 2.3'
 gem 'redcarpet'
 gem 'somemoji'
 gem 'slack-ruby-client'
-gem 'webpacker', '~> 4.x'
+gem 'webpacker', '~> 5.4.4'
 gem 'ed25519', '~> 1.2'
 gem 'bcrypt_pbkdf', '~> 1'
 gem 'kaminari'
 gem 'foreman'
 gem 'rollbar'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+gem 'concurrent-ruby', '1.3.4'
 
 # for railties app_generator_test
 gem 'bootsnap', '>= 1.1.0', require: false

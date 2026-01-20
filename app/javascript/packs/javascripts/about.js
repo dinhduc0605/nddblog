@@ -1,6 +1,6 @@
 import Vue from 'vue/dist/vue.js'
-import SkillProgress from '../components/skill_progress'
-import CustomerTimeline from '../components/timeline'
+import SkillProgress from '../components/skill_progress.vue'
+import CustomerTimeline from '../components/timeline.vue'
 
 import {Progress, Timeline, TimelineItem, Card} from 'element-ui';
 Vue.use(Progress);

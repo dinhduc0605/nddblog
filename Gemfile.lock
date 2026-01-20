@@ -122,7 +122,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.3.6)
+    concurrent-ruby (1.3.4)
     crass (1.0.6)
     date (3.5.1)
     devise (4.7.3)
@@ -382,6 +382,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_range (3.1.0)
     slack-ruby-client (3.1.0)
       faraday (>= 2.0.1)
       faraday-mashify
@@ -436,10 +437,11 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (4.3.0)
-      activesupport (>= 4.2)
+    webpacker (5.4.4)
+      activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket (1.2.11)
     websocket-driver (0.8.0)
       base64
@@ -469,6 +471,7 @@ DEPENDENCIES
   checkstyle_filter-git
   coderay
   coffee-rails (~> 5.0.0)
+  concurrent-ruby (= 1.3.4)
   devise (~> 4.7.1)
   ed25519 (~> 1.2)
   figaro
@@ -507,7 +510,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  webpacker (~> 4.x)
+  webpacker (~> 5.4.4)
 
 BUNDLED WITH
    2.4.22
