@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="vi-VN">
 <head>
-  <title>Sign In</title>
+  <title>Sign In - Ducnojinsei Blog</title>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="<%= image_path('favicon.ico') %>" rel=icon>
 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'admin/now_ui_dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'admin/common', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -18,47 +18,78 @@
     <%= render 'shared/flash', flash: flash %>
     <div class="background-image" style="background-image:url(<%= image_path('login_bg.jpg') %>)"></div>
     <div class="container">
-      <div class="col-md-4 ml-auto mr-auto">
-        <div class="card-plain card-login">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="card-header text-center no-border">
-            <%= image_tag 'logo.png', style: 'margin: 80px 0px 25px 0px; height: 130px;', class: 'rounded-circle img-raised' %>
-          </div>
-          <div class="card-body">
-            <div class="input-group form-group no-border input-lg login-input-group">
-            <span class="input-group-addon login-text">
-              <i class="now-ui-icons ui-1_email-85"></i>
-            </span>
-              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
-            </div>
-            <div class="input-group form-group no-border input-lg login-input-group">
-            <span class="input-group-addon login-text">
-              <i class="now-ui-icons text_caps-small"></i>
-            </span>
-              <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Password' %>
-            </div>
+      <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-5 col-lg-4 col-xl-4">
+          <div class="card-plain card-login modern-login-card">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form', novalidate: true }) do |f| %>
+              <div class="card-header text-center no-border">
+                <div class="brand-section">
+                  <%= image_tag 'logo.png', class: 'brand-logo img-raised', alt: 'Ducnojinsei Blog Logo' %>
+                  <h1 class="brand-title">Chào mừng trở lại</h1>
+                  <p class="brand-subtitle">Đăng nhập để quản lý blog của bạn</p>
+                </div>
+              </div>
+              
+              <div class="card-body">
+                <div class="form-group modern-input-group">
+                  <label for="user_email" class="form-label">Email</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">
+                      <i class="now-ui-icons ui-1_email-85"></i>
+                    </span>
+                    <%= f.email_field :email, 
+                        autofocus: true, 
+                        class: 'form-control modern-input', 
+                        placeholder: 'nhập@email.com',
+                        id: 'user_email',
+                        required: true %>
+                  </div>
+                </div>
 
-            <% if devise_mapping.rememberable? -%>
-              <div class="form-check" style="text-align: left">
-                <label class="form-check-label">
-                  <%= f.check_box :remember_me, class: "form-check-input" %>
-                  Remember me
-                  <span class="form-check-sign">
-              </span>
-                </label>
+                <div class="form-group modern-input-group">
+                  <label for="user_password" class="form-label">Mật khẩu</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon">
+                      <i class="now-ui-icons text_caps-small"></i>
+                    </span>
+                    <%= f.password_field :password, 
+                        autocomplete: 'current-password', 
+                        class: 'form-control modern-input', 
+                        placeholder: '••••••••',
+                        id: 'user_password',
+                        required: true %>
+                  </div>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="form-check modern-checkbox">
+                    <label class="form-check-label">
+                      <%= f.check_box :remember_me, class: "form-check-input" %>
+                      <span class="checkmark"></span>
+                      Ghi nhớ đăng nhập
+                    </label>
+                  </div>
+                <% end %>
+              </div>
+              
+              <div class="card-footer">
+                <%= f.submit 'Đăng nhập', 
+                    class: 'btn btn-primary btn-modern btn-lg full-width',
+                    data: { disable_with: 'Đang đăng nhập...' } %>
+              </div>
+              
+              <div class="card-footer-links">
+                <%= render 'admin/shared/links' %>
               </div>
             <% end %>
           </div>
-          <div class="card-footer">
-            <%= f.submit 'Get Started', class: 'btn btn-primary btn-round btn-lg full-width'%>
-          </div>
-        <% end %>
         </div>
       </div>
     </div>
   </div>
+  
   <%= javascript_include_tag 'jquery3', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'bootstrap.bundle', 'data-turbolins-track': 'reload' %>
+  <%= javascript_include_tag 'bootstrap.bundle', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'admin/now_ui_dashboard', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>
