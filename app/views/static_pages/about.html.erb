@@ -7,10 +7,6 @@
   <%= stylesheet_link_tag 'about', media: 'all' %>
 <% end %>
 
-<% content_for :javascript do %>
-  <%= javascript_pack_tag 'javascripts/about' %>
-<% end %>
-
 <!-- Page Header -->
 <header class="masthead about-header" style="background-image: url('<%= image_path 'about.jpg' %>')">
   <div class="overlay"></div>
@@ -25,7 +21,7 @@
 </header>
 
 <!-- Main Content -->
-<div class="container" id="about-page">
+<div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <div class="right-col-block blocks">
@@ -146,7 +142,12 @@
 
               <div class="col-md-12">
                 <% @skills.each do |skill| %>
-                  <skill-progress skill_name="<%= skill[:name] %>" :percentage="<%= skill[:percentage] %>" color="<%= skill[:color] %>"></skill-progress>
+                  <div class="skill-item">
+                    <div class="skill-label"><%= skill[:name] %></div>
+                    <div class="progress-bar-container">
+                      <div class="progress-bar-fill" style="width: <%= skill[:percentage] %>%; background-color: <%= skill[:color] %>;"><%= skill[:percentage] %>%</div>
+                    </div>
+                  </div>
                 <% end %>
               </div>
               <!--.row -->
@@ -166,7 +167,7 @@
             <!--.row-->
             <div class="row">
               <div class="col-md-12">
-                <customer-timeline :items="<%= @job_timelines.to_json %>"></customer-timeline>
+                <%= render 'timeline', items: @job_timelines %>
               </div>
             </div>
             <!--.row-->
@@ -186,7 +187,7 @@
             <!--.row-->
             <div class="row">
               <div class="col-md-12">
-                <customer-timeline :items="<%= @education_timelines.to_json %>"></customer-timeline>
+                <%= render 'timeline', items: @education_timelines %>
               </div>
             </div>
             <!--.row-->
