@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0'
+gem 'rails', '~> 6.0.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
@@ -36,8 +36,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'http_accept_language'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'pg', '~> 1.1.3'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'pg'
+gem 'ransack', '~> 2.3'
 gem 'redcarpet'
 gem 'somemoji'
 gem 'slack-ruby-client'
