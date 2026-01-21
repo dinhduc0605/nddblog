@@ -16,3 +16,107 @@
     margin-top: 5px;
   }
 }
+
+// Upload dropzone styling
+.upload-dropzone {
+  position: relative;
+  border: 2px dashed #dee2e6;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+
+  &:hover {
+    border-color: #667eea;
+    background: #f5f7ff;
+
+    .dropzone-icon {
+      transform: scale(1.1);
+      color: #667eea;
+    }
+  }
+
+  &.dragover {
+    border-color: #667eea;
+    background: #eef1ff;
+    border-style: solid;
+
+    .dropzone-icon {
+      transform: scale(1.2);
+      color: #667eea;
+    }
+  }
+
+  &.has-files {
+    border-color: #28a745;
+    background: #f0fff4;
+  }
+
+  input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .dropzone-content {
+    pointer-events: none;
+  }
+
+  .dropzone-icon {
+    font-size: 48px;
+    color: #adb5bd;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .dropzone-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #495057;
+    margin: 0 0 4px 0;
+  }
+
+  .dropzone-subtext {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 0;
+  }
+
+  .dropzone-selected {
+    pointer-events: none;
+
+    i {
+      font-size: 48px;
+      color: #28a745;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .selected-count {
+      font-size: 16px;
+      font-weight: 600;
+      color: #28a745;
+    }
+  }
+}
+
+.upload-actions {
+  margin-top: 16px;
+  text-align: center;
+
+  .upload-submit-btn {
+    min-width: 160px;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

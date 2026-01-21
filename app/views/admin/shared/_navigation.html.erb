@@ -1,36 +1,32 @@
-<div class="sidebar" data-color="orange">
-  <!--
-Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
--->
+<aside class="admin-sidebar">
   <div class="logo">
-    <%= link_to t('title'), admin_root_path, class: 'simple-text logo-normal' %>
+    <%= link_to admin_root_path do %>
+      <i class="fa fa-layer-group"></i>
+      <span><%= t('title') %></span>
+    <% end %>
   </div>
-  <div class="sidebar-wrapper">
-    <ul class="nav">
-      <li>
-        <%= link_to admin_users_url do %>
-          <i class="now-ui-icons users_single-02"></i>
-          <p><%= t('.user') %></p>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_categories_url do %>
-          <i class="now-ui-icons design_bullet-list-67"></i>
-          <p><%= t('.category') %></p>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_posts_url do %>
-          <i class="now-ui-icons files_single-copy-04"></i>
-          <p><%= t('.post') %></p>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_admin_user_session_url, method: :delete do %>
-          <i class="now-ui-icons media-1_button-power"></i>
-          <p><%= t('.logout') %></p>
-        <% end %>
-      </li>
-    </ul>
+
+  <nav class="nav-menu">
+    <%= link_to admin_users_path, class: ('active' if request.path.start_with?(admin_users_path)) do %>
+      <i class="fa fa-users"></i>
+      <span><%= t('.user') %></span>
+    <% end %>
+
+    <%= link_to admin_categories_path, class: ('active' if request.path.start_with?(admin_categories_path)) do %>
+      <i class="fa fa-tags"></i>
+      <span><%= t('.category') %></span>
+    <% end %>
+
+    <%= link_to admin_posts_path, class: ('active' if request.path.start_with?(admin_posts_path)) do %>
+      <i class="fa fa-file-text-o"></i>
+      <span><%= t('.post') %></span>
+    <% end %>
+  </nav>
+
+  <div class="user-profile">
+    <%= link_to destroy_admin_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out-alt"></i>
+      <span><%= t('.logout') %></span>
+    <% end %>
   </div>
-</div>
+</aside>

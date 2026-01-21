@@ -1,13 +1,13 @@
 <tr class="user-<%= user.id %> user-row">
   <td class="text-center"><%= user_counter + 1 %></td>
-  <td><%= image_tag avatar_url(user), class: 'rounded-circle list-avatar' %></td>
-  <td><%= user.name %></td>
-  <td><%= user.email %></td>
+  <td><%= image_tag avatar_url(user), class: 'rounded-circle list-avatar', style: 'width: 40px; height: 40px; object-fit: cover;' %></td>
+  <td><span class="font-bold"><%= user.name %></span></td>
+  <td class="text-muted"><%= user.email %></td>
   <td class="text-center">
-    <%= link_to edit_admin_user_url(user), class: 'btn btn-primary' do %>
+    <%= link_to edit_admin_user_url(user), class: 'btn-secondary' do %>
         <i class="fa fa-pencil-square-o"></i>
       <% end %>
-    <%= link_to admin_user_url(user), method: :delete, class: 'btn btn-danger', 'data-confirm': t('.data_confirm') do %>
+    <%= link_to admin_user_url(user), method: :delete, class: 'btn-danger', 'data-confirm': t('.data_confirm') do %>
       <i class="fa fa-trash-o"></i>
     <% end %>
   </td>

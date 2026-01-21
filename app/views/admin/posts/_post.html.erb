@@ -1,14 +1,26 @@
 <tr class="post-<%= post.id %> post-row">
   <td class="text-center"><%= post_counter + 1 %></td>
-  <td><%= image_tag image_url(post.cover), class: 'rounded list-avatar' %></td>
-  <td><%= link_to post.title, admin_post_url(post) %></td>
-  <td><%= post.category.name %></td>
-  <td><%= post.published? ? 'Published' : 'Draft' %></td>
+  <td><%= image_tag image_url(post.cover), class: 'rounded list-avatar', style: 'width: 50px; height: 50px; object-fit: cover;' %></td>
+  <td>
+    <%= link_to admin_post_url(post), class: "font-bold text-primary" do %>
+      <%= post.title %>
+    <% end %>
+  </td>
+  <td>
+    <span class="text-sm text-muted"><%= post.category.name %></span>
+  </td>
+  <td>
+    <% if post.published? %>
+      <span style="color: var(--accent-500); font-weight: 600; font-size: 0.8rem;">Published</span>
+    <% else %>
+      <span style="color: var(--neutral-500); font-weight: 600; font-size: 0.8rem;">Draft</span>
+    <% end %>
+  </td>
   <td class="text-center">
-    <%= link_to edit_admin_post_url(post), class: 'btn btn-primary btn-icon btn-round' do %>
+    <%= link_to edit_admin_post_url(post), class: 'btn-secondary' do %>
       <i class="fa fa-pencil-square-o"></i>
     <% end %>
-    <%= link_to admin_post_url(post), method: :delete, class: 'btn btn-danger btn-icon btn-round', 'data-confirm': t('.data_confirm') do %>
+    <%= link_to admin_post_url(post), method: :delete, class: 'btn-danger', 'data-confirm': t('.data_confirm') do %>
       <i class="fa fa-trash-o"></i>
     <% end %>
   </td>

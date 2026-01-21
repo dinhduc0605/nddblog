@@ -1,15 +1,14 @@
-<div id="image-file-<%= image_file.id %>">
-  <div class="row">
-    <div class="col-md-2" id="image">
-      <%= image_tag image_file.image_url %>
-    </div>
-    <div class="col-md-8" id="url">
-      <%= text_field_tag nil, image_file.image_url, class: 'form-control' %>
-    </div>
-    <div class="col-md-2" id="copy-url">
-      <%= button_tag type: 'button', class: 'btn btn-info btn-icon btn-round btn-simple' do %>
-        <i class="now-ui-icons files_single-copy-04"></i>
-      <% end %>
-    </div>
+<div id="image-file-<%= image_file.id %>" class="image-file-card">
+  <div class="image-preview">
+    <%= image_tag image_file.image_url %>
+  </div>
+  <div class="image-details" id="url">
+    <%= text_field_tag nil, image_file.image_url, readonly: true %>
+  </div>
+  <div class="image-actions">
+    <button type="button" class="btn-copy-url" title="Copy URL">
+      <i class="fa fa-copy"></i>
+    </button>
+    <div class="copied-feedback">Copied!</div>
   </div>
 </div>

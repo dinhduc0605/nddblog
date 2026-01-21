@@ -6,56 +6,98 @@
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js" data-turbolinks-track="reload"></script>
   <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js" data-turbolinks-track="reload"></script>
 <% end %>
+
 <%= form_for [:admin, @post], multipart: true do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <div class="row justify-content-center">
-    <div class="col-md-8 margin-20">
-      <div class="rounded" id="background-preview" style="background-image: url(<%= asset_path image_url(@post.cover) %>);">
-        <%= f.file_field :cover %>
-      </div>
-      <div class="form-group" style="margin-top: 20px">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
+  
+  <div class="card">
+    <div class="card-body" style="position: relative;">
+      <%= render 'preview_modal' %>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <!-- Cover Image -->
+          <div class="form-group mb-4 text-center">
+            <label class="d-block mb-2 font-bold">Cover Image</label>
+            <div class="rounded mx-auto shadow-sm" id="background-preview" style="background-image: url(<%= asset_path image_url(@post.cover) %>);">
+              <%= f.file_field :cover, id: "cover-input" %>
+              <div class="cover-placeholder">
+                <i class="fa fa-cloud-upload fa-2x mb-2"></i>
+                <p>Click to upload cover image</p>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-group" style="margin-top: 20px">
-        <%= f.label :description %>
-        <%= f.text_field :description, class: 'form-control' %>
-      </div>
+          <!-- Basic Info -->
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group mb-4">
+                <%= f.label :title, class: "form-label font-bold" %>
+                <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group mb-4">
+                <%= f.label :category_id, class: "form-label font-bold" %>
+                <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @post.category_id),
+                             {include_blank: 'Select Category'}, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <%= f.label :content %>
-        <%= f.text_area :content, class: 'form-control', rows: 10 %>
-      </div>
+          <div class="form-group mb-4">
+            <%= f.label :description, class: "form-label font-bold" %>
+            <%= f.text_field :description, class: 'form-control', placeholder: "Short description for SEO and previews" %>
+          </div>
 
-      <div class="form-group">
-        <%= f.label :category_id %>
-        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @post.category_id),
-                     {include_blank: 'Select from below'}, class: 'form-control' %>
-      </div>
+          <!-- Editor -->
+          <div class="form-group mb-4">
+            <%= f.label :content, class: "form-label font-bold" %>
+            <%= f.text_area :content, class: 'form-control', rows: 15 %>
+          </div>
 
-      <div class="form-group">
-        <%= label_tag :tag %>
-        <ul id="form-tags">
-          <% @post.tags.each do |tag| %>
-            <li><%= tag.name %></li>
-          <% end %>
-        </ul>
-      </div>
+          <!-- Metadata -->
+          <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+              <div class="form-group">
+                <%= label_tag :tag, "Tags", class: "form-label font-bold" %>
+                <div class="tags-input-container">
+                  <div id="tags-list">
+                    <% @post.tags.each do |tag| %>
+                      <span class="tag-item" data-tag="<%= tag.name %>">
+                        <%= tag.name %>
+                        <button type="button" class="tag-remove">&times;</button>
+                        <input type="hidden" name="post[tag_list][]" value="<%= tag.name %>">
+                      </span>
+                    <% end %>
+                  </div>
+                  <input type="text" id="tag-input" class="tag-input-field" placeholder="Type a tag and press Tab or Enter">
+                </div>
+                <small class="text-muted">Press Tab or Enter to add a tag</small>
+              </div>
+            </div>
+            <div class="col-md-4 text-right">
+              <div class="form-check d-inline-block mr-4">
+                <label class="form-check-label user-select-none" style="cursor: pointer;">
+                  <%= f.check_box :published, class: 'form-check-input mr-2' %>
+                  <span class="font-bold">Published</span>
+                </label>
+              </div>
+            </div>
+          </div>
 
-      <div>
-        <%= f.label :published %>
-        <%= f.check_box :published, class: 'form-control' %>
+          <!-- Actions -->
+          <div class="form-actions d-flex justify-content-end gap-3" style="gap: 1rem;">
+             <button type="button" class="btn-secondary" id="preview-modal-toggle" data-no-modal-auto="true">
+              <i class="fa fa-eye"></i> Preview
+            </button>
+            <%= f.submit t('submit'), class: 'btn-primary' %>
+          </div>
+        </div>
       </div>
-
-      <%= f.submit t('submit'), class: 'btn btn-primary btn-round full-width' %>
-      <button type="button" class="btn btn-primary btn-icon" id="preview-modal-toggle">
-        <i class="fa fa-eye"></i>
-      </button>
     </div>
   </div>
-  <%= render 'preview_modal' %>
 <% end %>
+
 <% content_for :javascript do %>
   <script type="text/javascript" charset="utf-8">
     new SimpleMDE({
@@ -71,25 +113,110 @@
         codeSyntaxHighlighting: true,
       },
     });
-    $('#preview-modal-toggle').click(function () {
-      let data = $('form').serializeArray().reduce(function(obj, item) {
-        if (item.name !== '_method') {
-          obj[item.name] = item.value;
-        }
-        return obj;
-      }, {});
-      $.ajax({
-        url: '/posts/preview',
-        method: 'POST',
-        data: data,
-        dataType: 'html',
-        success: function (data) {
-          $previewModalBody = $('#preview-modal-body');
-          $previewModalBody.empty();
-          $previewModalBody.append(data);
-          $('#preview-modal').modal('show')
+    // Global variables to store original form state
+    var originalFormAction = '';
+    var originalFormTarget = '';
+    var originalFormMethod = '';
+    var originalRailsMethod = '';
+
+    $(document).on('turbolinks:load', function() {
+      const $form = $('form.edit_post, form.new_post');
+      if ($form.length) {
+        originalFormAction = $form.attr('action');
+        originalFormTarget = $form.attr('target') || '';
+        originalFormMethod = $form.attr('method');
+        originalRailsMethod = $form.find('input[name="_method"]').val() || '';
+      }
+    });
+
+    // Preview Button Logic
+    $(document).on('click', '#preview-modal-toggle', function (e) {
+      e.preventDefault();
+      const $form = $(this).closest('form');
+
+      // Configure form for preview
+      $form.attr('action', '/posts/preview');
+      $form.attr('target', 'preview-iframe');
+      $form.attr('method', 'POST');
+      // Remove Rails _method override so it's a true POST request
+      $form.find('input[name="_method"]').prop('disabled', true);
+
+      // Show Inline Modal (No Bootstrap JS needed)
+      $('#preview-modal').addClass('show');
+
+      // Submit to iframe
+      $form.submit();
+
+      // Re-enable _method field after submit
+      $form.find('input[name="_method"]').prop('disabled', false);
+    });
+
+    // Close Preview Logic
+    $(document).on('click', '#close-preview-modal, #close-preview-btn', function(e) {
+      e.preventDefault();
+      $('#preview-modal').removeClass('show');
+    });
+
+    // Save Button Logic (Restore normal submission)
+    $(document).on('click', 'input[type="submit"]', function(e) {
+      const $form = $(this).closest('form');
+      if ($form.length && originalFormAction) {
+        // Restore original attributes before normal submit
+        $form.attr('action', originalFormAction);
+        $form.attr('target', originalFormTarget);
+        $form.attr('method', originalFormMethod);
+      }
+    });
+
+    // Tag Input Logic
+    function addTag(tagName) {
+      tagName = tagName.trim();
+      if (!tagName) return;
+
+      // Check if tag already exists
+      var exists = false;
+      $('#tags-list .tag-item').each(function() {
+        if ($(this).data('tag').toLowerCase() === tagName.toLowerCase()) {
+          exists = true;
+          return false;
         }
       });
-    })
+      if (exists) return;
+
+      var tagHtml = '<span class="tag-item" data-tag="' + tagName + '">' +
+        tagName +
+        '<button type="button" class="tag-remove">&times;</button>' +
+        '<input type="hidden" name="post[tag_list][]" value="' + tagName + '">' +
+        '</span>';
+      $('#tags-list').append(tagHtml);
+    }
+
+    $(document).on('keydown', '#tag-input', function(e) {
+      if (e.key === 'Tab' || e.key === 'Enter') {
+        var val = $(this).val();
+        if (val.trim()) {
+          e.preventDefault();
+          addTag(val);
+          $(this).val('');
+        }
+      }
+    });
+
+    $(document).on('click', '.tag-remove', function(e) {
+      e.preventDefault();
+      $(this).closest('.tag-item').remove();
+    });
+
+    // Cover image preview
+    $(document).on('change', '#cover-input', function() {
+      var file = this.files[0];
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#background-preview').css('background-image', 'url(' + e.target.result + ')');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
   </script>
 <% end %>

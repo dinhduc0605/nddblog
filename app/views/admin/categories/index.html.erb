@@ -1,25 +1,25 @@
-<div id="admin-categories">
+<div class="card">
   <div class="card-header">
-    <h4 class="card-title">Categories Table</h4>
-    <%= link_to new_admin_category_url, class: 'btn btn-success btn-icon btn-round' do %>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-    <% end %>
+    <h4 class="card-title">Categories</h4>
+    <div class="header-actions">
+      <%= link_to new_admin_category_url, class: 'btn-primary' do %>
+        <i class="fa fa-plus"></i> New Category
+      <% end %>
+    </div>
   </div>
   <div class="card-body">
-    <div class="table-responsive">
-      <table class="table data-table">
-        <thead class="text-primary">
+    <table class="modern-table">
+      <thead>
         <tr>
           <th><%= t 'stt' %></th>
           <th class="no-sort"><%= Category.human_attribute_name(:image) %></th>
           <th><%= Category.human_attribute_name(:name) %></th>
           <th class="no-sort"></th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
         <%= render @categories %>
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
 </div>

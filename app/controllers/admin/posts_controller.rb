@@ -14,11 +14,7 @@ class Admin::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_admin_user
-    @tags = []
-    params[:tags].split(',').each do |tag|
-      @tags << Tag.find_or_create_by(name: tag)
-    end
-    @post.tags = @tags
+    @post.tags = build_tags_from_params
     if @post.save
       redirect_to admin_post_path(@post), notice: t('.notice')
     else
@@ -29,11 +25,7 @@ class Admin::PostsController < ApplicationController
   def edit; end
 
   def update
-    @tags = []
-    params[:tags].split(',').each do |tag|
-      @tags << (Tag.exists?(name: tag) ? Tag.find_by(name: tag) : Tag.create(name: tag))
-    end
-    @post.tags = @tags
+    @post.tags = build_tags_from_params
     if @post.update post_params
       redirect_to admin_post_path(@post), notice: t('.notice')
     else
@@ -59,5 +51,11 @@ class Admin::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :category_id, :cover, :tag, :description, :published)
+  end
+
+  def build_tags_from_params
+    tag_names = params.dig(:post, :tag_list) || params[:tags]&.split(',') || []
+    tag_names = [tag_names] unless tag_names.is_a?(Array)
+    tag_names.compact.reject(&:blank?).map { |name| Tag.find_or_create_by(name: name.strip) }
   end
 end

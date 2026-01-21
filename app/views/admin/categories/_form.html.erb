@@ -1,15 +1,31 @@
 <%= form_for [:admin, @category], multipart: true do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <div class="row justify-content-center">
-    <div class="col-md-8 margin-20">
-      <div class="rounded" id="background-preview" style="background-image: url(<%= asset_path image_url(@category.image) %>);">
-        <%= f.file_field :image %>
+  
+  <div class="card">
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="form-group text-center mb-4">
+            <label class="d-block mb-2">Category Image</label>
+            <div class="rounded mx-auto" id="background-preview" style="background-image: url(<%= asset_path image_url(@category.image) %>); width: 100%; height: 250px; background-size: cover; background-position: center; position: relative; border: 2px dashed var(--border-subtle);">
+              <%= f.file_field :image, style: "opacity: 0; width: 100%; height: 100%; cursor: pointer;" %>
+              <div class="text-muted" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: -1;">
+                <i class="fa fa-cloud-upload fa-2x"></i>
+                <p>Click to upload</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <%= f.label :name, class: "form-label font-bold" %>
+            <%= f.text_field :name, class: 'form-control', placeholder: "Enter category name" %>
+          </div>
+
+          <div class="form-actions text-right">
+            <%= f.submit t('submit'), class: 'btn-primary' %>
+          </div>
+        </div>
       </div>
-      <div class="form-group" style="margin-top: 20px">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      <%= f.submit t('submit'), class: 'btn btn-primary btn-round full-width' %>
     </div>
   </div>
 <% end %>

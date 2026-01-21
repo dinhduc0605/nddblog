@@ -1,13 +1,15 @@
-<div class="card-header">
-  <h4 class="card-title">User Table</h4>
-</div>
-<div class="card-body">
-  <%= link_to new_admin_user_url, class: 'btn btn-success' do %>
-    <i class="fa fa-plus"></i> <%= t '.new' %>
-  <% end %>
-  <div class="table-responsive">
-    <table class="table data-table">
-      <thead class="text-primary">
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Users</h4>
+    <div class="header-actions">
+      <%= link_to new_admin_user_url, class: 'btn-primary' do %>
+        <i class="fa fa-plus"></i> <%= t '.new' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="modern-table">
+      <thead>
         <tr>
           <th><%= t '.stt' %></th>
           <th class="no-sort"><%= t '.avatar' %></th>

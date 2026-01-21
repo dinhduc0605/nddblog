@@ -5,16 +5,31 @@
       <div class="modal-header">
         <h5 class="modal-title">Upload Images</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <i class="now-ui-icons ui-1_simple-remove"></i>
+          <i class="fa fa-times"></i>
         </button>
       </div>
       <div class="modal-body">
         <div id="upload-image">
-          <%= form_tag admin_image_files_path, remote: true, multipart: true do %>
-            <%= file_field_tag 'images[]', multiple: true, accept: 'image/*' %>
-            <%= button_tag type: :submit, class: 'btn btn-primary btn-icon btn-round' do %>
-              <i class="now-ui-icons arrows-1_cloud-upload-94"></i>
-            <% end %>
+          <%= form_tag admin_image_files_path, remote: true, multipart: true, id: 'upload-form' do %>
+            <div class="upload-dropzone" id="upload-dropzone">
+              <%= file_field_tag 'images[]', multiple: true, accept: 'image/*', id: 'upload-file-input' %>
+              <div class="dropzone-content">
+                <div class="dropzone-icon">
+                  <i class="fa fa-cloud-upload"></i>
+                </div>
+                <p class="dropzone-text">Drag & drop images here</p>
+                <p class="dropzone-subtext">or click to browse</p>
+              </div>
+              <div class="dropzone-selected" style="display: none;">
+                <i class="fa fa-check-circle"></i>
+                <span class="selected-count"></span>
+              </div>
+            </div>
+            <div class="upload-actions">
+              <%= button_tag type: :submit, class: 'btn-primary upload-submit-btn', id: 'upload-submit-btn', disabled: true do %>
+                <i class="fa fa-cloud-upload"></i> Upload Files
+              <% end %>
+            </div>
           <% end %>
         </div>
         <div id="images-index">
@@ -27,3 +42,52 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).on('change', '#upload-file-input', function() {
+    var files = this.files;
+    var $dropzone = $('#upload-dropzone');
+    var $btn = $('#upload-submit-btn');
+
+    if (files.length > 0) {
+      var text = files.length === 1 ? '1 file selected' : files.length + ' files selected';
+      $dropzone.find('.dropzone-content').hide();
+      $dropzone.find('.dropzone-selected').show().find('.selected-count').text(text);
+      $dropzone.addClass('has-files');
+      $btn.prop('disabled', false);
+    } else {
+      $dropzone.find('.dropzone-content').show();
+      $dropzone.find('.dropzone-selected').hide();
+      $dropzone.removeClass('has-files');
+      $btn.prop('disabled', true);
+    }
+  });
+
+  // Drag and drop support
+  $(document).on('dragover dragenter', '#upload-dropzone', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).addClass('dragover');
+  });
+
+  $(document).on('dragleave drop', '#upload-dropzone', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).removeClass('dragover');
+  });
+
+  $(document).on('drop', '#upload-dropzone', function(e) {
+    var files = e.originalEvent.dataTransfer.files;
+    $('#upload-file-input')[0].files = files;
+    $('#upload-file-input').trigger('change');
+  });
+
+  // Reset form when modal closes
+  $(document).on('hidden.bs.modal', '#upload-modal', function() {
+    $('#upload-form')[0].reset();
+    $('#upload-dropzone').removeClass('has-files');
+    $('#upload-dropzone .dropzone-content').show();
+    $('#upload-dropzone .dropzone-selected').hide();
+    $('#upload-submit-btn').prop('disabled', true);
+  });
+</script>

@@ -1,40 +1,44 @@
-<div class="card-header">
-  <h4 class="card-title">Posts Table</h4>
-</div>
-<div class="card-body">
-  <%= search_form_for [:admin, @q] do |f| %>
-    <div class="row">
-      <div class="col-md-5"></div>
-      <div class="col-md-2 btn-group-vertical">
-        <%= f.select :category_id_eq, options_from_collection_for_select(Category.all, :id, :name), { include_blank: 'Select one...'}, class: 'form-control' %>
-      </div>
-      <div class="col-md-3 btn-group-vertical no-padding">
-        <%= f.search_field :title_cont, class: 'form-control', placeholder: t('.search_placeholder') %>
-      </div>
-      <div class="col-md-2">
-        <%= button_tag class: 'btn btn-primary btn-icon btn-round btn-simple' do %>
-          <i class="fa fa-search"></i>
-        <% end %>
-        <%= link_to new_admin_post_url, class: 'btn btn-success btn-icon btn-round' do %>
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        <% end %>
-      </div>
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Posts</h4>
+    <div class="header-actions">
+      <%= link_to new_admin_post_url, class: 'btn-primary' do %>
+        <i class="fa fa-plus"></i> New Post
+      <% end %>
     </div>
-  <% end %>
-  <div class="table-responsive">
-    <table class="table data-table">
-      <thead class="text-primary">
-      <tr>
-        <th><%= t 'stt' %></th>
-        <th class="no-sort"><%= Post.human_attribute_name(:cover) %></th>
-        <th><%= Post.human_attribute_name(:title) %></th>
-        <th><%= Post.human_attribute_name(:category) %></th>
-        <th>Status</th>
-        <th class="no-sort"></th>
-      </tr>
+  </div>
+  <div class="card-body">
+    <%= search_form_for [:admin, @q], class: "mb-4" do |f| %>
+      <div class="d-flex flex-wrap align-items-end gap-3" style="gap: 1rem;">
+        <div class="flex-grow-1" style="min-width: 200px;">
+          <label class="text-sm text-muted mb-1">Search</label>
+          <%= f.search_field :title_cont, class: 'form-control', placeholder: t('.search_placeholder') %>
+        </div>
+        <div style="min-width: 200px;">
+          <label class="text-sm text-muted mb-1">Category</label>
+          <%= f.select :category_id_eq, options_from_collection_for_select(Category.all, :id, :name), { include_blank: 'All Categories'}, class: 'form-control' %>
+        </div>
+        <div>
+          <%= button_tag class: 'btn-primary' do %>
+            <i class="fa fa-search"></i> Search
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <table class="modern-table">
+      <thead>
+        <tr>
+          <th><%= t 'stt' %></th>
+          <th class="no-sort"><%= Post.human_attribute_name(:cover) %></th>
+          <th><%= Post.human_attribute_name(:title) %></th>
+          <th><%= Post.human_attribute_name(:category) %></th>
+          <th>Status</th>
+          <th class="no-sort"></th>
+        </tr>
       </thead>
       <tbody>
-      <%= render @posts %>
+        <%= render @posts %>
       </tbody>
     </table>
   </div>

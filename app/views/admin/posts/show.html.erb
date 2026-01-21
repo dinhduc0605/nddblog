@@ -1,23 +1,46 @@
-<%= image_tag image_url(@post.cover), class: 'post-show-cover' %>
-<div class="row justify-content-center">
-  <div class="post-show-content col-md-11">
-    <div class="post-show-title">
-      <%= @post.title %>
+<div class="card">
+  <div class="card-header border-0 p-0 overflow-hidden">
+    <%= image_tag image_url(@post.cover), class: 'w-100', style: 'max-height: 400px; object-fit: cover;' %>
+  </div>
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="mb-4">
+          <h1 class="font-bold mb-2"><%= @post.title %></h1>
+          <div class="d-flex align-items-center gap-3 text-sm text-muted">
+            <span><i class="fa fa-folder-o"></i> <%= @post.category.name %></span>
+            <span><i class="fa fa-clock-o"></i> <%= @post.created_at.strftime("%B %d, %Y") %></span>
+            <% if @post.published? %>
+              <span class="text-primary font-bold">Published</span>
+            <% else %>
+              <span class="text-warning font-bold">Draft</span>
+            <% end %>
+          </div>
+        </div>
+        
+        <hr class="border-subtle my-4">
+        
+        <div class="post-content mb-5">
+          <%= markdown(@post.content) %>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-5">
+          <div class="tags">
+            <% @post.tags.each do |tag| %>
+              <%= link_to tag.name, admin_tag_url(tag), class: 'badge badge-light border text-muted mr-1' %>
+            <% end %>
+          </div>
+          
+          <div class="actions d-flex gap-2">
+            <%= link_to edit_admin_post_url(@post), class: 'btn-primary' do %>
+              <i class="fa fa-pencil-square-o"></i> Edit Post
+            <% end %>
+            <%= link_to post_url(@post), target: '_blank', class: 'btn-secondary' do %>
+              <i class="fa fa-external-link"></i> View Live
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <hr>
-    <%= markdown(@post.content) %>
-  </div>
-  <div class="tags text-right col-md-11">
-    <% @post.tags.each do |tag| %>
-      <%= link_to tag.name, admin_tag_url(tag), class: 'tag' %>
-    <% end %>
-  </div>
-  <div class="text-right col-md-11">
-    <%= link_to edit_admin_post_url(@post), class: 'btn btn-primary btn-icon btn-round' do %>
-      <i class="fa fa-pencil-square-o"></i>
-    <% end %>
-    <%= link_to post_url(@post), target: 'blank', class: 'btn btn-success btn-icon btn-round' do %>
-      <i class="fa fa-share-square-o"></i>
-    <% end %>
   </div>
 </div>
