@@ -459,8 +459,9 @@ ul {
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.875rem;
-  
+
   &:hover {
+    color: var(--text-primary) !important;
     border-color: var(--border-strong);
     background-color: var(--neutral-50);
   }
@@ -476,12 +477,29 @@ ul {
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.875rem;
-  
+
   &:hover {
     background-color: #fee2e2;
-    color: #b91c1c;
+    color: #b91c1c !important;
     border-color: #fca5a5;
   }
+}
+
+// Bootstrap button hover overrides to prevent white-on-white text
+.btn-light:hover,
+.btn-outline-light:hover,
+a.btn-secondary:hover,
+button.btn-secondary:hover,
+a.btn-light:hover,
+button.btn-light:hover {
+  color: var(--text-primary) !important;
+}
+
+// Ensure icon colors stay consistent with text
+.btn-secondary:hover i,
+.btn-light:hover i,
+.btn-danger:hover i {
+  color: inherit;
 }
 
 // 3. Inputs
@@ -727,9 +745,8 @@ input[type="text"], input[type="email"], input[type="password"], textarea, selec
     // "Copied!" Feedback
     .copied-feedback {
       position: absolute;
-      right: 100%;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 0;
+      transform: translateY(-100%);
       margin-right: var(--space-2);
       background: var(--neutral-900);
       color: white;
@@ -743,7 +760,7 @@ input[type="text"], input[type="email"], input[type="password"], textarea, selec
       
       &.show {
         opacity: 1;
-        transform: translateY(-50%) translateX(-4px);
+        transform: translateY(-100%) translateX(-4px);
       }
     }
   }

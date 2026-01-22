@@ -63,3 +63,4 @@ yarn-debug.log*
 
 .history/*
 .DS_Store
+**/CLAUDE.md
