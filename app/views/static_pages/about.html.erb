@@ -1,249 +1,141 @@
 <% content_for :title, 'About' %>
-<% content_for :description, 'About myself' %>
-<% content_for :body_class, 'about-page' %>
+<% content_for :description, 'About Duc - Web Developer in Japan' %>
+<% content_for :body_class, 'modern-about' %>
 
-<% content_for :css_tags do %>
-  <%= stylesheet_link_tag 'home', media: 'all' %>
-  <%= stylesheet_link_tag 'about', media: 'all' %>
-<% end %>
+<!-- Hero -->
+<section class="about-hero">
+  <h1 class="about-title">About Me</h1>
+  <p class="about-subtitle">Web Developer | Ruby on Rails | Living in Japan</p>
+</section>
 
-<!-- Page Header -->
-<header class="masthead about-header" style="background-image: url('<%= image_path 'about.jpg' %>')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
+<div class="about-content">
+  <!-- Introduction -->
+  <section class="about-section">
+    <h2 class="section-title">Who I Am</h2>
+    <p>
+      Hello! I'm <strong>Duc</strong>, the creator of NDD Blog. I'm currently living and working in Japan as a web developer.
+    </p>
+    <p>
+      My main focus is backend development with Ruby on Rails, but I also enjoy working on frontend projects. I believe in continuous learning and sharing knowledge with the community.
+    </p>
+  </section>
+
+  <!-- Why This Blog -->
+  <section class="about-section">
+    <h2 class="section-title">Why This Blog Exists</h2>
+    <p>
+      I've always wanted to experience new things - new technologies, new places, new challenges. This blog serves as a space to document and share my learning journey with others.
+    </p>
+    <p>
+      Of course, there are other reasons too: having something to write about, following in the footsteps of friends who blog, having something nice for my portfolio, and simply having a place to share my thoughts.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section class="about-section">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3 class="skill-title">Team Collaboration</h3>
+        <p class="skill-description">
+          Experienced in working with teams of 8+ members. I understand how to coordinate effectively for high productivity.
+        </p>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-title">Self-Learning</h3>
+        <p class="skill-description">
+          Self-taught Japanese over 3 years at home. Successfully achieved JLPT N2 certification.
+        </p>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-title">Problem Solving</h3>
+        <p class="skill-description">
+          Capable of independently finding solutions to complex challenges and difficult problems.
+        </p>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-title">Technology Adaptation</h3>
+        <p class="skill-description">
+          Always excited about new technologies, enabling quick and effective adoption of emerging tools and frameworks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programming Languages -->
+  <section class="about-section">
+    <h2 class="section-title">Programming Languages</h2>
+    <div class="progress-bars">
+      <% @skills.each do |skill| %>
+        <div class="progress-item">
+          <div class="progress-label">
+            <span><%= skill[:name] %></span>
+            <span><%= skill[:percentage] %>%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: <%= skill[:percentage] %>%;"></div>
+          </div>
         </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="about-section">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+      <% @job_timelines.each do |item| %>
+        <div class="timeline-item">
+          <span class="timeline-date"><%= item[:period] %></span>
+          <h3 class="timeline-title"><%= item[:title] %></h3>
+          <p class="timeline-subtitle"><%= item[:organization] %></p>
+          <% if item[:description].present? %>
+            <p class="timeline-description"><%= item[:description] %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="about-section">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      <% @education_timelines.each do |item| %>
+        <div class="timeline-item">
+          <span class="timeline-date"><%= item[:period] %></span>
+          <h3 class="timeline-title"><%= item[:title] %></h3>
+          <p class="timeline-subtitle"><%= item[:organization] %></p>
+          <% if item[:description].present? %>
+            <p class="timeline-description"><%= item[:description] %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Interests -->
+  <section class="about-section">
+    <h2 class="section-title">Interests</h2>
+    <div class="interests-grid">
+      <div class="interest-card">
+        <h3 class="interest-title">Gaming</h3>
+        <p class="interest-description">
+          Used to be a passionate gamer. Years of experience in Dota 2 (8 years) and Counter Strike (since elementary school). Less gaming now due to work, but the memories remain.
+        </p>
+      </div>
+      <div class="interest-card">
+        <h3 class="interest-title">Sports</h3>
+        <p class="interest-description">
+          Not a football fan but enjoy playing PES. Had 3 years of badminton experience. Since moving to Japan, my main exercise is standing on trains for 1.5 hours daily commute.
+        </p>
+      </div>
+      <div class="interest-card">
+        <h3 class="interest-title">Manga & Anime</h3>
+        <p class="interest-description">
+          Been reading manga since childhood and started watching anime heavily in university. These sparked my desire to live in Japan, and now that dream has come true!
+        </p>
       </div>
     </div>
-  </div>
-</header>
-
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="right-col-block blocks">
-        <section class="intro section-wrapper">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-title">
-                  <h2>Mình là ai</h2>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <p>
-                  Chào các bạn, mình là <b>Đức</b>, người tạo ra NDD Blog này. Hiện tại, mình đang sống và làm việc tại Nhật Bản.
-                  Công việc của mình là Web developer, chủ yếu là làm backend với Rails, nhưng cũng thỉnh thoảng đá
-                  sang làm frontend 1 tí nên ít nhất cũng biết html, css, js là gì 😂
-                </p>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="intro section-wrapper gray-bg">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-title">
-                  <h2>Tại sao lại có blog này</h2>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <p>
-                  Mình thì luôn muốn được trải nghiệm những cái mới (công nghệ mới, vùng đất mới...), vì vậy mình cần 1 nơi
-                  để lưu lại và chia sẻ những thứ đã học và làm được cho mọi người. Và đó chính là NDD blog.
-                </p>
-                <p>
-                  À tất nhiên là còn những lý do khác như là rảnh quá không biết làm gì, thấy bạn bè ai cũng viết blog nên đua đòi,
-                  có cái ghi vào CV cho đẹp, có chỗ để xàm, vân vân và mây mây..... 😌
-                </p>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="expertise-wrapper section-wrapper">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-title">
-                  <h2>Kỹ năng</h2>
-                </div>
-              </div>
-            </div>
-            <!-- .row -->
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="expertise-item">
-                  <h4>Làm việc nhóm</h4>
-
-                  <p>
-                    Từng làm việc trong 1 team 8 người. Biết cách phối hợp để tạo hiệu quả cao.
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="expertise-item">
-                  <h4>Tự học</h4>
-
-                  <p>
-                    Tự học tiếng Nhật tại nhà trong 3 năm. (giờ đã có N2 😎)
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- .row -->
-            <div class="row">
-              <div class="col-md-6">
-                <div class="expertise-item">
-                  <h4>Giải quyết vấn đề</h4>
-
-                  <p>
-                    Có khả năng tự tìm cách và giải quyết các vấn đề khó khăn.
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="expertise-item">
-                  <h4>Tiếp cận công nghệ</h4>
-
-                  <p>
-                    Luôn hứng thú với công nghệ mới nên có khả năng tiếp cận công nghệ nhanh chóng, hiệu quả.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- .row -->
-          </div>
-          <!--.container-fluid-->
-        </section>
-        <!-- .expertise-wrapper -->
-
-        <section class="section-wrapper skills-wrapper gray-bg">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-title">
-                  <h2>Ngôn ngữ lập trình</h2>
-                </div>
-              </div>
-            </div>
-
-            <!--.row-->
-            <div class="row">
-
-              <div class="col-md-12">
-                <% @skills.each do |skill| %>
-                  <div class="skill-item">
-                    <div class="skill-label"><%= skill[:name] %></div>
-                    <div class="progress-bar-container">
-                      <div class="progress-bar-fill" style="width: <%= skill[:percentage] %>%; background-color: <%= skill[:color] %>;"><%= skill[:percentage] %>%</div>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-              <!--.row -->
-            </div>
-            <!-- .container-fluid -->
-          </div>
-        </section>
-        <!-- .skills-wrapper -->
-        <br>
-        <section class="section-wrapper section-experience">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-title"><h2>Kinh nghiệm làm việc</h2></div>
-              </div>
-            </div>
-            <!--.row-->
-            <div class="row">
-              <div class="col-md-12">
-                <%= render 'timeline', items: @job_timelines %>
-              </div>
-            </div>
-            <!--.row-->
-          </div>
-          <!-- .container-fluid -->
-
-        </section>
-        <!-- .section-experience -->
-
-        <section class="section-wrapper section-education gray-bg">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-title"><h2>Sự nghiệp học hành</h2></div>
-              </div>
-            </div>
-            <!--.row-->
-            <div class="row">
-              <div class="col-md-12">
-                <%= render 'timeline', items: @education_timelines %>
-              </div>
-            </div>
-            <!--.row-->
-          </div>
-          <!-- .container-fluid -->
-
-        </section>
-        <!-- .section-education -->
-
-        <section class="section-wrapper section-interest">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-title">
-                  <h2>Sở thích</h2>
-                </div>
-              </div>
-            </div>
-            <!-- .row -->
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="content-item">
-                  <h4>Game</h4>
-
-                  <p>
-                    Lúc bé cũng ham chơi game lắm, giờ đỡ nhiều rồi, do đi làm về mệt chả muốn chơi nữa.
-                    Kinh nghiệm đầy mình trong 1 số trò như Dota 2 ( 8 năm ), Counter Strike ( từ lớp 4 =)) )....
-                  </p>
-                </div>
-                <div class="content-item">
-                  <h4>Thể thao</h4>
-
-                  <p>
-                    Không thích xem và chơi đá bóng nhưng thích chơi Pes. Có <b>tận</b> 3 năm kinh nghiệp chơi cầu lông,
-                    nhưng đó là chuyện quá khứ rồi, giờ thì gà lắm 😢. Từ khi qua Nhật mình chuyển qua môn luyện cơ chân, mỗi ngày đi làm đứng khoảng 1h30' trên tàu :v.
-                  </p>
-
-                </div>
-                <div class="content-item">
-                  <h4>Manga và Anime</h4>
-
-                  <p>
-                    Manga thì thích xem từ bé rồi, còn Anime thì phải đến năm 2 đại học mới xem nhiều. Chính 2 thứ này
-                    là khởi đầu cho mong muốn đi Nhật của mình, may mà giờ cũng đạt được, không bỏ phí mấy năm học tiếng.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- .row -->
-
-          </div>
-        </section>
-        <!-- .section-publications -->
-
-      </div>
-    </div>
-  </div>
+  </section>
 </div>

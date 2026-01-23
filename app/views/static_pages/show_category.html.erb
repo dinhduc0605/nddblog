@@ -1,36 +1,89 @@
-<% content_for :title, "#{@category.name}" %>
-<% content_for :description, "NDD Blog | #{@category.name}" %>
+<% content_for :title, @category.name %>
+<% content_for :description, "NDD Blog | #{@category.name} - Posts about #{@category.name.downcase}" %>
 
-<% content_for :css_tags do %>
-  <%= stylesheet_link_tag 'home', media: 'all' %>
-  <%= stylesheet_link_tag 'sidebar', media: 'all' %>
-<% end %>
+<!-- Category Header -->
+<section class="modern-hero" style="min-height: 40vh; padding-top: calc(4rem + 80px); padding-bottom: 4rem;">
+  <div class="hero-content">
+    <span class="hero-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      Category
+    </span>
+    <h1 class="hero-title"><%= @category.name %></h1>
+    <p class="hero-subtitle">
+      Explore all posts in this category
+    </p>
+  </div>
+</section>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('<%= image_path @category.image %>')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h2><%= @category.name %></h2>
+<!-- Posts Section -->
+<section class="modern-posts-section" id="posts">
+  <div class="posts-layout">
+    <div class="posts-main">
+      <header class="section-header">
+        <h2 class="section-title"><%= @posts.total_count %> Posts</h2>
+      </header>
+
+      <% if @posts.any? %>
+        <div class="posts-grid">
+          <% @posts.each do |post| %>
+            <%= render 'posts/post_card', post: post %>
+          <% end %>
         </div>
-      </div>
-    </div>
-  </div>
-</header>
 
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-lg-9">
-      <div class="post-list">
-        <%= render @posts %>
-      </div>
-      <%= paginate @posts %>
+        <% if @posts.total_pages > 1 %>
+          <nav class="modern-pagination" aria-label="Pagination">
+            <% if @posts.first_page? %>
+              <span class="page-link disabled" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </span>
+            <% else %>
+              <%= link_to url_for(page: @posts.prev_page), class: 'page-link', 'aria-label': 'Previous page' do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              <% end %>
+            <% end %>
+
+            <% (1..@posts.total_pages).each do |page_num| %>
+              <% if page_num == @posts.current_page %>
+                <span class="page-link active" aria-current="page"><%= page_num %></span>
+              <% elsif page_num == 1 || page_num == @posts.total_pages || (page_num >= @posts.current_page - 2 && page_num <= @posts.current_page + 2) %>
+                <%= link_to page_num, url_for(page: page_num), class: 'page-link' %>
+              <% elsif page_num == 2 || page_num == @posts.total_pages - 1 %>
+                <span class="page-link disabled">...</span>
+              <% end %>
+            <% end %>
+
+            <% if @posts.last_page? %>
+              <span class="page-link disabled" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+            <% else %>
+              <%= link_to url_for(page: @posts.next_page), class: 'page-link', 'aria-label': 'Next page' do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              <% end %>
+            <% end %>
+          </nav>
+        <% end %>
+      <% else %>
+        <div class="empty-state">
+          <p>No posts found in this category.</p>
+          <%= link_to 'Back to Home', root_path, class: 'hero-cta' %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-sm-12 col-lg-3">
+
+    <aside class="posts-sidebar">
       <%= render 'shared/sidebar', popular_posts: @popular_posts %>
-    </div>
+    </aside>
   </div>
-</div>
+</section>

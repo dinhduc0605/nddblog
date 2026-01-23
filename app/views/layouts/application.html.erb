@@ -25,18 +25,21 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="NDDBlog">
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#FAFAFA" />
     <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
 
     <link href="<%= image_path('favicon.ico') %>" rel=icon>
 
-    <%= stylesheet_link_tag 'bootstrap', media: 'all' %>
-    <%= stylesheet_link_tag 'font-awesome', media: 'all' %>
-    <%= stylesheet_link_tag 'common', media: 'all' %>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'modern_blog', media: 'all' %>
     <%= yield :css_tags %>
   </head>
 
-  <body class="<%= yield(:body_class) %>">
+  <body class="modern-blog <%= yield(:body_class) %>">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RJ2GLQ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -44,11 +47,13 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <%= render 'shared/navigation' %>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
     <%= render 'shared/footer' %>
+
     <%= javascript_include_tag 'jquery-3.4.1.min' %>
-    <%= javascript_include_tag 'bootstrap.bundle' %>
-    <%= javascript_include_tag 'common' %>
+    <%= javascript_include_tag 'modern_blog' %>
     <%= yield :javascript %>
   </body>
 </html>

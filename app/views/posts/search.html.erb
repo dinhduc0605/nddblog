@@ -1,33 +1,48 @@
-<% content_for :title, "Search for ##{@query}" %>
-<% content_for :description, "Tìm kiếm các bài viết theo từ khoá ##{@query}" %>
-<% content_for :body_class, 'search-page' %>
+<% content_for :title, "Search: #{@query}" %>
+<% content_for :description, "Search results for '#{@query}'" %>
 
-<% content_for :css_tags do %>
-  <%= stylesheet_link_tag 'home', media: 'all' %>
-  <%= stylesheet_link_tag 'tag', media: 'all' %>
-<% end %>
+<!-- Search Header -->
+<section class="modern-hero" style="min-height: 40vh; padding-top: calc(4rem + 80px); padding-bottom: 4rem;">
+  <div class="hero-content">
+    <span class="hero-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      Search Results
+    </span>
+    <h1 class="hero-title">"<%= @query %>"</h1>
+    <p class="hero-subtitle">
+      <%= @posts.count %> <%= @posts.count == 1 ? 'post' : 'posts' %> found
+    </p>
+  </div>
+</section>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('<%= image_path 'search.png' %>')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h2><%= " # #{@query}" %></h2>
+<!-- Results Section -->
+<section class="modern-posts-section" id="results">
+  <div class="posts-layout">
+    <div class="posts-main">
+      <% if @posts.any? %>
+        <div class="posts-grid">
+          <% @posts.each do |post| %>
+            <%= render 'posts/modern_post_card', post: post %>
+          <% end %>
         </div>
-      </div>
+      <% else %>
+        <div class="empty-state" style="text-align: center; padding: 4rem 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="color: #71717A; margin-bottom: 1.5rem;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">No results found</h3>
+          <p style="color: #71717A; margin-bottom: 1.5rem;">Try searching with different keywords</p>
+          <%= link_to 'Back to Home', root_path, class: 'hero-cta' %>
+        </div>
+      <% end %>
     </div>
-  </div>
-</header>
 
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="post-list">
-        <%= render @posts %>
-      </div>
-    </div>
+    <aside class="posts-sidebar">
+      <%= render 'shared/modern_sidebar', popular_posts: [] %>
+    </aside>
   </div>
-</div>
+</section>

@@ -9,7 +9,8 @@ class PostsController < ApplicationController
 
   layout false, only: :preview
 
-  def show; end
+  def show
+  end
 
   def search
     @query = params[:q]

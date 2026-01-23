@@ -43,35 +43,30 @@ class StaticPagesController < ApplicationController
     ]
     @job_timelines = [
       {
-        timestamp: '3/2018 - Hiện tại',
-        title:     'GA Technologies Inc - Rails Developer',
-        content:   'Hiện tại mình đang làm việc tại GA Technologies, Nhật Bản. Công ty chuyên về bất động sản.' \
-              'Tuy không phải chuyên về IT, không có quy trình chuẩn như các công ty khác, nhưng hiện tại cũng đang phát triển mạnh về mảng này.' \
-              'Ngoài điểm ý ra thì không còn gì để chê, môi trường làm việc trẻ, mọi người đều thân thiện, đặc biệt mỗi tháng có party nhỏ' \
-              'để nhân viên làm quen với nhau, giúp tiếng Nhật của mình lên không ít 😁.'
-
+        period:       '3/2018 - Present',
+        title:        'Rails Developer',
+        organization: 'GA Technologies Inc, Japan',
+        description:  'Working on real estate tech products with Ruby on Rails. Great work environment with friendly colleagues.'
       },
       {
-        timestamp: '4/2016 - 12/2016',
-        title:     'FRAMGIA VIETNAM CO., LTD - Android Developer Internship',
-        content:   'Trong khoảng thời gian này có lẽ mình học được nhiều nhất, không phải kiến thức về các ngôn ngữ lập trình, mà là' \
-              'cách làm việc nhóm, cách quản lý, phân chia công việc, cách sử dụng Git hiệu quả... Đặc biệt mình còn làm quen được với 1' \
-              'team ( iship4` à nhầm ishipper 🤣 ) thực sự hợp cạ, phải nói là đi làm mà chưa bao giờ thấy chán.'
+        period:       '4/2016 - 12/2016',
+        title:        'Android Developer Intern',
+        organization: 'FRAMGIA VIETNAM CO., LTD',
+        description:  'Learned teamwork, project management, Git workflows. An invaluable experience with amazing teammates.'
       }
     ]
     @education_timelines = [
       {
-        timestamp: '9/2012 - 7/2017',
-        title:     'Ha Noi University of Science and Technology',
-        content:   '5 năm đại học tưởng dài nhưng thực sự qua rất nhanh. Lúc học thì muốn xong nhanh để ra trường đi làm.
-                  Đến lúc đi làm rồi thì lại thấy...ờ ra trường nhanh đúng là vui thật 😇.'
-
+        period:       '9/2012 - 7/2017',
+        title:        'Bachelor in Information Technology',
+        organization: 'Ha Noi University of Science and Technology',
+        description:  '5 years of university flew by quickly. Great foundation in computer science fundamentals.'
       },
       {
-        timestamp: '9/2009 - 4/2012',
-        title:     'High School for Gifted Student',
-        content:   'Mặc dù học chuyên Tin từ cấp 3, nhưng hồi ý mình cũng không biết nhiều về lập trình ngoài 1 ít Pascal và C.
-                  Giờ nghĩ lại thời ý mà chăm chỉ thì giờ chắc bá lắm r.'
+        period:       '9/2009 - 4/2012',
+        title:        'Computer Science Major',
+        organization: 'High School for Gifted Students',
+        description:  'Early exposure to programming with Pascal and C. Wish I had been more diligent back then!'
       }
     ]
   end

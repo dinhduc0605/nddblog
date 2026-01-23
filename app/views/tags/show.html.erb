@@ -1,33 +1,44 @@
 <% content_for :title, "##{@tag.name}" %>
-<% content_for :description, "Các bài viết theo tag ##{@tag.name}" %>
-<% content_for :body_class, 'tag-page' %>
+<% content_for :description, "Posts tagged with ##{@tag.name}" %>
 
-<% content_for :css_tags do %>
-  <%= stylesheet_link_tag 'home', media: 'all' %>
-  <%= stylesheet_link_tag 'tag', media: 'all' %>
-<% end %>
+<!-- Tag Header -->
+<section class="modern-hero" style="min-height: 40vh; padding-top: calc(4rem + 80px); padding-bottom: 4rem;">
+  <div class="hero-content">
+    <span class="hero-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+      </svg>
+      Tag
+    </span>
+    <h1 class="hero-title">#<%= @tag.name %></h1>
+    <p class="hero-subtitle">
+      All posts tagged with this topic
+    </p>
+  </div>
+</section>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('<%= image_path 'label_tag.jpg' %>')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h2><%= "##{@tag.name}" %></h2>
+<!-- Posts Section -->
+<section class="modern-posts-section" id="posts">
+  <div class="posts-layout" style="grid-template-columns: 1fr;">
+    <div class="posts-main" style="max-width: 900px; margin: 0 auto;">
+      <% if @posts.any? %>
+        <div class="posts-grid">
+          <% @posts.each do |post| %>
+            <%= render 'posts/modern_post_card', post: post %>
+          <% end %>
         </div>
-      </div>
+      <% else %>
+        <div class="empty-state" style="text-align: center; padding: 4rem 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="color: #71717A; margin-bottom: 1.5rem;">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+          </svg>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">No posts found</h3>
+          <p style="color: #71717A; margin-bottom: 1.5rem;">There are no posts with this tag yet.</p>
+          <%= link_to 'Back to Home', root_path, class: 'hero-cta' %>
+        </div>
+      <% end %>
     </div>
   </div>
-</header>
-
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="post-list">
-        <%= render @posts %>
-      </div>
-    </div>
-  </div>
-</div>
+</section>

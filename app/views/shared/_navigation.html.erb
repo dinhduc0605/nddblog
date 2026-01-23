@@ -1,27 +1,27 @@
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
-    <%= link_to root_url, class: 'navbar-brand' do %>
-      <%= image_tag 'white-navbar-brand.png', class: 'white-navbar-brand' %>
-      <%= image_tag 'black-navbar-brand.png', class: 'black-navbar-brand' %>
-  <% end %>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa fa-bars"></i>
+<nav class="modern-nav" id="modernNav">
+  <div class="nav-container">
+    <%= link_to root_url, class: 'nav-brand' do %>
+      <%= image_tag 'black-navbar-brand.png', alt: 'NDD Blog' %>
+    <% end %>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" onclick="toggleMobileNav()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to 'Home', root_url, class: 'nav-link' %>
+
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <%= link_to 'Home', root_url, class: "nav-link #{current_page?(root_url) ? 'active' : ''}" %>
+      </li>
+      <% Category.all.order(id: :asc).each do |category| %>
+        <li>
+          <%= link_to category.name, "/#{category.slug}", class: "nav-link #{request.path == "/#{category.slug}" ? 'active' : ''}" %>
         </li>
-        <% Category.all.order(id: :asc).each do |category| %>
-          <li class="nav-item">
-            <%= link_to category.name, "/#{category.slug}", class: 'nav-link' %>
-          </li>
-        <% end %>
-        <li class="nav-item">
-          <%= link_to 'About', about_url, class: 'nav-link' %>
-        </li>
-      </ul>
-    </div>
+      <% end %>
+      <li>
+        <%= link_to 'About', about_url, class: "nav-link #{current_page?(about_url) ? 'active' : ''}" %>
+      </li>
+    </ul>
   </div>
 </nav>

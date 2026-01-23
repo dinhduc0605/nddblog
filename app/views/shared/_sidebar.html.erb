@@ -1,36 +1,42 @@
-<aside id="sidebar">
-  <div id="search-box">
-    <%= form_tag search_posts_path, method: :get do %>
-      <%= text_field_tag :q, nil, { placeholder: 'Tìm kiếm...' } %>
-      <%= button_tag :search, class: 'btn', type: :button do %>
-        <i class="fas fa-search"></i>
-      <% end %>
+<aside class="modern-sidebar">
+  <!-- Search -->
+  <div class="sidebar-section">
+    <h3 class="sidebar-title">Search</h3>
+    <%= form_tag search_posts_path, method: :get, class: 'search-form' do %>
+      <%= text_field_tag :q, params[:q], placeholder: 'Search posts...', class: 'search-input' %>
+      <button type="submit" class="search-btn" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
     <% end %>
   </div>
-  <div id="popular-posts-box">
-    <div class="label">Popular</div>
-    <div class="posts">
+
+  <!-- Popular Posts -->
+  <% if local_assigns[:popular_posts] && popular_posts.any? %>
+    <div class="sidebar-section">
+      <h3 class="sidebar-title">Popular</h3>
       <% popular_posts.each do |popular_post| %>
-        <div class="post">
-          <div class="cover">
-            <a href="<%= post_url(popular_post) %>">
-              <%= image_tag popular_post.cover_url, class: 'w100' %>
-            </a>
+        <a href="<%= post_url(popular_post) %>" class="popular-post">
+          <div class="popular-post-image">
+            <%= image_tag popular_post.cover_url, alt: popular_post.title, loading: 'lazy' %>
           </div>
-          <div class="title">
-            <a href="<%= post_url(popular_post) %>">
-              <%= popular_post.title %>
-            </a>
+          <div class="popular-post-content">
+            <h4 class="popular-post-title"><%= popular_post.title %></h4>
+            <span class="popular-post-date"><%= popular_post.created_at.strftime('%b %d, %Y') %></span>
           </div>
-        </div>
+        </a>
       <% end %>
     </div>
-  </div>
-  <div id="tags-box">
-    <div class="label">Tags</div>
-    <div class="tags">
+  <% end %>
+
+  <!-- Tags -->
+  <div class="sidebar-section">
+    <h3 class="sidebar-title">Tags</h3>
+    <div class="tags-cloud">
       <% Tag.all.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag), class: 'btn' %>
+        <%= link_to tag.name, tag_path(tag), class: 'tag-link' %>
       <% end %>
     </div>
   </div>

@@ -1,0 +1,28 @@
+<article class="post-card" data-id="<%= post.id %>">
+  <a href="<%= post_url(post) %>" class="post-card-link">
+    <div class="post-card-image">
+      <%= image_tag post.cover_url, alt: post.title, loading: 'lazy' %>
+    </div>
+    <div class="post-card-content">
+      <div class="post-card-meta">
+        <span class="post-category"><%= post.category&.name || 'Uncategorized' %></span>
+        <span class="post-date"><%= post.created_at.strftime('%b %d, %Y') %></span>
+      </div>
+      <h3 class="post-card-title"><%= post.title %></h3>
+      <p class="post-card-excerpt"><%= post.description %></p>
+      <% if post.tags.any? %>
+        <div class="post-card-tags">
+          <% post.tags.limit(3).each do |tag| %>
+            <span class="tag"><%= tag.name %></span>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="post-card-footer">
+        <div class="post-author">
+          <%= image_tag post.user.avatar_url, alt: post.user.name, class: 'author-avatar' %>
+          <span class="author-name"><%= post.user.name %></span>
+        </div>
+      </div>
+    </div>
+  </a>
+</article>

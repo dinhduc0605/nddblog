@@ -1,10 +1,10 @@
 <% content_for :title, raw(@post.title) %>
 <% content_for :description, @post.description %>
-<% content_for :body_class, 'post-show' %>
+<% content_for :body_class, 'modern-post-detail' %>
 
 <% content_for :fb_meta_tags do %>
   <meta property="og:url" content="<%= request.original_url %>" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:title" content="<%= @post.title %>" />
   <meta property="og:description" content="<%= @post.description %>"/>
   <meta property="og:image" content="<%= @post.cover.url %>" />
@@ -15,87 +15,104 @@
 <% end %>
 
 <% content_for :css_tags do %>
-  <%= stylesheet_link_tag 'posts', media: 'all' %>
   <%= stylesheet_link_tag 'github-markdown', media: 'all' %>
-  <%= stylesheet_link_tag 'sidebar', media: 'all' %>
 <% end %>
 
 <div id="fb-root"></div>
 
-<!-- Post Content -->
-<div class="post-header">
-  <div class="container">
-    <div>
-      <div class="title">
-        <%= @post.title %>
+<article>
+  <!-- Post Header -->
+  <header class="post-header">
+    <span class="post-category-badge"><%= @post.category&.name || 'Uncategorized' %></span>
+    <h1 class="post-title"><%= @post.title %></h1>
+    <div class="post-meta">
+      <div class="meta-item">
+        <%= image_tag @post.user.avatar_url, alt: @post.user.name, class: 'author-avatar' %>
+        <span>by <%= @post.user.name %></span>
       </div>
-      <div class="info">
-        <span class="author">by <%= @post.user.name %></span>
-        <span class="published_date"> <%= @post.created_at.to_date %></span>
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span><%= @post.created_at.strftime('%B %d, %Y') %></span>
       </div>
     </div>
+  </header>
+
+  <!-- Cover Image -->
+  <div class="post-cover">
+    <%= image_tag @post.cover_url, alt: @post.title %>
   </div>
-</div>
-<article class="container">
-  <div class="row">
-    <div class="col-sm-12 col-lg-9 post-detail">
-      <%= image_tag @post.cover_url, class: 'cover'%>
-      <div class="markdown-body">
-        <%= markdown(@post.content) %>
-      </div>
-      <div class="tags m-top16 m-bottom16">
+
+  <!-- Post Content -->
+  <div class="post-content">
+    <div class="markdown-body">
+      <%= markdown(@post.content) %>
+    </div>
+
+    <!-- Tags -->
+    <% if @post.tags.any? %>
+      <div class="post-tags">
         <% @post.tags.each do |tag| %>
-          <%= link_to tag.name, tag_path(tag), class: 'btn' %>
+          <%= link_to tag.name, tag_path(tag), class: 'tag' %>
         <% end %>
       </div>
-      <hr>
-      <div class="post-reaction">
-        <div class="share-area">
-          <div class="share-btn">
-            <i class="fas fa-share-alt"></i>
-            <span>SHARE</span>
-          </div>
-          <div class="social-btns">
-            <a href="javascript:window.open('https://facebook.com/sharer/sharer.php?u=' + location.href, '', 'menubar=no, width=500, height=300')">
-              <i class="fab fa-facebook-f grey-stroke"></i>
-            </a>
-            <a href="javascript:window.open('https://twitter.com/share?url=' + location.href, '', 'menubar=no, width=500, height=300')">
-              <i class="fab fa-twitter grey-stroke"></i>
-            </a>
-            <a href="javascript:window.open('mailto:?subject=' + location.href, '', 'menubar=no, width=500, height=300')">
-              <i class="far fa-envelope grey-stroke"></i>
-            </a>
-          </div>
-        </div>
-        <div class="like-area">
-          <span class="total-like"><%= @post.clap_count %></span>
-          <i class="fas fa-thumbs-up grey-stroke like-btn"></i>
-        </div>
+    <% end %>
+
+    <!-- Actions: Share & Like -->
+    <div class="post-actions">
+      <div class="share-buttons">
+        <button class="share-btn" onclick="shareOnFacebook()" aria-label="Share on Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+          </svg>
+        </button>
+        <button class="share-btn" onclick="shareOnTwitter()" aria-label="Share on Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+          </svg>
+        </button>
+        <button class="share-btn" onclick="shareByEmail()" aria-label="Share by Email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </button>
       </div>
-      <hr>
-      <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
+      <button class="like-button" onclick="toggleLike(<%= @post.id %>)" aria-label="Like this post">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+        </svg>
+        <span class="like-count"><%= @post.clap_count %></span>
+      </button>
     </div>
-    <div class="col-sm-12 col-lg-3">
-      <%= render 'shared/sidebar', popular_posts: @popular_posts %>
-    </div>
+
+    <!-- Comments -->
+    <div class="fb-comments" data-href="<%= post_url(@post) %>" data-numposts="10" data-width="100%"></div>
   </div>
 </article>
-<hr>
 
 <script>
   window.fbAsyncInit = function() {
-      FB.init({
-          appId      : '<%= ENV['FB_APP_ID'] %>',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v6.0'
-      });
+    FB.init({
+      appId: '<%= ENV['FB_APP_ID'] %>',
+      cookie: true,
+      xfbml: true,
+      version: 'v6.0'
+    });
   };
 </script>
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
 <% content_for :javascript do %>
-  <%= javascript_include_tag 'post' %>
-  <script type="text/javascript" charset="utf-8">
-    $('.markdown-body p img[src*=nddblog]').closest('p').addClass('text-center');
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.markdown-body p img[src*=nddblog]').forEach(function(img) {
+        img.closest('p').style.textAlign = 'center';
+      });
+    });
   </script>
 <% end %>

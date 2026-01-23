@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
       false
     elsif self.class.module_parent == Admin
       'admin'
-    else
-      'application'
     end
   end
 

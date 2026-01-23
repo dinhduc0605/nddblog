@@ -64,3 +64,12 @@ yarn-debug.log*
 .history/*
 .DS_Store
 **/CLAUDE.md
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sass cache
+.sass-cache/
+*.scssc
